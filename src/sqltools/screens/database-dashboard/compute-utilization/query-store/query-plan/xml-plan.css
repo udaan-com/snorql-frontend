@@ -1,0 +1,17 @@
+.qp-statement-header-row > div {
+    width: 100%;
+    position: absolute;
+    overflow: inherit;
+}
+
+.qp-noCssTooltip div.qp-node:hover .qp-tt {
+    visibility:  visible;
+}
+
+div.qp-node:hover .qp-tt {
+    visibility: collapse;
+}
+
+.qp-tr {
+    height: 250px;
+}

@@ -1,0 +1,28 @@
+{
+  "pathPrefix": "/",
+  "listen": 7060,
+  "kusto": {
+    "url": "https://private-udadxsin.southindia.kusto.windows.net",
+    "appId": "244e71fa-215a-4618-b3ed-4ee4b597141f",
+    "appKey": "iRi8Q~ihTnAksEXPMYHgsbPpKbXRiPpsDOKB.cUZ",
+    "tenantId": "77200122-6280-4dcc-abf6-a2d3708165da",
+    "database": "kubernetes"
+  },
+  "kustoCen0": {
+    "url": "https://udadxcen.centralindia.kusto.windows.net/",
+    "appId": "244e71fa-215a-4618-b3ed-4ee4b597141f",
+    "appKey": "iRi8Q~ihTnAksEXPMYHgsbPpKbXRiPpsDOKB.cUZ",
+    "tenantId": "77200122-6280-4dcc-abf6-a2d3708165da",
+    "database": "kubernetes"
+  },
+  "svcHackPrefix": "http://",
+  "userServiceUrl": "http://user-service",
+  "infraMonitoringServiceUrl": "http://infra-monitoring-service",
+  "prometheusUrl": "http://thanos-query.monitoring:80",
+  "redisAnalyzerServiceUrl": "http://redis-analyzer-service",
+  "alertingServiceUrl": "http://alerting-service/v1",
+  "alertCreatedByEmail": "lakshmi.rk@udaan.com",
+  "sqlMonitoringServiceUrl": "https://svc-hack.prod.udaan.io/sql-monitoring-service",
+  "configuratorServiceUrl": "http://resource-config-service",
+  "engineerInsightsSvcUrl": "http://udaan-engg-insights-service"
+}
