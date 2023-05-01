@@ -24,7 +24,7 @@ export const ActiveQueryLandingScreen: FunctionComponent<ActiveQueryLandingProps
             },
             heading: {
                 fontSize: theme.typography.pxToRem(15),
-                // fontWeight: "bold",
+                fontWeight: "bold",
                 flexBasis: '33.33%',
                 flexShrink: 0,
                 textTransform: "uppercase"

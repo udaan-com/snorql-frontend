@@ -4,9 +4,9 @@ export function useLoginContext() {
         user: {
             getBasicProfile: () => {
                 return {
-                    getEmail: () => 'lokesh.devnani@udaan.com',
-                    getName: () => 'Lokesh Dummy',
-                    email: 'lokesh.devnani@udaan.com'
+                    getEmail: () => 'test.email@test.com',
+                    getName: () => 'Test User',
+                    email: 'test.email@test.com'
                 }
             }
         }

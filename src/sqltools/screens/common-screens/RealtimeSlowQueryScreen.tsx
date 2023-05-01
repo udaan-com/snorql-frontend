@@ -1,7 +1,5 @@
 import React, { FunctionComponent, useState } from "react";
-import { useHistory } from "react-router-dom";
 import { Box, Typography, Paper, Theme, createStyles } from "@material-ui/core"
-import { SQLService } from "../../services/SQLService";
 import { Fetcher } from "../../../common/components/Fetcher";
 import { alertType, LongRunningSQLQueries } from "../../models";
 import { useLocation } from "react-router";
