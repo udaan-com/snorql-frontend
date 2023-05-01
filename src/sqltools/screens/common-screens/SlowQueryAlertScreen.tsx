@@ -6,7 +6,6 @@ import { AlertDetailsCard } from "../../components/AlertDetailsCard";
 import { alertType, GetSQLAlert } from "../../models";
 import { Fetcher } from "../../../common/components/Fetcher";
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import {AlertService} from "../../services/AlertService";
 import {MiscService} from "../../services/MiscService";
 
 interface SlowQueryAlertScreenProps {
