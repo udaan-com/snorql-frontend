@@ -1,0 +1,16 @@
+{"status":200,"headers":{"server":"openresty/1.15.8.2","date":"Mon, 01 May 2023 06:10:51 GMT","content-type":"application/json","transfer-encoding":"chunked","connection":"close","vary":"Accept-Encoding","strict-transport-security":"max-age=15724800; includeSubDomains"},
+  "data":[
+    { "tableName": "seller_cart" },
+    { "tableName": "seller_cart_line" },
+    { "tableName": "seller_listing_score" },
+    { "tableName": "seller_order" },
+    { "tableName": "seller_order_dispatch_sla_v2" },
+    { "tableName": "seller_order_eta" },
+    { "tableName": "seller_order_line" },
+    { "tableName": "seller_order_line_state_transition" },
+    { "tableName": "seller_order_platform_mapping" },
+    { "tableName": "seller_order_state_transition" },
+    { "tableName": "seller_payable" },
+    { "tableName": "seller_payable_state_transition" }
+  ]
+}

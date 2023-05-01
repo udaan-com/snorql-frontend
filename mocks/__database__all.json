@@ -1,0 +1,242 @@
+{
+  "status": 200,
+  "headers": {
+    "server": "openresty/1.15.8.2",
+    "date": "Mon, 01 May 2023 06:04:52 GMT",
+    "content-type": "application/json",
+    "transfer-encoding": "chunked",
+    "connection": "close",
+    "strict-transport-security": "max-age=15724800; includeSubDomains",
+    "vary": "Accept-Encoding"
+  },
+  "data": [
+    {
+      "id": "/subscriptions/1222b5ac-6537-4420-aa26-57df78e33662/resourceGroups/rg-prod-sin/providers/Microsoft.Sql/servers/udprodlogisticssql/databases/db-logisitcs-prod",
+      "name": "udprodlogisticssql/db-logisitcs-prod",
+      "type": "Microsoft.Sql/servers/databases",
+      "tier": "Hyperscale",
+      "family": "Gen5",
+      "skuName": "HS_Gen5",
+      "capacity": 20,
+      "storage": null,
+      "kind": "v12.0,user,vcore,hyperscale",
+      "location": "southindia",
+      "readReplicaDbName": null,
+      "geoReplicaProperties": null,
+      "highAvailability": null,
+      "onboardStatus": "ONBOARDED",
+      "errorMessage": null,
+      "emails": [
+        "lokesh.devnani@dev.udaan.com"
+      ]
+    },
+    {
+      "id": "/subscriptions/1222b5ac-6537-4420-aa26-57df78e33662/resourceGroups/rg-prod-sin/providers/Microsoft.Sql/servers/udprodlogisticssql/databases/db-shipment-prod",
+      "name": "udprodlogisticssql/db-shipment-prod",
+      "type": "Microsoft.Sql/servers/databases",
+      "tier": "GeneralPurpose",
+      "family": "Gen5",
+      "skuName": "GP_Gen5",
+      "capacity": 10,
+      "storage": null,
+      "kind": "v12.0,user,vcore",
+      "location": "southindia",
+      "readReplicaDbName": null,
+      "geoReplicaProperties": {
+        "dbRole": "PRIMARY",
+        "primaryDbName": "udprodlogisticssql/db-shipment-prod",
+        "secondaryReplicas": [
+          "udprodlogisticssqlslave/db-shipment-prod"
+        ]
+      },
+      "highAvailability": null,
+      "onboardStatus": "ONBOARDED",
+      "errorMessage": null,
+      "emails": [
+        "lokesh.devnani@dev.udaan.com"
+      ]
+    },
+    {
+      "id": "/subscriptions/1222b5ac-6537-4420-aa26-57df78e33662/resourceGroups/rg-prod-sin/providers/Microsoft.Sql/servers/udprodlogisticssqlslave/databases/db-shipment-prod",
+      "name": "udprodlogisticssqlslave/db-shipment-prod",
+      "type": "Microsoft.Sql/servers/databases",
+      "tier": "GeneralPurpose",
+      "family": "Gen5",
+      "skuName": "GP_Gen5",
+      "capacity": 10,
+      "storage": null,
+      "kind": "v12.0,user,vcore",
+      "location": "centralindia",
+      "readReplicaDbName": null,
+      "geoReplicaProperties": {
+        "dbRole": "GEO_REPLICA",
+        "primaryDbName": "udprodlogisticssql/db-shipment-prod",
+        "secondaryReplicas": [
+          "udprodlogisticssqlslave/db-shipment-prod"
+        ]
+      },
+      "highAvailability": null,
+      "onboardStatus": "ONBOARDED",
+      "errorMessage": null,
+      "emails": []
+    },
+    {
+      "id": "/subscriptions/1222b5ac-6537-4420-aa26-57df78e33662/resourceGroups/rg-prod-sin/providers/Microsoft.Sql/servers/udprodsql/databases/db-prod",
+      "name": "udprodsql/db-prod",
+      "type": "Microsoft.Sql/servers/databases",
+      "tier": "BusinessCritical",
+      "family": "Gen5",
+      "skuName": "BC_Gen5",
+      "capacity": 20,
+      "storage": null,
+      "kind": "v12.0,user,vcore",
+      "location": "southindia",
+      "readReplicaDbName": "udprodsql/db-prod-readonly",
+      "geoReplicaProperties": null,
+      "highAvailability": null,
+      "onboardStatus": "ONBOARDED",
+      "errorMessage": null,
+      "emails": []
+    },
+    {
+      "id": "/subscriptions/1222b5ac-6537-4420-aa26-57df78e33662/resourceGroups/rg-prod-sin/providers/Microsoft.Sql/servers/udprodsql/databases/prod-sync-metadata",
+      "name": "udprodsql/prod-sync-metadata",
+      "type": "Microsoft.Sql/servers/databases",
+      "tier": "Basic",
+      "family": null,
+      "skuName": "Basic",
+      "capacity": 5,
+      "storage": null,
+      "kind": "v12.0,user",
+      "location": "southindia",
+      "readReplicaDbName": null,
+      "geoReplicaProperties": null,
+      "highAvailability": null,
+      "onboardStatus": "YET_TO_ONBOARD",
+      "errorMessage": "No configuration found for resources/application/sql-monitoring/udprodsql/prod-sync-metadata/jdbi3",
+      "emails": []
+    },
+    {
+      "id": "/subscriptions/1222b5ac-6537-4420-aa26-57df78e33662/resourceGroups/rg-prod-sin/providers/Microsoft.Sql/servers/udproduseraccountssql/databases/db-user-accounts-prod",
+      "name": "udproduseraccountssql/db-user-accounts-prod",
+      "type": "Microsoft.Sql/servers/databases",
+      "tier": "BusinessCritical",
+      "family": "Gen5",
+      "skuName": "BC_Gen5",
+      "capacity": 8,
+      "storage": null,
+      "kind": "v12.0,user,vcore",
+      "location": "southindia",
+      "readReplicaDbName": "udproduseraccountssql/db-user-accounts-prod-readonly",
+      "geoReplicaProperties": null,
+      "highAvailability": null,
+      "onboardStatus": "ONBOARDED",
+      "errorMessage": null,
+      "emails": [
+        "shivank.gupta@dev.udaan.com"
+      ]
+    },
+    {
+      "id": "/subscriptions/1222b5ac-6537-4420-aa26-57df78e33662/resourceGroups/rg-prod-sin/providers/Microsoft.Sql/servers/udprodwarehousesql/databases/db-warehouse-prod",
+      "name": "udprodwarehousesql/db-warehouse-prod",
+      "type": "Microsoft.Sql/servers/databases",
+      "tier": "BusinessCritical",
+      "family": "Gen5",
+      "skuName": "BC_Gen5",
+      "capacity": 18,
+      "storage": null,
+      "kind": "v12.0,user,vcore",
+      "location": "southindia",
+      "readReplicaDbName": "udprodwarehousesql/db-warehouse-prod-readonly",
+      "geoReplicaProperties": null,
+      "highAvailability": null,
+      "onboardStatus": "ONBOARDED",
+      "errorMessage": null,
+      "emails": []
+    },
+    {
+      "id": "/subscriptions/1222b5ac-6537-4420-aa26-57df78e33662/resourceGroups/rg-data-platform-prod/providers/Microsoft.DBforPostgreSQL/flexibleServers/dp-airflow-db",
+      "name": "dp-airflow-db",
+      "type": "Microsoft.DBforPostgreSQL/flexibleServers",
+      "tier": "GeneralPurpose",
+      "family": null,
+      "skuName": "Standard_D2ds_v4",
+      "capacity": 2,
+      "storage": 128,
+      "kind": "",
+      "location": "southindia",
+      "readReplicaDbName": "",
+      "geoReplicaProperties": null,
+      "highAvailability": {
+        "mode": "Disabled",
+        "state": "NotEnabled"
+      },
+      "onboardStatus": "YET_TO_ONBOARD",
+      "errorMessage": null,
+      "emails": []
+    },
+    {
+      "id": "/subscriptions/1222b5ac-6537-4420-aa26-57df78e33662/resourceGroups/rg-dev-cen/providers/Microsoft.DBforPostgreSQL/flexibleServers/uddevhoppscotch",
+      "name": "uddevhoppscotch",
+      "type": "Microsoft.DBforPostgreSQL/flexibleServers",
+      "tier": "Burstable",
+      "family": null,
+      "skuName": "Standard_B1ms",
+      "capacity": 1,
+      "storage": 32,
+      "kind": "",
+      "location": "centralindia",
+      "readReplicaDbName": "",
+      "geoReplicaProperties": null,
+      "highAvailability": {
+        "mode": "Disabled",
+        "state": "NotEnabled"
+      },
+      "onboardStatus": "YET_TO_ONBOARD",
+      "errorMessage": null,
+      "emails": []
+    },
+    {
+      "id": "/subscriptions/1222b5ac-6537-4420-aa26-57df78e33662/resourceGroups/rg-dev-cen/providers/Microsoft.DBforPostgreSQL/flexibleServers/uddevnetra",
+      "name": "uddevnetra",
+      "type": "Microsoft.DBforPostgreSQL/flexibleServers",
+      "tier": "Burstable",
+      "family": null,
+      "skuName": "Standard_B1ms",
+      "capacity": 1,
+      "storage": 32,
+      "kind": "",
+      "location": "centralindia",
+      "readReplicaDbName": "",
+      "geoReplicaProperties": null,
+      "highAvailability": {
+        "mode": "Disabled",
+        "state": "NotEnabled"
+      },
+      "onboardStatus": "ONBOARDED",
+      "errorMessage": null,
+      "emails": []
+    },
+    {
+      "id": "/subscriptions/1222b5ac-6537-4420-aa26-57df78e33662/resourceGroups/rg-dev-sin/providers/Microsoft.DBforPostgreSQL/flexibleServers/ud-userservice-pg-dev",
+      "name": "ud-userservice-pg-dev",
+      "type": "Microsoft.DBforPostgreSQL/flexibleServers",
+      "tier": "Burstable",
+      "family": null,
+      "skuName": "Standard_B1ms",
+      "capacity": 1,
+      "storage": 64,
+      "kind": "",
+      "location": "southindia",
+      "readReplicaDbName": "",
+      "geoReplicaProperties": null,
+      "highAvailability": {
+        "mode": "Disabled",
+        "state": "NotEnabled"
+      },
+      "onboardStatus": "YET_TO_ONBOARD",
+      "errorMessage": null,
+      "emails": []
+    }
+  ]
+}

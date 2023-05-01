@@ -1,0 +1,935 @@
+{
+  "status": 200,
+  "headers": {
+    "server": "openresty/1.15.8.2",
+    "date": "Mon, 01 May 2023 06:18:25 GMT",
+    "content-type": "application/json",
+    "transfer-encoding": "chunked",
+    "connection": "close",
+    "vary": "Accept-Encoding",
+    "strict-transport-security": "max-age=15724800; includeSubDomains"
+  },
+  "data": {
+    "metricInput": {
+      "metricId": "performance_indexFragmentation",
+      "metricPeriod": "REAL_TIME",
+      "databaseType": "SQLSERVER",
+      "databaseName": "udprodsql/db-prod",
+      "recommendationRequired": true,
+      "mode": "LIMITED",
+      "from": null,
+      "to": null
+    },
+    "metricOutput": {
+      "result": {
+        "queryList": [
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order_state_transition",
+            "indexName": "PK__seller_o__E54581939F743045",
+            "indexType": "CLUSTERED",
+            "avgFragmentationInPercent": 63.78746,
+            "avgPageSpaceUsedInPercent": null,
+            "pageCount": 2050160,
+            "allocUnitTypeDesc": "IN_ROW_DATA"
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order_line_state_transition",
+            "indexName": "FUQC_SOLST_Serial_no",
+            "indexType": "NONCLUSTERED",
+            "avgFragmentationInPercent": 63.03064,
+            "avgPageSpaceUsedInPercent": null,
+            "pageCount": 3999201,
+            "allocUnitTypeDesc": "IN_ROW_DATA"
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order_line",
+            "indexName": "seller_order_line_unique_serial_no",
+            "indexType": "NONCLUSTERED",
+            "avgFragmentationInPercent": 62.41169,
+            "avgPageSpaceUsedInPercent": null,
+            "pageCount": 4559008,
+            "allocUnitTypeDesc": "IN_ROW_DATA"
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order_state_transition",
+            "indexName": "seller_order_state_transition_log_seller_order_id_index",
+            "indexType": "NONCLUSTERED",
+            "avgFragmentationInPercent": 56.989437,
+            "avgPageSpaceUsedInPercent": null,
+            "pageCount": 1637249,
+            "allocUnitTypeDesc": "IN_ROW_DATA"
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order",
+            "indexName": "seller_order_seller_id_created_at__index",
+            "indexType": "NONCLUSTERED",
+            "avgFragmentationInPercent": 53.63645,
+            "avgPageSpaceUsedInPercent": null,
+            "pageCount": 706943,
+            "allocUnitTypeDesc": "IN_ROW_DATA"
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order_eta",
+            "indexName": "soe_seller_order_eta_index",
+            "indexType": "NONCLUSTERED",
+            "avgFragmentationInPercent": 49.838085,
+            "avgPageSpaceUsedInPercent": null,
+            "pageCount": 38292,
+            "allocUnitTypeDesc": "IN_ROW_DATA"
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order",
+            "indexName": "seller_id_current_active_include",
+            "indexType": "NONCLUSTERED",
+            "avgFragmentationInPercent": 45.924778,
+            "avgPageSpaceUsedInPercent": null,
+            "pageCount": 870112,
+            "allocUnitTypeDesc": "IN_ROW_DATA"
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order",
+            "indexName": "so_order_status_index",
+            "indexType": "NONCLUSTERED",
+            "avgFragmentationInPercent": 44.707264,
+            "avgPageSpaceUsedInPercent": null,
+            "pageCount": 387890,
+            "allocUnitTypeDesc": "IN_ROW_DATA"
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order",
+            "indexName": "seller_order_buyer_id_created_at_last_updated_at_index",
+            "indexType": "NONCLUSTERED",
+            "avgFragmentationInPercent": 43.838173,
+            "avgPageSpaceUsedInPercent": null,
+            "pageCount": 675165,
+            "allocUnitTypeDesc": "IN_ROW_DATA"
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order",
+            "indexName": "so_order_status_index_2",
+            "indexType": "NONCLUSTERED",
+            "avgFragmentationInPercent": 43.33136,
+            "avgPageSpaceUsedInPercent": null,
+            "pageCount": 590053,
+            "allocUnitTypeDesc": "IN_ROW_DATA"
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order",
+            "indexName": "seller_order_current_active_include_index",
+            "indexType": "NONCLUSTERED",
+            "avgFragmentationInPercent": 40.9335,
+            "avgPageSpaceUsedInPercent": null,
+            "pageCount": 571720,
+            "allocUnitTypeDesc": "IN_ROW_DATA"
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order_state_transition",
+            "indexName": "nci_wi_seller_order_state_transition_742943E063C283A754C2636EDD092065",
+            "indexType": "NONCLUSTERED",
+            "avgFragmentationInPercent": 40.20418,
+            "avgPageSpaceUsedInPercent": null,
+            "pageCount": 1599361,
+            "allocUnitTypeDesc": "IN_ROW_DATA"
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order",
+            "indexName": "buyer_id_current_active_order_type_order_status_include",
+            "indexType": "NONCLUSTERED",
+            "avgFragmentationInPercent": 39.980312,
+            "avgPageSpaceUsedInPercent": null,
+            "pageCount": 874132,
+            "allocUnitTypeDesc": "IN_ROW_DATA"
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order",
+            "indexName": "seller_order_unique_serial_no",
+            "indexType": "NONCLUSTERED",
+            "avgFragmentationInPercent": 36.661053,
+            "avgPageSpaceUsedInPercent": null,
+            "pageCount": 497618,
+            "allocUnitTypeDesc": "IN_ROW_DATA"
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order",
+            "indexName": "so_order_id_index",
+            "indexType": "NONCLUSTERED",
+            "avgFragmentationInPercent": 35.692837,
+            "avgPageSpaceUsedInPercent": null,
+            "pageCount": 527203,
+            "allocUnitTypeDesc": "IN_ROW_DATA"
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order",
+            "indexName": "seller_order_seller_id_current_active_order_status_created_at_index",
+            "indexType": "NONCLUSTERED",
+            "avgFragmentationInPercent": 34.28479,
+            "avgPageSpaceUsedInPercent": null,
+            "pageCount": 941292,
+            "allocUnitTypeDesc": "IN_ROW_DATA"
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order_line",
+            "indexName": "sol_seller_order_id_index",
+            "indexType": "NONCLUSTERED",
+            "avgFragmentationInPercent": 24.763937,
+            "avgPageSpaceUsedInPercent": null,
+            "pageCount": 1126643,
+            "allocUnitTypeDesc": "IN_ROW_DATA"
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order_line",
+            "indexName": "sol_order_line_id_index",
+            "indexType": "NONCLUSTERED",
+            "avgFragmentationInPercent": 22.728987,
+            "avgPageSpaceUsedInPercent": null,
+            "pageCount": 2997285,
+            "allocUnitTypeDesc": "IN_ROW_DATA"
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order",
+            "indexName": "idx_clustered_seller_order_part",
+            "indexType": "CLUSTERED",
+            "avgFragmentationInPercent": 19.061415,
+            "avgPageSpaceUsedInPercent": null,
+            "pageCount": 34644127,
+            "allocUnitTypeDesc": "IN_ROW_DATA"
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order_line",
+            "indexName": "idx_clustered_seller_order_line_part",
+            "indexType": "CLUSTERED",
+            "avgFragmentationInPercent": 17.387974,
+            "avgPageSpaceUsedInPercent": null,
+            "pageCount": 50580963,
+            "allocUnitTypeDesc": "IN_ROW_DATA"
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order",
+            "indexName": "seller_order_current_active_main_order_id_idx",
+            "indexType": "NONCLUSTERED",
+            "avgFragmentationInPercent": 16.484545,
+            "avgPageSpaceUsedInPercent": null,
+            "pageCount": 295774,
+            "allocUnitTypeDesc": "IN_ROW_DATA"
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order_line",
+            "indexName": "idx_updated_at",
+            "indexType": "NONCLUSTERED",
+            "avgFragmentationInPercent": 8.520514,
+            "avgPageSpaceUsedInPercent": null,
+            "pageCount": 2027765,
+            "allocUnitTypeDesc": "IN_ROW_DATA"
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order_platform_mapping",
+            "indexName": "PK__seller_o__46596229FAEBFEBD",
+            "indexType": "CLUSTERED",
+            "avgFragmentationInPercent": 5.670644,
+            "avgPageSpaceUsedInPercent": null,
+            "pageCount": 15254,
+            "allocUnitTypeDesc": "IN_ROW_DATA"
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order_state_transition",
+            "indexName": "seller_order_state_transition_created_at_idx",
+            "indexType": "NONCLUSTERED",
+            "avgFragmentationInPercent": 3.9370563,
+            "avgPageSpaceUsedInPercent": null,
+            "pageCount": 1253373,
+            "allocUnitTypeDesc": "IN_ROW_DATA"
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order_eta",
+            "indexName": "PK__seller_o__E54581931286BB29",
+            "indexType": "CLUSTERED",
+            "avgFragmentationInPercent": 1.1522204,
+            "avgPageSpaceUsedInPercent": null,
+            "pageCount": 70733,
+            "allocUnitTypeDesc": "IN_ROW_DATA"
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order_line_state_transition",
+            "indexName": "NCidx_seller_order_line_state_transition_temp_par",
+            "indexType": "CLUSTERED",
+            "avgFragmentationInPercent": 0.7202084,
+            "avgPageSpaceUsedInPercent": null,
+            "pageCount": 5629898,
+            "allocUnitTypeDesc": "IN_ROW_DATA"
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_cart",
+            "indexName": "PK__seller_c__1448306B255531C1",
+            "indexType": "CLUSTERED",
+            "avgFragmentationInPercent": 0.069495924,
+            "avgPageSpaceUsedInPercent": null,
+            "pageCount": 21584,
+            "allocUnitTypeDesc": "IN_ROW_DATA"
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_cart_line",
+            "indexName": "PK__seller_c__8D35BB130A4523B3",
+            "indexType": "CLUSTERED",
+            "avgFragmentationInPercent": 0.022935301,
+            "avgPageSpaceUsedInPercent": null,
+            "pageCount": 95922,
+            "allocUnitTypeDesc": "IN_ROW_DATA"
+          }
+        ]
+      },
+      "recommendation": {
+        "indexesToRebuild": [
+          {
+            "schemaName": "dbo",
+            "objectName": "promo_lines",
+            "indexName": "PK__promo_li__3213E83F0870B399",
+            "indexType": "CLUSTERED",
+            "pageCount": 704459
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "promo_lines",
+            "indexName": "promo_lines_order_line_id_idx",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 229633
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "firebase_tokens",
+            "indexName": "idx_firebase_tokens_instance_id_user_id",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 1724012
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "firebase_tokens",
+            "indexName": "nci_wi_firebase_tokens_A19244D89B0E0F64A336817EC226677A",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 1822274
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "promo_lines",
+            "indexName": "promo_lines_order_id_idx",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 176601
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "promo_lines",
+            "indexName": "promo_lines_order_id_active_idx",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 179289
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "firebase_tokens",
+            "indexName": "ci_firebase_tokens_device_token",
+            "indexType": "CLUSTERED",
+            "pageCount": 2186181
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "alternate_awb_store",
+            "indexName": "PK__alternat__E5458193A1939132",
+            "indexType": "CLUSTERED",
+            "pageCount": 3270
+          },
+          {
+            "schemaName": "cdc",
+            "objectName": "lsn_time_mapping",
+            "indexName": "lsn_time_mapping_clustered_idx",
+            "indexType": "CLUSTERED",
+            "pageCount": 40577
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order_state_transition",
+            "indexName": "PK__seller_o__E54581939F743045",
+            "indexType": "CLUSTERED",
+            "pageCount": 2050160
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "resource_targeting",
+            "indexName": "IX_resource_targeting_resource_id_type_current_active",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 3485
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order_line_state_transition",
+            "indexName": "FUQC_SOLST_Serial_no",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 3999201
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "oms_order_line_levies",
+            "indexName": "PK__oms_orde__3213E83F29F12AA0",
+            "indexType": "CLUSTERED",
+            "pageCount": 18882095
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order_line",
+            "indexName": "seller_order_line_unique_serial_no",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 4559008
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "invoice",
+            "indexName": "invoice_invoice_id_current_active_invoice_type_index",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 5729113
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "oms_order_line_levies",
+            "indexName": "oms_order_line_levies_order_line_id_idx",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 5924973
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "collected_advance_consumable",
+            "indexName": "collected_advance_id_idx",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 231729
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "collected_advance",
+            "indexName": "collected_advance_collected_advance_id_uindex",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 245369
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "collected_advance_consumable",
+            "indexName": "advance_consumable_id_idx",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 230159
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "payment_nach_mandate",
+            "indexName": "payment_nach_mandate_org_id_index",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 1052
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "verification_requests",
+            "indexName": "status_org_id_idx",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 29365
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "verification_requests",
+            "indexName": "org_id_idx",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 27118
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "verification_requests",
+            "indexName": "verification_id_idx",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 31350
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "payment_nach_presentation",
+            "indexName": "payment_nach_presentation_txn_reference_index",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 1410
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "blocked_payment",
+            "indexName": "PK__blocked___FB95E36DBFF28C48",
+            "indexType": "CLUSTERED",
+            "pageCount": 1010
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "alternate_awb_store",
+            "indexName": "alternate_awb_store_logistics_partner_user_id_index",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 2296
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order_state_transition",
+            "indexName": "seller_order_state_transition_log_seller_order_id_index",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 1637249
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order",
+            "indexName": "seller_order_seller_id_created_at__index",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 706943
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "invoice_product_detail",
+            "indexName": "nci_wi_invoice_product_detail_8103FC30D010A8A3F16104D7FC268357",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 206818
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "invoice_product_detail",
+            "indexName": "ci_invoice_product_detail_current_active_listing_id",
+            "indexType": "CLUSTERED",
+            "pageCount": 206514
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "tax_line",
+            "indexName": "tl_taxable_entity_id_index",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 5259398
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "vendor_requests",
+            "indexName": "vendor_requests_state_awb_index",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 103824
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "vendor_requests",
+            "indexName": "awb_x_idx",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 94686
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "vendor_requests",
+            "indexName": "vendor_state_idx",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 104099
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "tax_line",
+            "indexName": "PK__tax_line__929A698641A3D926",
+            "indexType": "CLUSTERED",
+            "pageCount": 7146254
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order_eta",
+            "indexName": "soe_seller_order_eta_index",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 38292
+          },
+          {
+            "schemaName": "cdc",
+            "objectName": "lsn_time_mapping",
+            "indexName": "lsn_time_mapping_nonunique_idx",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 22989
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "beneficiary_details",
+            "indexName": "uc_org_id_nodal_account_customer_id_transfer_type",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 4801
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order",
+            "indexName": "seller_id_current_active_include",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 870112
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order",
+            "indexName": "so_order_status_index",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 387890
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "token_amount_expectation",
+            "indexName": "buyer_idx",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 7589
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order",
+            "indexName": "seller_order_buyer_id_created_at_last_updated_at_index",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 675165
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order",
+            "indexName": "so_order_status_index_2",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 590053
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "vendor_requests",
+            "indexName": "vendor_requests_awb_clus_idx",
+            "indexType": "CLUSTERED",
+            "pageCount": 417699
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "invoice_product_detail",
+            "indexName": "nci_wi_invoice_product_detail_FBE92C8F2302A9C58073A56E8C1F8EFA",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 164008
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order",
+            "indexName": "seller_order_current_active_include_index",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 571720
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order_state_transition",
+            "indexName": "nci_wi_seller_order_state_transition_742943E063C283A754C2636EDD092065",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 1599361
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order",
+            "indexName": "buyer_id_current_active_order_type_order_status_include",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 874132
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "oms_invoice_number_queue",
+            "indexName": "UC_oms_invoice_number_queue_order_id_idx",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 183950
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "oms_invoice_number_queue",
+            "indexName": "oms_invoice_number_queue_order_id_idx",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 183930
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "of_allocated_inventory",
+            "indexName": "PK__of_alloc__3213E83FD6FE1A99",
+            "indexType": "CLUSTERED",
+            "pageCount": 77113
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "vendor_shipment_details",
+            "indexName": "vendor_shipment_details_awb_idx",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 259460
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order",
+            "indexName": "seller_order_unique_serial_no",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 497618
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "shipment_eta_override",
+            "indexName": "shipment_eta_override_shipment_leg_index",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 43471
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "translations",
+            "indexName": "translations_uk",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 2002
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order",
+            "indexName": "so_order_id_index",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 527203
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order",
+            "indexName": "seller_order_seller_id_current_active_order_status_created_at_index",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 941292
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "oms_invoice_number_queue",
+            "indexName": "oms_invoice_number_queue_state_idx",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 100957
+          }
+        ],
+        "indexesToReorganise": [
+          {
+            "schemaName": "dbo",
+            "objectName": "oms_order_line_levies",
+            "indexName": "oms_order_line_levies_order_id_idx",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 3174797
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "fulfillment_line_state_transition",
+            "indexName": "PK__fulfillm__E5458193299C692A",
+            "indexType": "CLUSTERED",
+            "pageCount": 10617576
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order_line",
+            "indexName": "sol_seller_order_id_index",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 1126643
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "vendor_requests",
+            "indexName": "vendor_requests_shipment_group_id_includes",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 339309
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "token_amount_expectation",
+            "indexName": "token_amount_expectation_token_ref_id_index_include",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 41203
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order_line",
+            "indexName": "sol_order_line_id_index",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 2997285
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "tasks",
+            "indexName": "task_status_idx",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 58684
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "logistics_credit_note",
+            "indexName": "logistics_credit_note_invoice_id_idx",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 51619
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "fulfillment_line_items",
+            "indexName": "nci_wi_fulfillment_line_items_8B9420F3E24CCD6CBAB1D4525144F80A",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 6728508
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order",
+            "indexName": "idx_clustered_seller_order_part",
+            "indexType": "CLUSTERED",
+            "pageCount": 34644127
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "token_amount_expectation",
+            "indexName": "expectation_id_idx",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 17645
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order_line",
+            "indexName": "idx_clustered_seller_order_line_part",
+            "indexType": "CLUSTERED",
+            "pageCount": 50580963
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "tax_line",
+            "indexName": "nci_current_active_seller_order_id",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 2392038
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "seller_order",
+            "indexName": "seller_order_current_active_main_order_id_idx",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 295774
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "collected_advance",
+            "indexName": "collected_advance_advance_for_id_index",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 65442
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "collected_advance_consumable",
+            "indexName": "consumed_for_idx",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 56687
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "token_amount_expectation",
+            "indexName": "PK__token_am__E5458193BD53C963",
+            "indexType": "CLUSTERED",
+            "pageCount": 56391
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "order_payments",
+            "indexName": "nci_wi_order_payments_4558A3EAB215B8A60AD5EBB33AE96D8B",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 832044
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "tasks",
+            "indexName": "nci_wi_tasks_81932447641C19CBFA5D46EA8F4F53C2",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 1816793
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "tasks",
+            "indexName": "nci_wi_tasks_org_id_user_id_task_typecurrent_active_task_status",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 1698651
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "shipment_payments",
+            "indexName": "nci_wi_shipment_payments_D6508BE1D9078865B44F9DC8D647DE0C",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 1817357
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "invoice",
+            "indexName": "invoice_seller_org_id_invoice_type_created_at_current_active_index",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 824917
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "fulfillment_line_items",
+            "indexName": "PK__fulfillm__E5458193544A5E56",
+            "indexType": "CLUSTERED",
+            "pageCount": 7713659
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "fulfillment_line",
+            "indexName": "fulfillment_line_index_created_at_include",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 4067001
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "collected_advance_consumable",
+            "indexName": "collected_advance_consumable_consumed_for_and_current_active_includes",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 318679
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "invoice_docs",
+            "indexName": "invoice_id_idx",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 690122
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "invoice_shipment_group_association",
+            "indexName": "invoice_shipment_group_association_current_active_shipment_group_id_include",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 3119275
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "invoice_shipment_group_association",
+            "indexName": "invoice_shipment_group_association_shipment_group_id_include",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 3059380
+          },
+          {
+            "schemaName": "dbo",
+            "objectName": "of_allocated_inventory",
+            "indexName": "UC_of_allocated_inventory_on_order_id",
+            "indexType": "NONCLUSTERED",
+            "pageCount": 6176
+          }
+        ]
+      }
+    },
+    "metadata": {
+      "underlyingQueries": [
+        "SELECT Object_schema_name(ips.object_id) AS schema_name, Object_name(ips.object_id)        AS object_name,  i.NAME  AS index_name,   i.type_desc AS index_type, sum(ips.avg_fragmentation_in_percent * ips.page_count)/sum(ips.page_count) as avg_fragmentation_in_percent, SUM(ips.avg_page_space_used_in_percent * ips.page_count)/sum(ips.page_count) as avg_page_space_used_in_percent,  SUM(ips.page_count) as page_count,\n       ips.alloc_unit_type_desc as alloc_unit_type_desc,\n       STRING_AGG(ips.partition_number, ',') as partitions\nFROM   sys.Dm_db_index_physical_stats(Db_id(), DEFAULT, DEFAULT, DEFAULT,:modeParam)\n           AS ips  INNER JOIN sys.indexes AS i  ON ips.object_id = i.object_id AND ips.index_id = i.index_id WHERE  page_count > 1000 AND i.NAME IS NOT NULL\nGROUP BY Object_schema_name(ips.object_id), Object_name(ips.object_id), i.NAME, i.type_desc, ips.alloc_unit_type_desc\nORDER  BY sum(ips.avg_fragmentation_in_percent * ips.page_count)/sum(ips.page_count) DESC"
+      ],
+      "referenceDocumentation": [
+        "https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-db-index-physical-stats-transact-sql?view=azuresqldb-current"
+      ],
+      "description": "",
+      "supportsHistorical": false
+    }
+  }
+}
