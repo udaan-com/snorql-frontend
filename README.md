@@ -1,46 +1,50 @@
-# Getting Started with Create React App
+# Snorql Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository contains the frontend code for Snorql, an open-source project developed at Udaan aimed at diagnosing and resolving common database-related problems using SQL metrics.
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+### Prerequisites
 
-### `yarn start`
+Before you can run this application, you must have the following installed:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Node.js
+- yarn
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Installation
 
-### `yarn test`
+To install the dependencies for this project, run the following command in the root directory:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+yarn
+```
 
-### `yarn build`
+### Running the App
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To start the development server, run the following command:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+yarn start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This will start the frontend application and automatically open it in your default browser. 
+Then, start the proxy server which can either connect to snorql-backend or serve the json mocks stored in `/mocks` directory as response to API calls. 
 
-### `yarn eject`
+```
+yarn start-proxy
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Contributing
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+We welcome contributions to this project! To get started, please fork this repository and create a new branch for your changes. Once you have made your changes, create a pull request and we will review your changes.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Please ensure that your code is well-documented, and that it follows our [code style guidelines](https://github.com/udaan-com/snorql/blob/main/CODE_STYLE.md).
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## License
 
-## Learn More
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Acknowledgments
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- The [Create React App](https://create-react-app.dev/) team for providing an easy way to set up a React project.
+- The [Udaan](https://udaan.com/) team for creating and maintaining Snorql.
