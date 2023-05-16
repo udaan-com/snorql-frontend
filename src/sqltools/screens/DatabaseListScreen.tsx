@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from "react";
-import { Box, Typography } from "@material-ui/core";
+import { Box, Typography } from "@mui/material";
 import { Fetcher } from "../../common/components/Fetcher";
 import { useHistory } from "react-router-dom";
 import { SQLService } from "../services/SQLService";

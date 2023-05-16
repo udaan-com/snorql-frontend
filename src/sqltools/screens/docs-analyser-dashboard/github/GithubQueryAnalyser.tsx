@@ -1,5 +1,6 @@
 import React, {FunctionComponent, useCallback, useEffect, useRef, useState} from "react";
-import {Box, Button, CircularProgress, makeStyles, TextField, Typography} from "@material-ui/core";
+import { Box, Button, CircularProgress, TextField, Typography } from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
 import {
   AnalysisAgent,
   DocSAnalysisResponse,

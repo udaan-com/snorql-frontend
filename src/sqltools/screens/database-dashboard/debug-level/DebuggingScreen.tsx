@@ -1,7 +1,9 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
-import { Box, Button, Typography, Paper, FormControl, TextField } from "@material-ui/core"
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { Box, Button, Typography, Paper, FormControl, TextField } from "@mui/material"
+import { Theme } from '@mui/material/styles';
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
 import { SessionLocksScreen } from "./SessionLocksScreen";
 import { SessionActiveQueryScreen } from "./SessionActiveQueryScreen";
 import { LatestExecutedQueryScreen } from "./LatestExecutedQuery";

@@ -6,7 +6,7 @@ import {
     TextField,
     Button,
     CircularProgress
-} from "@material-ui/core"
+} from "@mui/material"
 import { SQLService } from "../../../services/SQLService";
 import { DatabaseGrowthResponse, DailyDatabaseGrowth, IMetricHistoricalDataFilter, NextPageToken, HistoricalDataResult, IDatabseStorageSizeOutput, IDatabseStorageSizeResult, DatabseStorageSizeResponse } from "../../../models";
 import Chart from "react-google-charts";

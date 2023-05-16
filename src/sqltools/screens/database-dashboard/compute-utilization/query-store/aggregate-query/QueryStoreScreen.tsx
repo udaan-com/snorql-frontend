@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { Paper, Typography, Tooltip, IconButton, Button, FormControl, TextField } from "@material-ui/core"
+import { Paper, Typography, Tooltip, IconButton, Button, FormControl, TextField } from "@mui/material"
 import { SQLService } from "../../../../../services/SQLService";
 import { ICustomError, IMetricMetadata, IQueryStoreResponse, IQueryStore } from "../../../../../models";
 import { CopyToClipboard } from "../../../../../components/CopyToClipboard";
-import CodeIcon from '@material-ui/icons/Code';
+import CodeIcon from '@mui/icons-material/Code';
 import { ShowQueryScreen } from "../../../ShowQueryScreen";
 import { showQueryEvent } from '../../../../../tracking/TrackEventMethods';
 import {useAdminEmail} from "../../../../../../hooks";
@@ -11,8 +11,8 @@ import { MenuText, MenuTitle } from "../../../DatabaseDashboardScreen";
 import MUIDataTable, {MUIDataTableOptions} from "mui-datatables";
 import { getColumns } from "./QueryStoreColumn";
 import ProgressView from '../../../../../../common/components/ProgressView';
-import { Alert, AlertTitle, Autocomplete } from '@material-ui/lab';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
+import { Alert, AlertTitle, Autocomplete } from '@mui/material';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import { useFirstRender } from './useFirstRenderHook';
 
 interface QueryStoreScreenProps {
@@ -278,7 +278,7 @@ export const QueryStoreScreen: FunctionComponent<QueryStoreScreenProps> = (props
                 <div style={{ float: 'right', padding: '10px' }}>
                     {showQuery && metadata && metadata.underlyingQueries && <CopyToClipboard text={metadata.underlyingQueries[0]} />}
                     {metadata && metadata.underlyingQueries && <Tooltip title={showQuery ? 'Hide the source' : 'Show the source'}>
-                        <IconButton aria-label="delete" onClick={handleShowQuery}>
+                        <IconButton aria-label="delete" onClick={handleShowQuery} size="large">
                             <CodeIcon />
                         </IconButton>
                     </Tooltip>}
@@ -299,6 +299,5 @@ export const QueryStoreScreen: FunctionComponent<QueryStoreScreenProps> = (props
             {!showQuery && !errorMessage && !queryStoreDataLoading && queryStoreData && queryStoreData.length==0 && <Typography>No records found</Typography>}
             {!showQuery && !errorMessage && queryStoreDataLoading && <ProgressView/>} 
         </Paper>
-
-    )
+    );
 };

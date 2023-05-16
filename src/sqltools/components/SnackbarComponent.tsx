@@ -1,5 +1,5 @@
-import { Snackbar } from "@material-ui/core"
-import Alert, { Color } from "@material-ui/lab/Alert"
+import { Snackbar } from "@mui/material"
+import Alert from '@mui/material/Alert'
 import React, { useEffect, useState } from "react"
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
 
 export const SnackbarComponent: React.FunctionComponent<Props> = (props: Props) => {
     const {snackbarOpen, snackbarType, snackbarMessage, snackbarDuration, handleClose } = props
-    const [snackbarTypeColor, setSnackbarTypeColor] = useState<Color>('error')
+    const [snackbarTypeColor, setSnackbarTypeColor] = useState<'error' | 'success' | 'warning' | 'info'>('error')
 
     useEffect(() => {
         if (snackbarType == 'error') { setSnackbarTypeColor('error') }

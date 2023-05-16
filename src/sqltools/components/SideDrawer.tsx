@@ -1,15 +1,17 @@
 import React from 'react'
 import { ScreenContainer } from "../../common/components/ScreenContainer";
 
-import { Drawer, List, ListItem, ListItemText, ListItemIcon, ListSubheader, Divider, Collapse, Hidden, IconButton, CssBaseline, AppBar, Toolbar, Typography, Box } from '@material-ui/core';
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
+import { Drawer, List, ListItem, ListItemText, ListItemIcon, ListSubheader, Divider, Collapse, Hidden, IconButton, CssBaseline, AppBar, Toolbar, Typography, Box } from '@mui/material';
+import { Theme } from '@mui/material/styles';
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { useHistory, useLocation } from 'react-router';
-import ExpandLess from "@material-ui/icons/ExpandLess";
-import ExpandMore from "@material-ui/icons/ExpandMore";
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
 import { MenuItem, Menus } from '../models';
-import MenuIcon from '@material-ui/icons/Menu';
-import { ArrowBack, Home } from '@material-ui/icons';
+import MenuIcon from '@mui/icons-material/Menu';
+import { ArrowBack, Home } from '@mui/icons-material';
 import { useAdminEmail } from '../../hooks';
 import { selectMetricEvent } from '../tracking/TrackEventMethods';
 
@@ -94,7 +96,7 @@ const SideDrawer: React.FunctionComponent<RouteComponentProps & { menus: Menus[]
                         edge="start"
                         onClick={handleDrawerToggle}
                         className={classes.menuButton}
-                    >
+                        size="large">
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap>
@@ -112,7 +114,10 @@ const SideDrawer: React.FunctionComponent<RouteComponentProps & { menus: Menus[]
                         open={open}
                         onClose={handleDrawerToggle}
                     >
-                        <IconButton onClick={handleDrawerToggle} className={classes.closeMenuButton}>
+                        <IconButton
+                            onClick={handleDrawerToggle}
+                            className={classes.closeMenuButton}
+                            size="large">
                             X
                         </IconButton>
                         <div>
@@ -170,7 +175,7 @@ const SideDrawer: React.FunctionComponent<RouteComponentProps & { menus: Menus[]
                         </div>
                     </Drawer>
                 </Hidden>
-                <Hidden xsDown={true} implementation="css">
+                <Hidden smDown={true} implementation="css">
                     <Drawer
                         variant="permanent"
                         classes={{ paper: classes.drawerPaper }}
@@ -239,11 +244,11 @@ const Btns = ({ hideBack }: { hideBack?: boolean }) => {
     return (
         <Box mr={2}>
             {!hideBack && (
-                <IconButton onClick={() => history.goBack()} color={"default"}>
+                <IconButton onClick={() => history.goBack()} color={"default"} size="large">
                     <ArrowBack />
                 </IconButton>
             )}
-            <IconButton onClick={() => history.push("/")} color={"default"}>
+            <IconButton onClick={() => history.push("/")} color={"default"} size="large">
                 <Home />
             </IconButton>
         </Box>

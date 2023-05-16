@@ -12,8 +12,8 @@ import {
   FormGroup,
   FormControlLabel,
   Switch,
-} from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+} from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Fetcher } from "../../../../common/components/Fetcher";
 import { SQLService } from "../../../services/SQLService";
 import {
@@ -24,13 +24,13 @@ import {
   IMetricMetadata,
 } from "../../../models";
 import { CopyToClipboard } from "../../../components/CopyToClipboard";
-import CodeIcon from "@material-ui/icons/Code";
+import CodeIcon from "@mui/icons-material/Code";
 import { ShowQueryScreen } from "../ShowQueryScreen";
-import ReplayIcon from "@material-ui/icons/Replay";
+import ReplayIcon from "@mui/icons-material/Replay";
 import { useStyles } from "../../../components/StyleClass";
 import Chart from "react-google-charts";
 import { MetricHeader } from "../../../components/MetricHeader";
-import SettingsIcon from "@material-ui/icons/Settings";
+import SettingsIcon from "@mui/icons-material/Settings";
 import {
   reloadMetricEvent,
   showQueryEvent,
@@ -42,7 +42,7 @@ import { useAdminEmail } from "../../../../hooks";
 import { MenuText, MenuTitle } from "../DatabaseDashboardScreen";
 import { HistoricalDatabaseGrowthScreen } from "./HistoricalDatabaseGrowthScreen";
 import { SingleTriggerDialog } from "../../../components/SingleTriggerDialog";
-import {Helpers} from "../../../helpers";
+import { Helpers } from "../../../helpers";
 
 interface DatabaseGrowthScreenProps {
   databaseName: string;
@@ -146,142 +146,138 @@ export const DatabaseGrowthScreen: FunctionComponent<
     configureDataRecordingViewEvent(basicPropsForMixPanel);
   };
 
-  return (
-    <>
-      <Accordion expanded={expanded}>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          IconButtonProps={{
-            onClick: handleChange,
-          }}
-        >
-          <div className={classes.summaryContent}>
-            <MetricHeader title="Database Growth Rate" metadata={metadata} />
-            {metadata && metadata.supportsHistorical && (
-              <div style={{ float: "right" }}>
-                <FormControl component="fieldset">
-                  <FormGroup aria-label="historicalEnabled" row>
-                    <FormControlLabel
-                      onChange={handleClickHistoricalViewToggle}
-                      control={<Switch color="primary" />}
-                      label="View Older Data"
-                      labelPlacement="bottom"
-                    />
-                  </FormGroup>
-                </FormControl>
-                <Tooltip title="Configure Data Recording">
-                  <IconButton onClick={handleJobConfigureDialogOpen}>
-                    <SettingsIcon fontSize="default" />
-                  </IconButton>
-                </Tooltip>
-                {/* <Switch  value="historicalScreenFlag" inputProps={{ 'title': 'Historical Data' }} /> */}
-              </div>
-            )}
-          </div>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Paper style={{ width: "100%" }}>
-            {!historicalScreenFlag && (
-              <div style={{ float: "right" }}>
-                <Tooltip title="Reload">
-                  <IconButton onClick={handleReload}>
-                    <ReplayIcon fontSize="default" />
-                  </IconButton>
-                </Tooltip>
-              </div>
-            )}
+  return <>
+    <Accordion expanded={expanded}>
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        onClick={handleChange}
+      >
+        <div className={classes.summaryContent}>
+          <MetricHeader title="Database Growth Rate" metadata={metadata} />
+          {metadata && metadata.supportsHistorical && (
             <div style={{ float: "right" }}>
-              <Tooltip
-                title={showQuery ? "Hide the source" : "Show the source"}
-              >
-                <IconButton onClick={() => handleShowQuery()}>
-                  <CodeIcon />
+              <FormControl component="fieldset">
+                <FormGroup aria-label="historicalEnabled" row>
+                  <FormControlLabel
+                    onChange={handleClickHistoricalViewToggle}
+                    control={<Switch color="primary" />}
+                    label="View Older Data"
+                    labelPlacement="bottom"
+                  />
+                </FormGroup>
+              </FormControl>
+              <Tooltip title="Configure Data Recording">
+                <IconButton onClick={handleJobConfigureDialogOpen} size="large">
+                  <SettingsIcon />
+                </IconButton>
+              </Tooltip>
+              {/* <Switch  value="historicalScreenFlag" inputProps={{ 'title': 'Historical Data' }} /> */}
+            </div>
+          )}
+        </div>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Paper style={{ width: "100%" }}>
+          {!historicalScreenFlag && (
+            <div style={{ float: "right" }}>
+              <Tooltip title="Reload">
+                <IconButton onClick={handleReload} size="large">
+                  <ReplayIcon />
                 </IconButton>
               </Tooltip>
             </div>
-
-            <div style={{ float: "right" }}></div>
-
-            {errorMessage && !historicalScreenFlag && (
-              <div
-                style={{
-                  marginLeft: "5px",
-                  padding: "10px",
-                  color: "red",
-                  fontFamily: "monospace",
-                }}
-              >
-                <details open>
-                  <summary>Error</summary>
-                  <p>{errorMessage}</p>
-                </details>
-              </div>
-            )}
-
-            <Fetcher
-              fetchData={() => SQLService.getDatabaseGrowth(props.databaseName)}
-              onFetch={(r) => handleOnApiResponse(r)}
+          )}
+          <div style={{ float: "right" }}>
+            <Tooltip
+              title={showQuery ? "Hide the source" : "Show the source"}
             >
-              <>
-                {showQuery && metadata && metadata.underlyingQueries && (
-                  <ShowQueryScreen query={metadata.underlyingQueries[0]} />
-                )}
+              <IconButton onClick={() => handleShowQuery()} size="large">
+                <CodeIcon />
+              </IconButton>
+            </Tooltip>
+          </div>
 
-                {!showQuery && !historicalScreenFlag && (
-                  <Box
-                    paddingTop={8}
-                    paddingRight={8}
-                    paddingBottom={4}
-                    paddingLeft={4}
-                  >
-                    <div>
-                      {!errorMessage && dbGrowth.length ? (
-                        <Chart
-                          width={"600px"}
-                          height={"400px"}
-                          chartType="Line"
-                          loader={<div>Loading Chart</div>}
-                          data={[
-                            [{ type: "date", label: "Day" }, "Db growth (GB)"],
-                            ...dailyGrowth,
-                          ]}
-                          options={{
-                            chart: {
-                              title: "Daily Average Growth",
-                            },
-                            hAxis: {
-                              title: "Time",
-                            },
-                            vAxis: {
-                              title: "Growth in GB",
-                            },
-                          }}
-                          rootProps={{ "data-testid": "1" }}
-                        />
-                      ) : (
-                        <Typography>No records found</Typography>
-                      )}
-                    </div>
-                  </Box>
-                )}
-                {!showQuery && historicalScreenFlag && (
-                  <HistoricalDatabaseGrowthScreen
-                    databaseName={props.databaseName}
-                  ></HistoricalDatabaseGrowthScreen>
-                )}
-              </>
-            </Fetcher>
-          </Paper>
-        </AccordionDetails>
-      </Accordion>
-      <SingleTriggerDialog
-        open={jobConfigureDialogOpen}
-        handleClose={() => setJobConfigureDialogOpen(false)}
-        databaseName={props.databaseName}
-        metricId={"storage_db"}
-        metricName={"Database Storage Size"}
-        minimumRepeatInterval={metadata?.minimumRepeatInterval}
-      />
-    </>
-  );
+          <div style={{ float: "right" }}></div>
+
+          {errorMessage && !historicalScreenFlag && (
+            <div
+              style={{
+                marginLeft: "5px",
+                padding: "10px",
+                color: "red",
+                fontFamily: "monospace",
+              }}
+            >
+              <details open>
+                <summary>Error</summary>
+                <p>{errorMessage}</p>
+              </details>
+            </div>
+          )}
+
+          <Fetcher
+            fetchData={() => SQLService.getDatabaseGrowth(props.databaseName)}
+            onFetch={(r) => handleOnApiResponse(r)}
+          >
+            <>
+              {showQuery && metadata && metadata.underlyingQueries && (
+                <ShowQueryScreen query={metadata.underlyingQueries[0]} />
+              )}
+
+              {!showQuery && !historicalScreenFlag && (
+                <Box
+                  paddingTop={8}
+                  paddingRight={8}
+                  paddingBottom={4}
+                  paddingLeft={4}
+                >
+                  <div>
+                    {!errorMessage && dbGrowth.length ? (
+                      <Chart
+                        width={"600px"}
+                        height={"400px"}
+                        chartType="Line"
+                        loader={<div>Loading Chart</div>}
+                        data={[
+                          [{ type: "date", label: "Day" }, "Db growth (GB)"],
+                          ...dailyGrowth,
+                        ]}
+                        options={{
+                          chart: {
+                            title: "Daily Average Growth",
+                          },
+                          hAxis: {
+                            title: "Time",
+                          },
+                          vAxis: {
+                            title: "Growth in GB",
+                          },
+                        }}
+                        rootProps={{ "data-testid": "1" }}
+                      />
+                    ) : (
+                      <Typography>No records found</Typography>
+                    )}
+                  </div>
+                </Box>
+              )}
+              {!showQuery && historicalScreenFlag && (
+                <HistoricalDatabaseGrowthScreen
+                  databaseName={props.databaseName}
+                ></HistoricalDatabaseGrowthScreen>
+              )}
+            </>
+          </Fetcher>
+        </Paper>
+      </AccordionDetails>
+    </Accordion>
+    <SingleTriggerDialog
+      open={jobConfigureDialogOpen}
+      handleClose={() => setJobConfigureDialogOpen(false)}
+      databaseName={props.databaseName}
+      metricId={"storage_db"}
+      metricName={"Database Storage Size"}
+      minimumRepeatInterval={metadata?.minimumRepeatInterval}
+    />
+  </>;
 };

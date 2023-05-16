@@ -1,7 +1,9 @@
-import {Button, CircularProgress, Dialog, DialogTitle, IconButton, Paper, Tooltip} from "@material-ui/core";
-import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
+import {Button, CircularProgress, Dialog, DialogTitle, IconButton, Paper, Tooltip} from "@mui/material";
+import { Theme } from "@mui/material/styles";
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
 import React, {FunctionComponent, useEffect, useState} from "react";
-import CloseIcon from '@material-ui/icons/Close';
+import CloseIcon from '@mui/icons-material/Close';
 import {LongRunningQueriesTriggerForm} from "./LongRunningQueriesTriggerForm";
 import MUIDataTable, {MUIDataTableColumn, MUIDataTableOptions} from "mui-datatables";
 import {ICustomError, ILongRunningMetricTrigger} from "../../../models";
@@ -191,8 +193,8 @@ export const LongRunningTriggersConfigDialog: React.FunctionComponent<Props> = (
                     + Add Recorder
                 </Button>
                 <Tooltip title='Close dialog'>
-                    <IconButton onClick={handleClose} className={classes.closeButton}>
-                        <CloseIcon fontSize="default" />
+                    <IconButton onClick={handleClose} className={classes.closeButton} size="large">
+                        <CloseIcon/>
                     </IconButton>
                 </Tooltip>
             </DialogTitle>
@@ -204,8 +206,11 @@ export const LongRunningTriggersConfigDialog: React.FunctionComponent<Props> = (
                 <Dialog open={addDialogOpen} onClose={() => setAddDialogOpen(false)}>
                     <DialogTitle>Add Data Recording Configuration
                         <Tooltip title='Close dialog'>
-                            <IconButton onClick={() => setAddDialogOpen(false)} className={classes.closeButton}>
-                                <CloseIcon fontSize="default" />
+                            <IconButton
+                                onClick={() => setAddDialogOpen(false)}
+                                className={classes.closeButton}
+                                size="large">
+                                <CloseIcon/>
                             </IconButton>
                         </Tooltip>
                     </DialogTitle>
@@ -237,7 +242,7 @@ export const LongRunningTriggersConfigDialog: React.FunctionComponent<Props> = (
                 </Fetcher>
             </Paper>
         </Dialog>
-    )
+    );
 }
 
 interface LongRunningQueriesTableProps {

@@ -8,17 +8,17 @@ import {
 import SideDrawer from "../../components/SideDrawer";
 import { UserRoleScreen } from "./UserRoleScreen";
 import { Menus, Database, DatabaseType } from "../../models";
-import VisibilityIcon from "@material-ui/icons/Visibility";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useParams } from "react-router";
 import { OverviewScreen } from "./OverviewScreen";
-import PeopleIcon from "@material-ui/icons/People";
-import QueryBuilderIcon from "@material-ui/icons/QueryBuilder";
-import DataUsage from "@material-ui/icons/DataUsage";
-import TableUsage from "@material-ui/icons/ViewList";
-import SearchIcon from "@material-ui/icons/Search";
-import AssessmentIcon from "@material-ui/icons/Assessment";
-import BugReportIcon from "@material-ui/icons/BugReport";
-import StorageIcon from "@material-ui/icons/Storage";
+import PeopleIcon from "@mui/icons-material/People";
+import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
+import DataUsage from "@mui/icons-material/DataUsage";
+import TableUsage from "@mui/icons-material/ViewList";
+import SearchIcon from "@mui/icons-material/Search";
+import AssessmentIcon from "@mui/icons-material/Assessment";
+import BugReportIcon from "@mui/icons-material/BugReport";
+import StorageIcon from "@mui/icons-material/Storage";
 import { DebuggingScreen } from "./debug-level/DebuggingScreen";
 import { ActiveQueryLandingScreen } from "./active-queries/ActiveQueryLandingScreen";
 import { SQLService } from "../../services/SQLService";
@@ -28,12 +28,12 @@ import { IndexStatsScreen } from "./index-stats/IndexStatsScreen";
 import { ActiveDDLScreen } from "./active-ddl/ActiveDDLScreen";
 import { DatabaseLevelScreen } from "./db-level/DatabaseLevelScreen";
 import { TableLevelScreen } from "./table-level/TableLevelScreen";
-import AddAlertIcon from "@material-ui/icons/AddAlert";
+import AddAlertIcon from "@mui/icons-material/AddAlert";
 import { AlertingDashboard } from "./alerting/AlertingDashboard";
 import { ComputeUtilizationScreen } from "./compute-utilization/ComputeUtilizationScreen";
 import { DatabaseOptimizationLandingScreen } from "./database-optimization/DatabaseOptimizationLandingScreen";
 import { DbMonitoringLandingScreen } from "./database-monitoring/DbMonitoringLandingScreen";
-import DescriptionIcon from "@material-ui/icons/Description";
+import DescriptionIcon from "@mui/icons-material/Description";
 
 export enum MenuTitle {
   ACCESS_CONTROL = "Access Control",

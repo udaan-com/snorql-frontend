@@ -1,18 +1,18 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { Box, Typography, Paper, Button, Tooltip, IconButton, FormControl, 
-    Table, TableCell, TableBody, TableRow, TextField, FormGroup, Switch, FormControlLabel } from "@material-ui/core"
+    Table, TableCell, TableBody, TableRow, TextField, FormGroup, Switch, FormControlLabel } from "@mui/material"
 import { Fetcher } from "../../../../common/components/Fetcher";
 import { ICustomError, IIndexStatsMetricResponse, IIndexStatsResponse, IMetricMetadata } from "../../../models";
 import { SQLService } from "../../../services/SQLService";
-import CodeIcon from '@material-ui/icons/Code';
+import CodeIcon from '@mui/icons-material/Code';
 import { ShowQueryScreen } from "../ShowQueryScreen";
-import ReplayIcon from '@material-ui/icons/Replay';
+import ReplayIcon from '@mui/icons-material/Replay';
 import { ITableIndex } from "./IndexStatsColumn";
 import { outerLevelUseStyles } from "../../../components/StyleClass";
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import Autocomplete from '@mui/material/Autocomplete';
 import { MetricHeader } from "../../../components/MetricHeader";
 import { CopyToClipboard } from "../../../components/CopyToClipboard";
-import SettingsIcon from '@material-ui/icons/Settings';
+import SettingsIcon from '@mui/icons-material/Settings';
 import { IndexStatsJobRecordingDialog } from "./IndexStatsJobRecordingDialog";
 import { IndexStatsHistoricalScreen } from "./IndexStatsHistoricalScreen";
 import { reloadMetricEvent, showQueryEvent, toggleToHistoricViewEvent, configureDataRecordingViewEvent } from '../../../tracking/TrackEventMethods';
@@ -157,14 +157,14 @@ export const IndexStatsScreen: FunctionComponent<IndexStatsProps> = (props) => {
                     </FormControl>
                     {/* {metadata && metadata.supportsHistorical && */}
                     <Tooltip title="Configure Data Recording">
-                        <IconButton onClick={handleJobConfigureDialogOpen}>
-                            <SettingsIcon fontSize="default" />
+                        <IconButton onClick={handleJobConfigureDialogOpen} size="large">
+                            <SettingsIcon />
                         </IconButton>
                     </Tooltip>
                     {!historicalScreenFlag &&
                     <Tooltip title="Reload">
-                        <IconButton onClick={handleReload}>
-                            <ReplayIcon fontSize="default" />
+                        <IconButton onClick={handleReload} size="large">
+                            <ReplayIcon />
                         </IconButton>
                     </Tooltip> }
                 </div>
@@ -233,7 +233,7 @@ export const IndexStatsScreen: FunctionComponent<IndexStatsProps> = (props) => {
                     }
                         {tableName.length > 0 && indexName.length > 0 && 
                             <Tooltip title={showQuery ? 'Hide the source' : 'Show the source'}>
-                                <IconButton aria-label="delete" onClick={() => handleShowQuery}>
+                                <IconButton aria-label="delete" onClick={() => handleShowQuery} size="large">
                                     <CodeIcon />
                                 </IconButton>
                             </Tooltip>

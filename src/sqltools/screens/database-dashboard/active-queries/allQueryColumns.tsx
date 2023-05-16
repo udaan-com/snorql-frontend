@@ -1,5 +1,5 @@
 import React from "react";
-import { LinearProgress } from "@material-ui/core";
+import { LinearProgress } from "@mui/material";
 import { StatementDialog } from "../../../components/StatementDialog";
 import { Route } from "react-router";
 import { Link } from "react-router-dom";

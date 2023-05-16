@@ -1,17 +1,10 @@
 import React, { useEffect, useState } from "react";
-import {
-  createStyles,
-  Dialog,
-  DialogTitle,
-  IconButton,
-  makeStyles,
-  Paper,
-  Theme,
-  Tooltip,
-} from "@material-ui/core";
+import { Dialog, DialogTitle, IconButton, Paper, Theme, Tooltip } from "@mui/material";
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
 import { AlertInfo, AlertSeverity, ALERT_SEVERITY, ALERT_TYPE, GeoReplicaProperties, IMetricAlert } from "../models";
 import { SqlAlertForm } from "./SqlAlertForm";
-import CloseIcon from "@material-ui/icons/Close";
+import CloseIcon from "@mui/icons-material/Close";
 import { useAdminEmail, useAdminName } from "../../hooks";
 import { SQLService } from "../services/SQLService";
 import {AlertService} from "../services/AlertService";
@@ -153,8 +146,11 @@ export const SqlAlertDialog: React.FunctionComponent<Props> = (
       <DialogTitle>
         Alert Configuration
         <Tooltip title="Close dialog">
-          <IconButton onClick={() => handleCloseDialog()} className={classes.closeButton}>
-            <CloseIcon fontSize="default" />
+          <IconButton
+            onClick={() => handleCloseDialog()}
+            className={classes.closeButton}
+            size="large">
+            <CloseIcon/>
           </IconButton>
         </Tooltip>
       </DialogTitle>

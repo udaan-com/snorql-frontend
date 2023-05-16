@@ -2,7 +2,6 @@ import React, { FunctionComponent, useEffect, useState } from "react";
 import {
   Paper,
   Theme,
-  createStyles,
   Accordion,
   AccordionSummary,
   AccordionDetails,
@@ -11,9 +10,10 @@ import {
   FormControlLabel,
   FormControl,
   FormGroup,
-} from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+} from "@mui/material";
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Fetcher } from "../../../../common/components/Fetcher";
 import { SQLService } from "../../../services/SQLService";
 import {
@@ -31,14 +31,14 @@ import {
 } from "../../../models";
 import { getColumns } from "./allQueryColumns";
 import { CopyToClipboard } from "../../../components/CopyToClipboard";
-import CodeIcon from "@material-ui/icons/Code";
+import CodeIcon from "@mui/icons-material/Code";
 import { ShowQueryScreen } from "../ShowQueryScreen";
 import { NoDataExists } from "../../../components/NoDataExists";
 import { ErrorMessageCard } from "../../../components/ErrorMessageCard";
-import Switch from "@material-ui/core/Switch";
-import ReplayIcon from "@material-ui/icons/Replay";
-import SettingsIcon from "@material-ui/icons/Settings";
-import AddAlertIcon from "@material-ui/icons/AddAlert";
+import Switch from "@mui/material/Switch";
+import ReplayIcon from "@mui/icons-material/Replay";
+import SettingsIcon from "@mui/icons-material/Settings";
+import AddAlertIcon from "@mui/icons-material/AddAlert";
 import MUIDataTable, {
   MUIDataTableOptions,
   MUIDataTableColumn,
@@ -56,7 +56,7 @@ import {
 } from "../../../tracking/TrackEventMethods";
 import { useAdminEmail } from "../../../../hooks";
 import { MenuText, MenuTitle } from "../DatabaseDashboardScreen";
-import { Alert } from "@material-ui/lab";
+import { Alert } from '@mui/material';
 
 interface AllQueriesProps {
   databaseName: string;
@@ -358,9 +358,6 @@ export const AllQueriesScreen: FunctionComponent<AllQueriesProps> = (props) => {
     <Accordion expanded={expanded}>
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
-        IconButtonProps={{
-          onClick: handleChange,
-        }}
       >
         <div className={classes.summaryContent}>
           <MetricHeader title="All Queries" metadata={metadata} />
@@ -368,7 +365,7 @@ export const AllQueriesScreen: FunctionComponent<AllQueriesProps> = (props) => {
             <FormControl component="fieldset">
               <FormGroup aria-label="auto-refresh" row>
                 <FormControlLabel
-                  onChange={handleAutoRefreshViewToggle} // toggle historical
+                  onChange={handleAutoRefreshViewToggle}
                   control={<Switch color="secondary" />}
                   label="Auto Refresh"
                   labelPlacement="bottom"
@@ -379,7 +376,7 @@ export const AllQueriesScreen: FunctionComponent<AllQueriesProps> = (props) => {
               <FormControl component="fieldset">
                 <FormGroup aria-label="historicalEnabled" row>
                   <FormControlLabel
-                    onChange={handleClickHistoricalViewToggle} // toggle historical
+                    onChange={handleClickHistoricalViewToggle}
                     control={<Switch color="primary" />}
                     label="View Historical Data"
                     labelPlacement="bottom"
@@ -387,33 +384,33 @@ export const AllQueriesScreen: FunctionComponent<AllQueriesProps> = (props) => {
                 </FormGroup>
               </FormControl>
             )}
-            {/* <Switch  value="historicalScreenFlag" inputProps={{ 'title': 'Historical Data' }} /> */}
             {metadata &&
               metadata.supportsAlert &&
               props.databaseType == DatabaseType.SQLSERVER && (
                 <Tooltip title="Add Alert">
-                  <IconButton onClick={() => showAlertDialog()}>
-                    <AddAlertIcon fontSize="default" />
+                  <IconButton onClick={() => showAlertDialog()} size="large">
+                    <AddAlertIcon />
                   </IconButton>
                 </Tooltip>
               )}
             {metadata && metadata.supportsHistorical && (
               <Tooltip title="Configure Data Recording">
-                <IconButton onClick={handleJobConfigureDialogOpen}>
-                  <SettingsIcon fontSize="default" />
+                <IconButton onClick={handleJobConfigureDialogOpen} size="large">
+                  <SettingsIcon />
                 </IconButton>
               </Tooltip>
             )}
             {!historicalScreenFlag && (
               <Tooltip title="Reload">
-                <IconButton onClick={() => handleReload()}>
-                  <ReplayIcon fontSize="default" />
+                <IconButton onClick={() => handleReload()} size="large">
+                  <ReplayIcon />
                 </IconButton>
               </Tooltip>
             )}
           </div>
         </div>
       </AccordionSummary>
+
       {props.databaseType == DatabaseType.SQLSERVER && (
         <Alert severity="info">
           Please check out COMPUTE UTILIZATION for history of executed
@@ -457,7 +454,7 @@ export const AllQueriesScreen: FunctionComponent<AllQueriesProps> = (props) => {
                 <Tooltip
                   title={showQuery ? "Hide the source" : "Show the source"}
                 >
-                  <IconButton onClick={handleShowQuery}>
+                  <IconButton onClick={handleShowQuery} size="large">
                     <CodeIcon />
                   </IconButton>
                 </Tooltip>

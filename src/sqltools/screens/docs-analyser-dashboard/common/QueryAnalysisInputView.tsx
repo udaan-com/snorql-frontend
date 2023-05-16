@@ -26,10 +26,10 @@ import {
   Button,
   Dialog,
   InputLabel,
-  makeStyles,
   MenuItem,
   Paper,
   Select,
+  SelectChangeEvent,
   Table,
   TableBody,
   TableCell,
@@ -38,11 +38,12 @@ import {
   TableHead,
   TableRow,
   TextField,
-  Typography
-} from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import CloseIcon from "@material-ui/icons/Close";
-import DoneIcon from "@material-ui/icons/Done";
+  Typography,
+} from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import CloseIcon from "@mui/icons-material/Close";
+import DoneIcon from "@mui/icons-material/Done";
 import "html-query-plan/css/qp.css";
 import {showPlan} from "html-query-plan/dist/index"; // For some reason not able to resolve in general!
 
@@ -95,7 +96,7 @@ export const QueryAnalysisInputView: FunctionComponent<QueryAnalysisInputViewPro
   };
 
   const transformPointerText = (txt: string): string => {
-    return txt.replace(/<\/b>/, '').replace(/<b>/, '')
+    return txt.replace(/<\/b>/, '').replace(/<b>/, '');
   };
 
   return (
@@ -312,8 +313,8 @@ export const QueryInputProcessor = (
     return isValidJson;
   };
 
-  const handleDbChange = (event: React.ChangeEvent<{value: unknown}>) => {
-    const dbName = (event.target as HTMLSelectElement).value;
+  const handleDbChange = (event: SelectChangeEvent<string>) => {
+    const dbName = event.target.value;
     setDbName(dbName);
   };
 

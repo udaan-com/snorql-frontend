@@ -2,7 +2,6 @@ import React, { FunctionComponent, useEffect, useState } from "react";
 import {
   Paper,
   Theme,
-  createStyles,
   Accordion,
   AccordionSummary,
   AccordionDetails,
@@ -22,10 +21,11 @@ import {
   FormGroup,
   FormControlLabel,
   Switch,
-} from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import ExpandLessIcon from "@material-ui/icons/ExpandLess";
+} from "@mui/material";
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { Fetcher } from "../../../../common/components/Fetcher";
 import { SQLService } from "../../../services/SQLService";
 import {
@@ -35,20 +35,20 @@ import {
   IMetricMetadata,
 } from "../../../models";
 import { CopyToClipboard } from "../../../components/CopyToClipboard";
-import CodeIcon from "@material-ui/icons/Code";
+import CodeIcon from "@mui/icons-material/Code";
 import { ShowQueryScreen } from "../ShowQueryScreen";
 import { NoDataExists } from "../../../components/NoDataExists";
 import { ErrorMessageCard } from "../../../components/ErrorMessageCard";
-import ReplayIcon from "@material-ui/icons/Replay";
+import ReplayIcon from "@mui/icons-material/Replay";
 import { FBox } from "../../../../common/components/FBox";
-import { Fullscreen, SubdirectoryArrowRight } from "@material-ui/icons";
+import { Fullscreen, SubdirectoryArrowRight } from "@mui/icons-material";
 import { StatementDialog } from "../../../components/StatementDialog";
 import lengend from "./blockingQueryLegend.png";
 import { MetricHeader } from "../../../components/MetricHeader";
-import SettingsIcon from "@material-ui/icons/Settings";
+import SettingsIcon from "@mui/icons-material/Settings";
 import { BlockedQueriesHistoricalScreen } from "./BlockedQueriesHistoricalScreen";
 import { SingleTriggerDialog } from "../../../components/SingleTriggerDialog";
-import AddAlertIcon from "@material-ui/icons/AddAlert";
+import AddAlertIcon from "@mui/icons-material/AddAlert";
 import { SqlAlertDialog } from "../../../components/SqlAlertDialog";
 import { reloadMetricEvent, showQueryEvent, expandMetricEvent, toggleToHistoricViewEvent, configureDataRecordingViewEvent } from '../../../tracking/TrackEventMethods';
 import { useAdminEmail } from '../../../../hooks';
@@ -100,186 +100,187 @@ export const BlockingQueriesScreen: FunctionComponent<BlockingQueriesProps> = (
   const [autoRefreshEnabled, setAutoRefresh] = useState<boolean>(false);
   const email = useAdminEmail();
 
-    useEffect(()=>{
-      // console.log("Auto Refresh: ", autoRefreshEnabled);
-      if (autoRefreshEnabled) {
-          // console.log("Auto Refresh is enabled !!!")
-          const intervalId = setInterval(() => {
-              handleReload()
-          }, 1000 * 10) 
-          return () => clearInterval(intervalId)
-      }
+  useEffect(() => {
+    // console.log("Auto Refresh: ", autoRefreshEnabled);
+    if (autoRefreshEnabled) {
+      // console.log("Auto Refresh is enabled !!!")
+      const intervalId = setInterval(() => {
+        handleReload()
+      }, 1000 * 10)
+      return () => clearInterval(intervalId)
+    }
   }, [autoRefreshEnabled])
 
-    const handleOnApiResponse = (r: IBlockingTreeMetricResponse | ICustomError) => {
-        if ("code" in r && "message" in r && "details" in r) {
-            setErrorMessage(`${r.message}: ${r.details}`);
-        }
-        else {
-            const result = r.metricOutput.result.queryList;
-            setMetadata(r.metadata);
-            setBlockingTree(result)
-        }
+  const handleOnApiResponse = (r: IBlockingTreeMetricResponse | ICustomError) => {
+    if ("code" in r && "message" in r && "details" in r) {
+      setErrorMessage(`${r.message}: ${r.details}`);
     }
-    const basicPropsForMixPanel = { dbName: props.databaseName, userEmail: email, metricTitle: MenuTitle.PERFORMANCE, metricText: `${MenuText.ACTIVE_QUERIES}_BLOCKING`}
+    else {
+      const result = r.metricOutput.result.queryList;
+      setMetadata(r.metadata);
+      setBlockingTree(result)
+    }
+  }
+  const basicPropsForMixPanel = { dbName: props.databaseName, userEmail: email, metricTitle: MenuTitle.PERFORMANCE, metricText: `${MenuText.ACTIVE_QUERIES}_BLOCKING` }
 
-    const handleReload = () => {
-        SQLService.getDbBlockingQueries(props.databaseName)
-        .then((r) => {
-            handleOnApiResponse(r)
-            setExpanded(true);
-            metadata && reloadMetricEvent(basicPropsForMixPanel)
-        })
-    }
-    
-    const showAlertDialog = () => {
-      setAlertDialogOpen(true);
-    };
-    
-    const handleChange = () => {
-        setExpanded((prev) => !prev);
-        metadata && expandMetricEvent(basicPropsForMixPanel)
-    }
+  const handleReload = () => {
+    SQLService.getDbBlockingQueries(props.databaseName)
+      .then((r) => {
+        handleOnApiResponse(r)
+        setExpanded(true);
+        metadata && reloadMetricEvent(basicPropsForMixPanel)
+      })
+  }
 
-    const handleShowQuery = () => {
-        setShowQuery(!showQuery)
-        metadata && showQueryEvent({
-            ...basicPropsForMixPanel,
-            query: metadata.underlyingQueries[0]
-        })
-    }
-    const handleClickHistoricalViewToggle = () => {
-        setHistoricalScreenFlag(!historicalScreenFlag)
-        toggleToHistoricViewEvent(basicPropsForMixPanel)
-    }
-    const handleJobConfigureDialogOpen = () => {
-        setJobConfigureDialogOpen(true)
-        configureDataRecordingViewEvent(basicPropsForMixPanel)
-    }
-    
-    const closeAlertDialog = () => {
-      setAlertDialogOpen(false);
-    };
+  const showAlertDialog = () => {
+    setAlertDialogOpen(true);
+  };
 
-    const handleAutoRefreshViewToggle = () => {
-      setAutoRefresh(!autoRefreshEnabled)
-    };
+  const handleChange = () => {
+    setExpanded((prev) => !prev);
+    metadata && expandMetricEvent(basicPropsForMixPanel)
+  }
 
-    return (
-        <Accordion expanded={expanded} >
-            <AccordionSummary expandIcon={<ExpandMoreIcon />}
-                IconButtonProps={{
-                    onClick: handleChange
-                }} >
-                <div className={classes.summaryContent}>
-                    <MetricHeader title="Blocking Queries" metadata={metadata} />
-                    <div style={{ float: 'right' }}>
-                        <FormControl component="fieldset">
-                            <FormGroup aria-label="auto-refresh" row>
-                                <FormControlLabel
-                                onChange={handleAutoRefreshViewToggle} // toggle historical
-                                control={<Switch color="secondary" />}
-                                label="Auto Refresh"
-                                labelPlacement="bottom"
-                                />
-                            </FormGroup>
-                        </FormControl>
-                        {metadata && metadata.supportsHistorical &&
-                        <FormControl component="fieldset">
-                            <FormGroup aria-label="historicalEnabled" row>
-                                <FormControlLabel
-                                onChange={handleClickHistoricalViewToggle}
-                                control={<Switch color="primary" />}
-                                label="View Historical Data"
-                                labelPlacement="bottom"
-                                />
-                            </FormGroup>
-                        </FormControl> }
-                        {/* <Switch  value="historicalScreenFlag" inputProps={{ 'title': 'Historical Data' }} /> */}
-                        {metadata && metadata.supportsAlert && (
-                          <Tooltip title="Add Alert">
-                            <IconButton onClick={() => showAlertDialog()}>
-                              <AddAlertIcon fontSize="default" />
-                            </IconButton>
-                          </Tooltip>
-                        )}
-                        {metadata && metadata.supportsHistorical &&
-                        <Tooltip title="Configure Data Recording">
-                            <IconButton onClick={handleJobConfigureDialogOpen}>
-                                <SettingsIcon fontSize="default" />
-                            </IconButton>
-                        </Tooltip> }
-                        {!historicalScreenFlag &&
-                        <Tooltip title="Reload">
-                            <IconButton onClick={() => handleReload()}>
-                                <ReplayIcon fontSize="default" />
-                            </IconButton>
-                        </Tooltip>
-                        }
-                    </div>
-                </div>
-            </AccordionSummary>
-            <AccordionDetails >
-                <SingleTriggerDialog 
-                    open={jobConfigureDialogOpen} 
-                    handleClose={() => setJobConfigureDialogOpen(false)} 
-                    databaseName={props.databaseName} 
-                    metricId={"performance_blockedQueries"} 
-                    metricName={"Blocking Queries Metric"}
-                    minimumRepeatInterval={metadata?.minimumRepeatInterval}  />
-                {metadata?.supportsAlert && (
-                  <SqlAlertDialog
-                    open={alertDialogOpen}
-                    handleClose={() => closeAlertDialog()}
-                    databaseName={props.databaseName}
-                    supportedAlertTypes={metadata?.supportedAlerts}
+  const handleShowQuery = () => {
+    setShowQuery(!showQuery)
+    metadata && showQueryEvent({
+      ...basicPropsForMixPanel,
+      query: metadata.underlyingQueries[0]
+    })
+  }
+  const handleClickHistoricalViewToggle = () => {
+    setHistoricalScreenFlag(!historicalScreenFlag)
+    toggleToHistoricViewEvent(basicPropsForMixPanel)
+  }
+  const handleJobConfigureDialogOpen = () => {
+    setJobConfigureDialogOpen(true)
+    configureDataRecordingViewEvent(basicPropsForMixPanel)
+  }
+
+  const closeAlertDialog = () => {
+    setAlertDialogOpen(false);
+  };
+
+  const handleAutoRefreshViewToggle = () => {
+    setAutoRefresh(!autoRefreshEnabled)
+  };
+
+  return (
+    <Accordion expanded={expanded} >
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        onClick={handleChange}
+      >
+
+        <div className={classes.summaryContent}>
+          <MetricHeader title="Blocking Queries" metadata={metadata} />
+          <div style={{ float: 'right' }}>
+            <FormControl component="fieldset">
+              <FormGroup aria-label="auto-refresh" row>
+                <FormControlLabel
+                  onChange={handleAutoRefreshViewToggle} // toggle historical
+                  control={<Switch color="secondary" />}
+                  label="Auto Refresh"
+                  labelPlacement="bottom"
+                />
+              </FormGroup>
+            </FormControl>
+            {metadata && metadata.supportsHistorical &&
+              <FormControl component="fieldset">
+                <FormGroup aria-label="historicalEnabled" row>
+                  <FormControlLabel
+                    onChange={handleClickHistoricalViewToggle}
+                    control={<Switch color="primary" />}
+                    label="View Historical Data"
+                    labelPlacement="bottom"
                   />
-                )}
-                {!historicalScreenFlag &&
-                <Paper style={{ width: "100%"}}>
-                <div className="row">
-                    <details style={{ padding: '20px' }}>
-                    <summary>Example:</summary>
-                        <div className="logo">
-                            <img src={lengend} width="100%" height="auto" />
-                        </div>
-                    </details>
-                    </div>
-                    <hr/>
-                    <Fetcher
-                        fetchData={() => SQLService.getDbBlockingQueries(props.databaseName)}
-                        onFetch={(r) => { handleOnApiResponse(r) }}
-                    >
-                        <div style={{ float: 'right', padding: '10px' }}>
-                            {showQuery && metadata && metadata.underlyingQueries && <CopyToClipboard text={metadata.underlyingQueries[0]} />}
-                            <Tooltip title={showQuery ? 'Hide the source' : 'Show the source'}>
-                                <IconButton aria-label="delete" onClick={() => handleShowQuery}>
-                                    <CodeIcon />
-                                </IconButton>
-                            </Tooltip>
-                        </div>
-                        {showQuery && metadata && metadata.underlyingQueries && <ShowQueryScreen query={metadata.underlyingQueries[0]} />}
-                        <div>
-                            {!showQuery && errorMessage && <ErrorMessageCard text={errorMessage}/>}
-                            {!showQuery && !errorMessage && blockingTree && blockingTree.length > 0 &&
-                                blockingTree.map((tree, i) => {
-                                    return <BlockingNodeView node={tree} exp={true} key={i}/>
-                                })
-                            }
-                        </div>
-                        {!showQuery && blockingTree.length === 0 && <NoDataExists text="No Blocking Queries found"/>}
-                    </Fetcher>
-                </Paper> }
-                {historicalScreenFlag &&
-                <Paper style={{maxWidth: 1400, width: "-webkit-fill-available"}}>
-                    <div style={{marginLeft:'5px', padding: '10px'}}>
-                        <BlockedQueriesHistoricalScreen databaseName={props.databaseName}></BlockedQueriesHistoricalScreen>
-                    </div>
-                </Paper>
+                </FormGroup>
+              </FormControl>}
+            {/* <Switch  value="historicalScreenFlag" inputProps={{ 'title': 'Historical Data' }} /> */}
+            {metadata && metadata.supportsAlert && (
+              <Tooltip title="Add Alert">
+                <IconButton onClick={() => showAlertDialog()} size="large">
+                  <AddAlertIcon />
+                </IconButton>
+              </Tooltip>
+            )}
+            {metadata && metadata.supportsHistorical &&
+              <Tooltip title="Configure Data Recording">
+                <IconButton onClick={handleJobConfigureDialogOpen} size="large">
+                  <SettingsIcon />
+                </IconButton>
+              </Tooltip>}
+            {!historicalScreenFlag &&
+              <Tooltip title="Reload">
+                <IconButton onClick={() => handleReload()} size="large">
+                  <ReplayIcon />
+                </IconButton>
+              </Tooltip>
+            }
+          </div>
+        </div>
+      </AccordionSummary>
+      <AccordionDetails >
+        <SingleTriggerDialog
+          open={jobConfigureDialogOpen}
+          handleClose={() => setJobConfigureDialogOpen(false)}
+          databaseName={props.databaseName}
+          metricId={"performance_blockedQueries"}
+          metricName={"Blocking Queries Metric"}
+          minimumRepeatInterval={metadata?.minimumRepeatInterval} />
+        {metadata?.supportsAlert && (
+          <SqlAlertDialog
+            open={alertDialogOpen}
+            handleClose={() => closeAlertDialog()}
+            databaseName={props.databaseName}
+            supportedAlertTypes={metadata?.supportedAlerts}
+          />
+        )}
+        {!historicalScreenFlag &&
+          <Paper style={{ width: "100%" }}>
+            <div className="row">
+              <details style={{ padding: '20px' }}>
+                <summary>Example:</summary>
+                <div className="logo">
+                  <img src={lengend} width="100%" height="auto" />
+                </div>
+              </details>
+            </div>
+            <hr />
+            <Fetcher
+              fetchData={() => SQLService.getDbBlockingQueries(props.databaseName)}
+              onFetch={(r) => { handleOnApiResponse(r) }}
+            >
+              <div style={{ float: 'right', padding: '10px' }}>
+                {showQuery && metadata && metadata.underlyingQueries && <CopyToClipboard text={metadata.underlyingQueries[0]} />}
+                <Tooltip title={showQuery ? 'Hide the source' : 'Show the source'}>
+                  <IconButton aria-label="delete" onClick={() => handleShowQuery} size="large">
+                    <CodeIcon />
+                  </IconButton>
+                </Tooltip>
+              </div>
+              {showQuery && metadata && metadata.underlyingQueries && <ShowQueryScreen query={metadata.underlyingQueries[0]} />}
+              <div>
+                {!showQuery && errorMessage && <ErrorMessageCard text={errorMessage} />}
+                {!showQuery && !errorMessage && blockingTree && blockingTree.length > 0 &&
+                  blockingTree.map((tree, i) => {
+                    return <BlockingNodeView node={tree} exp={true} key={i} />
+                  })
                 }
-            </AccordionDetails>
-        </Accordion>
-    )
+              </div>
+              {!showQuery && blockingTree.length === 0 && <NoDataExists text="No Blocking Queries found" />}
+            </Fetcher>
+          </Paper>}
+        {historicalScreenFlag &&
+          <Paper style={{ maxWidth: 1400, width: "-webkit-fill-available" }}>
+            <div style={{ marginLeft: '5px', padding: '10px' }}>
+              <BlockedQueriesHistoricalScreen databaseName={props.databaseName}></BlockedQueriesHistoricalScreen>
+            </div>
+          </Paper>
+        }
+      </AccordionDetails>
+    </Accordion>
+  );
 };
 
 const BlockingNodeView: React.FunctionComponent<{
@@ -400,17 +401,14 @@ const StackView: React.FunctionComponent<StackViewProps> = ({
               </Typography>
             </Tooltip>
           </FBox>
-          <IconButton
-            onClick={() => setDetails(true)}
-            style={{ marginLeft: 4 }}
-          >
+          <IconButton onClick={() => setDetails(true)} style={{ marginLeft: 4 }} size="large">
             <Fullscreen />
           </IconButton>
           {hasChildren && (
             <IconButton
               style={{ marginLeft: 4 }}
               onClick={() => onChangeExpanded(!isExpanded)}
-            >
+              size="large">
               {isExpanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
             </IconButton>
           )}

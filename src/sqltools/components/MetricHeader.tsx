@@ -1,16 +1,19 @@
 import React, {useState, ReactNode, FunctionComponent} from 'react';
-import { createStyles, Theme, withStyles, WithStyles } from '@material-ui/core/styles';
-import Dialog from '@material-ui/core/Dialog';
-import MuiDialogTitle from '@material-ui/core/DialogTitle';
-import MuiDialogContent from '@material-ui/core/DialogContent';
-import MuiDialogActions from '@material-ui/core/DialogActions';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
-import {Typography, Tooltip} from '@material-ui/core';
+import { Theme } from '@mui/material/styles';
+import { WithStyles } from '@mui/styles';
+import createStyles from '@mui/styles/createStyles';
+import withStyles from '@mui/styles/withStyles';
+import Dialog from '@mui/material/Dialog';
+import MuiDialogTitle from '@mui/material/DialogTitle';
+import MuiDialogContent from '@mui/material/DialogContent';
+import MuiDialogActions from '@mui/material/DialogActions';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+import {Typography, Tooltip} from '@mui/material';
 import { IMetricMetadata } from '../models';
 import { useStyles } from "./StyleClass";
-import InfoIcon from '@material-ui/icons/Info';
-import HelpIcon from '@material-ui/icons/Help';
+import InfoIcon from '@mui/icons-material/Info';
+import HelpIcon from '@mui/icons-material/Help';
 
 
 const styles = (theme: Theme) =>
@@ -36,10 +39,14 @@ export interface DialogTitleProps extends WithStyles<typeof styles> {
 const DialogTitle = withStyles(styles)((props: DialogTitleProps) => {
   const { children, classes, onClose, ...other } = props;
   return (
-    <MuiDialogTitle disableTypography className={classes.root} {...other}>
+    <MuiDialogTitle className={classes.root} {...other}>
       <Typography variant="h6">{children}</Typography>
       {onClose ? (
-        <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
+        <IconButton
+          aria-label="close"
+          className={classes.closeButton}
+          onClick={onClose}
+          size="large">
           <CloseIcon />
         </IconButton>
       ) : null}
@@ -77,37 +84,35 @@ export const MetricHeader: FunctionComponent<Props> = (props: Props) => {
       setOpen(false);
   };
 
-  return (
-    <>
-        <Typography className={classes.heading}>{title}
-            {metadata && (metadata.description || metadata.referenceDocumentation.length > 0 ) &&
-                <IconButton aria-label="info" onClick={handleClickOpen}>
-                    <InfoIcon />
-                </IconButton> }
-        </Typography>
-        <Dialog onClose={handleClose} aria-labelledby="metric-dialog-title" open={open}>
-            <DialogTitle id="metric-dialog-title" onClose={handleClose}>
-                Metric Description
-            </DialogTitle>
-            <DialogContent dividers>
-                {metadata && metadata.description && 
-                <div>
-                    <div>{metadata && metadata.description}</div>
-                </div>}
-                {metadata && metadata.referenceDocumentation.length > 0 &&
-                    <>
-                        <summary>References</summary>
-                        <ul>
-                            {metadata.referenceDocumentation.map((item, i) => (
-                                <li key={i}><a href={item} target='_blank'>{item}</a></li>
-                            ))}
-                        </ul>
-                    </>
-                }
-            </DialogContent>
-            <DialogActions>
-            </DialogActions>
-        </Dialog>
-    </>
-  );
+  return <>
+      <Typography className={classes.heading}>{title}
+          {metadata && (metadata.description || metadata.referenceDocumentation.length > 0 ) &&
+              <IconButton aria-label="info" onClick={handleClickOpen} size="large">
+                  <InfoIcon />
+              </IconButton> }
+      </Typography>
+      <Dialog onClose={handleClose} aria-labelledby="metric-dialog-title" open={open}>
+          <DialogTitle id="metric-dialog-title" onClose={handleClose}>
+              Metric Description
+          </DialogTitle>
+          <DialogContent dividers>
+              {metadata && metadata.description && 
+              <div>
+                  <div>{metadata && metadata.description}</div>
+              </div>}
+              {metadata && metadata.referenceDocumentation.length > 0 &&
+                  <>
+                      <summary>References</summary>
+                      <ul>
+                          {metadata.referenceDocumentation.map((item, i) => (
+                              <li key={i}><a href={item} target='_blank'>{item}</a></li>
+                          ))}
+                      </ul>
+                  </>
+              }
+          </DialogContent>
+          <DialogActions>
+          </DialogActions>
+      </Dialog>
+  </>;
 }

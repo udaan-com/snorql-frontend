@@ -1,10 +1,10 @@
 import React, { FunctionComponent, useState, useEffect } from "react";
-import { Box, FormControl, TextField, Typography } from "@material-ui/core";
+import { Box, FormControl, TextField, Typography } from "@mui/material";
 import { SQLService } from "../../services/SQLService"
 import { DbMetrics, DbMetricsExpanded, DbMetricWeeks } from "../../models";
 import MUIDataTable, { MUIDataTableOptions, MUIDataTableColumnDef } from "mui-datatables";
 import { dbMetricsColumns } from "./dbInsightsColumns";
-import { Autocomplete } from '@material-ui/lab';
+import { Autocomplete } from '@mui/material';
 import { CustomError } from '../../CustomError';
 
 export const DbMetricsScreen: FunctionComponent = () => {

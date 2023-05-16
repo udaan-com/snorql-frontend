@@ -1,7 +1,7 @@
-import { Grid, Typography } from "@material-ui/core";
-import Chip from "@material-ui/core/Chip";
+import { Grid, Typography } from "@mui/material";
+import Chip from "@mui/material/Chip";
 import React from "react";
-import Avatar from '@material-ui/core/Avatar';
+import Avatar from '@mui/material/Avatar';
 
 export const dbListColumns = () => [
   {

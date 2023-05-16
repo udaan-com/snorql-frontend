@@ -1,6 +1,7 @@
 import React , { FunctionComponent, useState } from "react";
-import { makeStyles, Theme } from '@material-ui/core/styles';
-import { TextField, Button, InputAdornment, CircularProgress } from '@material-ui/core';
+import { Theme } from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
+import { TextField, Button, InputAdornment, CircularProgress } from '@mui/material';
 
 interface Props {
     handleClose: () => void;

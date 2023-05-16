@@ -1,8 +1,8 @@
 import React from "react";
 
-import Person from '@material-ui/icons/Person';
-import Apps from '@material-ui/icons/Apps';
-import Group from '@material-ui/icons/Group';
+import Person from '@mui/icons-material/Person';
+import Apps from '@mui/icons-material/Apps';
+import Group from '@mui/icons-material/Group';
 
 export const getGroupMembersColumns = (getGroupMember: (arg: string) => void) => [
     {

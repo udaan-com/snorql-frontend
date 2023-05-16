@@ -1,28 +1,28 @@
 import React, { FunctionComponent, useState } from "react";
-import { Paper, Accordion, AccordionSummary, AccordionDetails, Typography, Tooltip, IconButton, TableRow, TableCell, Table, TableBody, Box, FormControl, FormGroup, FormControlLabel, Switch } from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { Paper, Accordion, AccordionSummary, AccordionDetails, Typography, Tooltip, IconButton, TableRow, TableCell, Table, TableBody, Box, FormControl, FormGroup, FormControlLabel, Switch } from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Fetcher } from "../../../../common/components/Fetcher";
 import { SQLService } from "../../../services/SQLService";
 import { ICustomError, ILogSpaceUsage, ILogSpaceUsageRecommendation, ILogSpaceUsageResponse, ILogSpaceUsageResult, IMetricMetadata } from "../../../models";
 import { CopyToClipboard } from "../../../components/CopyToClipboard";
-import CodeIcon from "@material-ui/icons/Code";
+import CodeIcon from "@mui/icons-material/Code";
 import { ShowQueryScreen } from "../ShowQueryScreen";
-import ReplayIcon from "@material-ui/icons/Replay";
-import AddAlertIcon from "@material-ui/icons/AddAlert";
+import ReplayIcon from "@mui/icons-material/Replay";
+import AddAlertIcon from "@mui/icons-material/AddAlert";
 import { useStyles } from "../../../components/StyleClass";
 import Chart from "react-google-charts";
 import { MetricHeader } from "../../../components/MetricHeader";
-import SettingsIcon from "@material-ui/icons/Settings";
+import SettingsIcon from "@mui/icons-material/Settings";
 import { SingleTriggerDialog } from "../../../components/SingleTriggerDialog";
 import { SqlAlertDialog } from "../../../components/SqlAlertDialog";
 import { reloadMetricEvent, showQueryEvent, expandMetricEvent, configureDataRecordingViewEvent } from "../../../tracking/TrackEventMethods";
 import { useAdminEmail } from "../../../../hooks";
 import { MenuText, MenuTitle } from "../DatabaseDashboardScreen";
-import { Alert, AlertTitle } from "@material-ui/lab";
+import { Alert, AlertTitle } from '@mui/material';
 import { HistoricalLogSpaceUsage } from "./HistoricalLogSpaceUsage";
 
 interface LogSpaceUsageScreenProps {
-  databaseName: string;
+    databaseName: string;
 }
 
 export const LogSpaceUsageScreen: FunctionComponent<LogSpaceUsageScreenProps> = (props) => {
@@ -67,10 +67,10 @@ export const LogSpaceUsageScreen: FunctionComponent<LogSpaceUsageScreenProps> = 
     const handleShowQuery = () => {
         setShowQuery(!showQuery);
         metadata &&
-        showQueryEvent({
-            ...basicPropsForMixPanel,
-            query: metadata.underlyingQueries[0],
-        });
+            showQueryEvent({
+                ...basicPropsForMixPanel,
+                query: metadata.underlyingQueries[0],
+            });
     };
     const showAlertDialog = () => {
         setAlertDialogOpen(true);
@@ -82,38 +82,41 @@ export const LogSpaceUsageScreen: FunctionComponent<LogSpaceUsageScreenProps> = 
     };
     return (
         <Accordion expanded={expanded}>
-            <AccordionSummary expandIcon={<ExpandMoreIcon />} IconButtonProps={{ onClick: handleChange }}>
+            <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                onClick={handleChange}
+            >
                 <div className={classes.summaryContent}><MetricHeader title="Log Space Usage" metadata={metadata} /></div>
                 <div style={{ float: "right" }}>
                     {metadata && metadata.supportsAlert && (
-                    <Tooltip title="Manage Alerts">
-                        <IconButton onClick={() => showAlertDialog()}>
-                        <AddAlertIcon fontSize="default" />
-                        </IconButton>
-                    </Tooltip>
+                        <Tooltip title="Manage Alerts">
+                            <IconButton onClick={() => showAlertDialog()} size="large">
+                                <AddAlertIcon />
+                            </IconButton>
+                        </Tooltip>
                     )}
                     {metadata && metadata.supportsHistorical && (
-                    <Tooltip title="Configure Data Recording">
-                        <IconButton onClick={handleJobConfigureDialogOpen}>
-                        <SettingsIcon fontSize="default" />
-                        </IconButton>
-                    </Tooltip>
+                        <Tooltip title="Configure Data Recording">
+                            <IconButton onClick={handleJobConfigureDialogOpen} size="large">
+                                <SettingsIcon />
+                            </IconButton>
+                        </Tooltip>
                     )}
                     <Tooltip title="Reload">
-                        <IconButton onClick={handleReload}>
-                            <ReplayIcon fontSize="default" />
+                        <IconButton onClick={handleReload} size="large">
+                            <ReplayIcon />
                         </IconButton>
                     </Tooltip>
                 </div>
             </AccordionSummary>
             <AccordionDetails>
                 {metadata?.supportsAlert && (
-                <SqlAlertDialog
-                    open={alertDialogOpen}
-                    handleClose={closeAlertDialog}
-                    databaseName={props.databaseName}
-                    supportedAlertTypes={metadata?.supportedAlerts}
-                />
+                    <SqlAlertDialog
+                        open={alertDialogOpen}
+                        handleClose={closeAlertDialog}
+                        databaseName={props.databaseName}
+                        supportedAlertTypes={metadata?.supportedAlerts}
+                    />
                 )}
                 <Paper style={{ width: "100%" }}>
                     <div style={{ float: "right" }}>
@@ -121,27 +124,27 @@ export const LogSpaceUsageScreen: FunctionComponent<LogSpaceUsageScreenProps> = 
                             <FormControl component="fieldset">
                                 <FormGroup aria-label="historicalEnabled" row>
                                     <FormControlLabel
-                                    onChange={() => setHistoricalScreenFlag(!historicalScreenFlag)}
-                                    control={<Switch color="primary" />}
-                                    label="View Historical Data"
-                                    labelPlacement="bottom"
+                                        onChange={() => setHistoricalScreenFlag(!historicalScreenFlag)}
+                                        control={<Switch color="primary" />}
+                                        label="View Historical Data"
+                                        labelPlacement="bottom"
                                     />
                                 </FormGroup>
-                            </FormControl> 
+                            </FormControl>
                         }
                         {showQuery && metadata && metadata.underlyingQueries && !historicalScreenFlag && <CopyToClipboard text={metadata.underlyingQueries[0]} />}
                         {!historicalScreenFlag && <Tooltip title={showQuery ? "Hide the source" : "Show the source"}>
-                            <IconButton aria-label="delete" onClick={() => handleShowQuery()}> <CodeIcon /> </IconButton>
+                            <IconButton aria-label="delete" onClick={() => handleShowQuery()} size="large"> <CodeIcon /> </IconButton>
                         </Tooltip>}
                     </div>
-                    {errorMessage && ( <div style={{ marginLeft: "5px", padding: "10px", color: "red", fontFamily: "monospace" }}>
+                    {errorMessage && (<div style={{ marginLeft: "5px", padding: "10px", color: "red", fontFamily: "monospace" }}>
                         <details open>
                             <summary>Error</summary>
                             <p>{errorMessage}</p>
                         </details>
-                    </div> )}
+                    </div>)}
 
-                    {!historicalScreenFlag && <Fetcher fetchData={() => SQLService.getLogSpaceUsage(props.databaseName) } onFetch={(r) => handleOnApiResponse(r)}>
+                    {!historicalScreenFlag && <Fetcher fetchData={() => SQLService.getLogSpaceUsage(props.databaseName)} onFetch={(r) => handleOnApiResponse(r)}>
                         {showQuery && metadata && metadata.underlyingQueries && <ShowQueryScreen query={metadata.underlyingQueries[0]} />}
                         {!showQuery && (
                             <Box paddingTop={8} paddingRight={8} paddingBottom={4} paddingLeft={4}>
@@ -172,17 +175,17 @@ export const LogSpaceUsageScreen: FunctionComponent<LogSpaceUsageScreenProps> = 
                             </Box>
                         )}
                     </Fetcher>}
-                    {historicalScreenFlag && <HistoricalLogSpaceUsage databaseName={props.databaseName}/> }
-            </Paper>
-        </AccordionDetails>
-        <SingleTriggerDialog
-            open={jobConfigureDialogOpen}
-            handleClose={() => setJobConfigureDialogOpen(false)}
-            databaseName={props.databaseName}
-            metricId={"performance_logSpaceUsage"}
-            metricName={"Database Log Space Usage Size"}
-            minimumRepeatInterval={metadata?.minimumRepeatInterval}
-        />
+                    {historicalScreenFlag && <HistoricalLogSpaceUsage databaseName={props.databaseName} />}
+                </Paper>
+            </AccordionDetails>
+            <SingleTriggerDialog
+                open={jobConfigureDialogOpen}
+                handleClose={() => setJobConfigureDialogOpen(false)}
+                databaseName={props.databaseName}
+                metricId={"performance_logSpaceUsage"}
+                metricName={"Database Log Space Usage Size"}
+                minimumRepeatInterval={metadata?.minimumRepeatInterval}
+            />
         </Accordion>
     );
 };

@@ -1,8 +1,8 @@
 import { ScreenContainer } from "../../common/components/ScreenContainer";
 import React, { FunctionComponent } from "react";
-import { Box, Paper } from "@material-ui/core";
+import { Box, Paper } from "@mui/material";
 import { useHistory, useLocation } from "react-router";
-import { Tabs, Tab } from "@material-ui/core";
+import { Tabs, Tab } from "@mui/material";
 import { ServiceListScreen } from "./ServiceListScreen";
 import { DatabaseListScreen } from './DatabaseListScreen';
 import { CronJobsListScreen } from './CronjobsListScreen';

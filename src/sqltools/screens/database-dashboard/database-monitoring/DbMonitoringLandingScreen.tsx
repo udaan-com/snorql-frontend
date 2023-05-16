@@ -1,7 +1,8 @@
-import { Box, Theme, createStyles } from "@material-ui/core";
+import { Box, Theme } from "@mui/material";
+import createStyles from '@mui/styles/createStyles';
 import React, {useState, useEffect} from "react";
 import { FunctionComponent } from "react";
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@mui/styles/makeStyles';
 import { LogSpaceUsageScreen } from "./LogSpaceUsageScreen";
 import { ReadReplicationLagScreen } from "./ReadReplicationLagScreen";
 import { SQLService } from '../../../services/SQLService';

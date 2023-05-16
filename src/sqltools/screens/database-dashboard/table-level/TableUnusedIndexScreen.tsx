@@ -8,8 +8,8 @@ import {
   Tooltip,
   IconButton,
   Box,
-} from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+} from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Fetcher } from "../../../../common/components/Fetcher";
 import { SQLService } from "../../../services/SQLService";
 import {
@@ -19,9 +19,9 @@ import {
   IMetricMetadata,
 } from "../../../models";
 import { CopyToClipboard } from "../../../components/CopyToClipboard";
-import CodeIcon from "@material-ui/icons/Code";
+import CodeIcon from "@mui/icons-material/Code";
 import { ShowQueryScreen } from "../ShowQueryScreen";
-import ReplayIcon from "@material-ui/icons/Replay";
+import ReplayIcon from "@mui/icons-material/Replay";
 import { DataGrid } from "@material-ui/data-grid";
 import { getTableUnusedIndexColumns } from "./TableUnusedIndexModel";
 import { useStyles } from "../../../components/StyleClass";
@@ -120,8 +120,8 @@ export const TableUnusedIndexScreen: FunctionComponent<
         <Paper style={{ width: "100%" }}>
           <div style={{ float: "right" }}>
             <Tooltip title="Reload">
-              <IconButton onClick={handleReload}>
-                <ReplayIcon fontSize="default" />
+              <IconButton onClick={handleReload} size="large">
+                <ReplayIcon />
               </IconButton>
             </Tooltip>
           </div>
@@ -130,7 +130,7 @@ export const TableUnusedIndexScreen: FunctionComponent<
               <CopyToClipboard text={metadata.underlyingQueries[0]} />
             )}
             <Tooltip title={showQuery ? "Hide the source" : "Show the source"}>
-              <IconButton aria-label="delete" onClick={() => handleShowQuery()}>
+              <IconButton aria-label="delete" onClick={() => handleShowQuery()} size="large">
                 <CodeIcon />
               </IconButton>
             </Tooltip>

@@ -1,4 +1,4 @@
-import { Box, Grid } from "@material-ui/core";
+import { Box, Grid } from "@mui/material";
 import MUIDataTable, { MUIDataTableOptions } from "mui-datatables";
 import React, { FunctionComponent, useState } from "react";
 import { IndexRedundancyMetric } from "../../../models";

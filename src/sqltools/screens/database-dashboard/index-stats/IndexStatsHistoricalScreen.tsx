@@ -1,4 +1,4 @@
-import { Box, Table, TableBody, TableCell, TableRow, Typography } from "@material-ui/core";
+import { Box, Table, TableBody, TableCell, TableRow, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { FunctionComponent } from "react";
 import { HistoricalDataResult, ICustomError, IIndexStatsOutput, IIndexStatsResponse, IIndexStatsResult, IMetricHistoricalDataFilter, IMetricHistoricalDataSchema, NextPageToken } from "../../../models";

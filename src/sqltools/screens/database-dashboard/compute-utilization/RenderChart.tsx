@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
-import { Typography, Box, FormControl, TextField, Button, InputLabel, Select, MenuItem } from "@material-ui/core"
+import { Typography, Box, FormControl, TextField, Button, InputLabel, Select, MenuItem } from "@mui/material"
 import { SQLService } from "../../../services/SQLService";
 import { IMetricHistoricalDataFilter, NextPageToken, HistoricalDataResult, 
     IComputeUtilizationResponse, IComputeUtilizationOutput, IComputeUtilizationResult } from "../../../models";
@@ -8,7 +8,7 @@ import {getLayoutWidth} from "../../../../common/utils";
 import { AlignedData } from 'uplot';
 import { SqlUPlot } from './plugin/SqlUPlot';
 import { QueryStoreScreen } from "./query-store/aggregate-query/QueryStoreScreen";
-import InfoIcon from '@material-ui/icons/Info';
+import InfoIcon from '@mui/icons-material/Info';
 import ProgressView from '../../../../common/components/ProgressView';
 
 export type IntervalDays = Interval.OneDay | Interval.SevenDays;

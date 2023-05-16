@@ -1,7 +1,7 @@
 import React from 'react';
 import {RouteComponentProps, withRouter} from "react-router";
-import {Box, Breadcrumbs, Link, Paper, Typography} from "@material-ui/core";
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import {Box, Breadcrumbs, Link, Paper, Typography} from "@mui/material";
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 declare global {
     interface Window {

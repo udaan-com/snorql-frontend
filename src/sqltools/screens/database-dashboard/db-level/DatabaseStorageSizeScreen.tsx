@@ -12,9 +12,9 @@ import {
   Table,
   TableBody,
   Box,
-} from "@material-ui/core";
+} from "@mui/material";
 
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Fetcher } from "../../../../common/components/Fetcher";
 import { SQLService } from "../../../services/SQLService";
 import {
@@ -24,14 +24,14 @@ import {
   IMetricMetadata,
 } from "../../../models";
 import { CopyToClipboard } from "../../../components/CopyToClipboard";
-import CodeIcon from "@material-ui/icons/Code";
+import CodeIcon from "@mui/icons-material/Code";
 import { ShowQueryScreen } from "../ShowQueryScreen";
-import ReplayIcon from "@material-ui/icons/Replay";
-import AddAlertIcon from "@material-ui/icons/AddAlert";
+import ReplayIcon from "@mui/icons-material/Replay";
+import AddAlertIcon from "@mui/icons-material/AddAlert";
 import { useStyles } from "../../../components/StyleClass";
 import Chart from "react-google-charts";
 import { MetricHeader } from "../../../components/MetricHeader";
-import SettingsIcon from "@material-ui/icons/Settings";
+import SettingsIcon from "@mui/icons-material/Settings";
 import { SingleTriggerDialog } from "../../../components/SingleTriggerDialog";
 import { SqlAlertDialog } from "../../../components/SqlAlertDialog";
 import {
@@ -123,11 +123,9 @@ export const DatabaseStorageSizeScreen: FunctionComponent<
   return (
     <Accordion expanded={expanded}>
       <AccordionSummary
-        expandIcon={<ExpandMoreIcon />}
-        IconButtonProps={{
-          onClick: handleChange,
-        }}
-      >
+  expandIcon={<ExpandMoreIcon />}
+  onClick={handleChange}
+>
         <div className={classes.summaryContent}>
           <MetricHeader title="Database Storage Size" metadata={metadata} />
         </div>
@@ -148,26 +146,26 @@ export const DatabaseStorageSizeScreen: FunctionComponent<
             )}
             {metadata && metadata.supportsAlert && (
               <Tooltip title="Manage Alerts">
-                <IconButton onClick={() => showAlertDialog()}>
-                  <AddAlertIcon fontSize="default" />
+                <IconButton onClick={() => showAlertDialog()} size="large">
+                  <AddAlertIcon />
                 </IconButton>
               </Tooltip>
             )}
             {metadata && metadata.supportsHistorical && (
               <Tooltip title="Configure Data Recording">
-                <IconButton onClick={handleJobConfigureDialogOpen}>
-                  <SettingsIcon fontSize="default" />
+                <IconButton onClick={handleJobConfigureDialogOpen} size="large">
+                  <SettingsIcon />
                 </IconButton>
               </Tooltip>
             )}
             <Tooltip title={showQuery ? "Hide the source" : "Show the source"}>
-              <IconButton aria-label="delete" onClick={() => handleShowQuery()}>
+              <IconButton aria-label="delete" onClick={() => handleShowQuery()} size="large">
                 <CodeIcon />
               </IconButton>
             </Tooltip>
             <Tooltip title="Reload">
-              <IconButton onClick={handleReload}>
-                <ReplayIcon fontSize="default" />
+              <IconButton onClick={handleReload} size="large">
+                <ReplayIcon />
               </IconButton>
             </Tooltip>
           </div>

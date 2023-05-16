@@ -1,12 +1,12 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
-import { Box, FormControl, InputLabel, MenuItem, Paper, Select, TextField } from "@material-ui/core"
+import { Box, FormControl, InputLabel, MenuItem, Paper, Select, TextField } from "@mui/material"
 
 import { TableSizeScreen } from "./TableSizeScreen";
 import { TableUnusedIndexScreen } from "./TableUnusedIndexScreen";
 import { outerLevelUseStyles } from "../../../components/StyleClass";
 import { SQLService } from "../../../services/SQLService";
 import { TableSchemaScreen } from "./TableSchemaScreen";
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import Autocomplete from '@mui/material/Autocomplete';
 
 interface TableLevelProps {
     databaseName: string;

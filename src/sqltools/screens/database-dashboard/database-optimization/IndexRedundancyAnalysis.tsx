@@ -5,15 +5,15 @@ import {
   AccordionDetails,
   AccordionSummary,
   Button,
-  createStyles,
   Grid,
   IconButton,
-  makeStyles,
   Paper,
   Theme,
   Tooltip,
   Typography,
-} from "@material-ui/core";
+} from "@mui/material";
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
 import {
   IMetricMetadata,
   IndexRedundancyMetric,
@@ -21,13 +21,13 @@ import {
 } from "../../../models";
 import { SQLService } from "../../../services/SQLService";
 import { MetricHeader } from "../../../components/MetricHeader";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Fetcher } from "../../../../common/components/Fetcher";
 import MUIDataTable, { MUIDataTableOptions } from "mui-datatables";
-import { Alert, AlertTitle } from "@material-ui/lab";
+import { Alert, AlertTitle } from '@mui/material';
 import { CopyToClipboard } from "../../../components/CopyToClipboard";
 import { ShowQueryScreen } from "../ShowQueryScreen";
-import CodeIcon from "@material-ui/icons/Code";
+import CodeIcon from "@mui/icons-material/Code";
 import {
   showQueryEvent,
   viewSolutionQueryEvent,
@@ -364,18 +364,16 @@ DROP INDEX ${indexInfo.indexName} ON ${indexInfo.tableName};`;
 
   return (
     <Accordion expanded={expanded}>
-      <AccordionSummary
-        expandIcon={<ExpandMoreIcon />}
-        IconButtonProps={{
-          onClick: handleChange,
-        }}
-      >
+     <AccordionSummary
+  expandIcon={<ExpandMoreIcon />}
+  onClick={handleChange}
+>
         <div className={classes.summaryContent}>
           <MetricHeader title="Index Redundancy" metadata={metadata} />
         </div>
         {metadata && <div style={{ float: "right" }}>
           <Tooltip title={showQuery ? "Hide the source" : "Show the source"}>
-            <IconButton aria-label="delete" onClick={() => handleOnShowQuery()}>
+            <IconButton aria-label="delete" onClick={() => handleOnShowQuery()} size="large">
               <CodeIcon />
             </IconButton>
           </Tooltip>
@@ -442,10 +440,8 @@ DROP INDEX ${indexInfo.indexName} ON ${indexInfo.tableName};`;
                   <Accordion expanded={solQueryExpanded}>
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
-                      IconButtonProps={{
-                        onClick: handleActionQueryChange,
-                      }}
-                    >
+                        onClick ={handleActionQueryChange}
+                    > 
                       <div className={classes.summaryContent}>
                         <MetricHeader title="Solution Query" />
                       </div>

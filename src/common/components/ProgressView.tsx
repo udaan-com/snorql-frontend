@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Box, CircularProgress, Typography} from "@material-ui/core";
+import {Box, CircularProgress, Typography} from "@mui/material";
 
 export default class ProgressView extends React.Component {
     render() {

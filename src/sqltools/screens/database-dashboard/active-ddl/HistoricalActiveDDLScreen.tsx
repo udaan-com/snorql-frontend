@@ -1,4 +1,4 @@
-import { Box } from "@material-ui/core";
+import { Box } from "@mui/material";
 import MUIDataTable, { MUIDataTableOptions } from "mui-datatables";
 import React, { useEffect } from "react";
 import { FunctionComponent, useState } from "react";

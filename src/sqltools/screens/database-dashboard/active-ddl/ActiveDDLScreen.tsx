@@ -8,7 +8,7 @@ import {
   FormGroup,
   FormControlLabel,
   Switch,
-} from "@material-ui/core";
+} from "@mui/material";
 import { Fetcher } from "../../../../common/components/Fetcher";
 import MUIDataTable, { MUIDataTableOptions } from "mui-datatables";
 
@@ -19,14 +19,14 @@ import {
   IMetricMetadata,
 } from "../../../models";
 import { SQLService } from "../../../services/SQLService";
-import CodeIcon from "@material-ui/icons/Code";
+import CodeIcon from "@mui/icons-material/Code";
 import { ShowQueryScreen } from "../ShowQueryScreen";
 import { CopyToClipboard } from "../../../components/CopyToClipboard";
-import ReplayIcon from "@material-ui/icons/Replay";
+import ReplayIcon from "@mui/icons-material/Replay";
 import { getColumns } from "./ActiveDDLColumn";
 import { outerLevelUseStyles } from "../../../components/StyleClass";
 import { MetricHeader } from "../../../components/MetricHeader";
-import SettingsIcon from "@material-ui/icons/Settings";
+import SettingsIcon from "@mui/icons-material/Settings";
 import { SingleTriggerDialog } from "../../../components/SingleTriggerDialog";
 import { HistoricalActiveDDLScreen } from "./HistoricalActiveDDLScreen";
 import {
@@ -163,10 +163,7 @@ export const ActiveDDLScreen: FunctionComponent<ActiveDDLProps> = (props) => {
               <CopyToClipboard text={metadata.underlyingQueries[0]} />
             )}
             <Tooltip title={showQuery ? "Hide the source" : "Show the source"}>
-              <IconButton
-                aria-label="delete"
-                onClick={() => handleOnShowQuery()}
-              >
+              <IconButton aria-label="delete" onClick={() => handleOnShowQuery()} size="large">
                 <CodeIcon />
               </IconButton>
             </Tooltip>
@@ -185,15 +182,15 @@ export const ActiveDDLScreen: FunctionComponent<ActiveDDLProps> = (props) => {
           )}
           {metadata && metadata.supportsHistorical && (
             <Tooltip title="Configure Data Recording">
-              <IconButton onClick={handleJobConfigureDialogOpen}>
-                <SettingsIcon fontSize="default" />
+              <IconButton onClick={handleJobConfigureDialogOpen} size="large">
+                <SettingsIcon />
               </IconButton>
             </Tooltip>
           )}
           {!historicalScreenFlag && (
             <Tooltip title="Reload">
-              <IconButton onClick={handleReload}>
-                <ReplayIcon fontSize="default" />
+              <IconButton onClick={handleReload} size="large">
+                <ReplayIcon />
               </IconButton>
             </Tooltip>
           )}

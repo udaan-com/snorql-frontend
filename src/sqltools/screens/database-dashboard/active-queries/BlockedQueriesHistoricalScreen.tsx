@@ -1,13 +1,28 @@
-import { Dialog, DialogContent, DialogTitle, IconButton, LinearProgress, makeStyles, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Tooltip, Typography } from "@material-ui/core";
-import { Fullscreen, SubdirectoryArrowRight } from "@material-ui/icons";
+import {
+    Dialog,
+    DialogContent,
+    DialogTitle,
+    IconButton,
+    LinearProgress,
+    Paper,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableRow,
+    Tooltip,
+    Typography,
+} from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
+import { Fullscreen, SubdirectoryArrowRight } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
 import { FunctionComponent } from "react";
 import { FBox } from "../../../../common/components/FBox";
 import { Fetcher } from "../../../../common/components/Fetcher";
 import { HistoricalDataResult, IBlockingTree, IBlockingTreeMetricOutput, IBlockingTreeMetricResult, ICustomError, IMetricHistoricalDataFilter, IMetricHistoricalDataSchema, NextPageToken } from "../../../models";
 import { ErrorMessageCard } from "../../../components/ErrorMessageCard";
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { HistoricalDataFilters } from "../../../components/HistoricalDataFilters";
 import { NoDataExists } from "../../../components/NoDataExists";
 import { StatementDialog } from "../../../components/StatementDialog";
@@ -258,11 +273,14 @@ const StackView: React.FunctionComponent<StackViewProps> = ({nodeData, isExpande
                             <Typography color={"primary"} style={{marginLeft: 8}}>{numChildren > 0 ? `+${numChildren}` : 0}</Typography>
                         </Tooltip>
                     </FBox>
-                    <IconButton onClick={() => setDetails(true)} style={{marginLeft: 4}}>
+                    <IconButton onClick={() => setDetails(true)} style={{marginLeft: 4}} size="large">
                         <Fullscreen />
                     </IconButton>
                     {hasChildren && 
-                        <IconButton style={{marginLeft: 4}} onClick={() => onChangeExpanded(!isExpanded)}>
+                        <IconButton
+                            style={{marginLeft: 4}}
+                            onClick={() => onChangeExpanded(!isExpanded)}
+                            size="large">
                             {isExpanded ? <ExpandLessIcon/> : <ExpandMoreIcon/>}
                         </IconButton>}
                     
