@@ -22,7 +22,7 @@ import { CopyToClipboard } from "../../../components/CopyToClipboard";
 import CodeIcon from "@mui/icons-material/Code";
 import { ShowQueryScreen } from "../ShowQueryScreen";
 import ReplayIcon from "@mui/icons-material/Replay";
-import { DataGrid } from "@material-ui/data-grid";
+import { DataGrid} from '@mui/x-data-grid';
 import { getTableUnusedIndexColumns } from "./TableUnusedIndexModel";
 import { useStyles } from "../../../components/StyleClass";
 import { MetricHeader } from "../../../components/MetricHeader";

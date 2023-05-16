@@ -4,7 +4,7 @@ import { Box, Typography, Paper, Button, Tooltip, IconButton, Theme, Modal } fro
 import createStyles from '@mui/styles/createStyles';
 
 import { Fetcher } from "../../../common/components/Fetcher";
-import { DataGrid } from '@material-ui/data-grid';
+import { DataGrid} from '@mui/x-data-grid';
 import { Database, GroupMembers, GroupMembersResponse, ICustomError, IUserRoleMetricResponse, SQLAdminResponse, UserRole } from "../../models";
 import { SQLService } from "../../services/SQLService";
 import { useHistory } from "react-router-dom";
@@ -207,7 +207,7 @@ export const UserRoleScreen: FunctionComponent<UserScreenProps> = (props) => {
                                     autoPageSize={true}
                                     rows={userRoles}
                                     columns={columns}
-                                    showCellRightBorder
+                                    // showCellRightBorder
                                 />
                             </div>
                         </Box>
