@@ -1293,11 +1293,6 @@ export enum ALERT_SEVERITY {
     CRITICAL = "CRITICAL", ERROR="ERROR", INFORMATIONAL="INFORMATIONAL", WARNING="WARNING",VERBOSE="VERBOSE" 
 }
 
-export interface IndexPhysicalStats {
-    modeId: INDEX_PHYSICAL_STATS_MODES,
-    modeName: string
-}
-
 export interface IMetricAlert {
     databaseName: string,
     alertType: string,

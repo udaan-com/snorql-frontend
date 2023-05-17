@@ -358,6 +358,7 @@ export const AllQueriesScreen: FunctionComponent<AllQueriesProps> = (props) => {
     <Accordion expanded={expanded}>
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
+        onClick={handleChange}
       >
         <div className={classes.summaryContent}>
           <MetricHeader title="All Queries" metadata={metadata} />

@@ -38,7 +38,6 @@ export const getTierAndCapacity = (
       return { capacity, tier };
     }
   } else if (databaseType == DatabaseType.POSTGRES) {
-    console.log(`Postgres Info: Capacity-${capacity} Tier-${tier}`);
     return {capacity: `${capacity} vCores`, tier: `${tier}:${skuName}`}
   } else {
     return {capacity, tier}
