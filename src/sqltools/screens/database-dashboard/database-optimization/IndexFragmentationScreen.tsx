@@ -53,9 +53,7 @@ interface IndexFragmentationScreen {
   databaseName: string;
 }
 
-export const IndexFragmentationScreen: FunctionComponent<
-  IndexFragmentationScreen
-> = (props) => {
+export const IndexFragmentationScreen: FunctionComponent<IndexFragmentationScreen> = (props) => {
   const useStyles = makeStyles((theme: Theme) =>
     createStyles({
       toolbar: theme.mixins.toolbar,
@@ -237,6 +235,9 @@ export const IndexFragmentationScreen: FunctionComponent<
                 getOptionLabel={(option: IndexPhysicalStats) => option.modeName}
                 style={{ width: 300 }}
                 value={indexStatModeObject}
+                isOptionEqualToValue={(option, value) =>
+                    option.modeName === value.modeName
+                }
                 renderInput={(params) => (
                   <TextField
                     required
@@ -311,7 +312,7 @@ export const IndexFragmentationScreen: FunctionComponent<
                 <Accordion expanded={idxFragQueryExpanded}>
                   <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
-                    onClick={handleChange}
+                    onClick={handleActionQueryChange}
                   >
                     <div className={classes.summaryContent}>
                       <MetricHeader title="Solution Query" />
