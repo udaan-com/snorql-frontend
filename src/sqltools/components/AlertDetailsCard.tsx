@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import { TextField, Button, makeStyles, Card, CardContent, Checkbox } from '@material-ui/core';
+import { TextField, Button, Card, CardContent, Checkbox } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import { GetSQLAlert, UpdatePayloadSQLAlert } from '../models';
 import {MiscService} from "../services/MiscService";
 interface Props {

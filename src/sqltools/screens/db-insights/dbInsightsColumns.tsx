@@ -1,12 +1,12 @@
 import React from "react";
-import { Checkbox, FormGroup, FormLabel, InputLabel, ListItemText, MenuItem, Tooltip } from '@material-ui/core';
-import { TextField } from '@material-ui/core';
+import { Checkbox, FormGroup, FormLabel, InputLabel, ListItemText, MenuItem, Tooltip } from '@mui/material';
+import { TextField } from '@mui/material';
 import { MUIDataTableColumnDef, MUIDataTableColumnOptions } from "mui-datatables";
 import SQLElasticPoolLogo from './assets/SQL-Elastic-Pools.png'
 import ServerlessDatabaseLogo from './assets/serverless-database.png'
-import { FormControl } from '@material-ui/core';
-import { Select } from '@material-ui/core';
-import { Chip } from '@material-ui/core';
+import { FormControl } from '@mui/material';
+import { Select } from '@mui/material';
+import { Chip } from '@mui/material';
 
 const getLogoByKind = (kind: string) => {
   if(kind.includes("pool")) {

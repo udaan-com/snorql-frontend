@@ -1,8 +1,8 @@
-import { CircularProgress, FormControl, FormHelperText, InputAdornment, MenuItem, Select, TextField } from "@material-ui/core"
+import { CircularProgress, FormControl, FormHelperText, InputAdornment, MenuItem, Select, TextField } from "@mui/material"
 import React, { useState } from "react"
 import { FunctionComponent } from "react"
 import { IMetricHistoricalDataSchema } from "../models"
-
+import { SelectChangeEvent } from "@mui/material"
 interface Props {
     handleSelectChange: (selectedValue: string) => void;
     handleFromDateChange: (e: string) => void;
@@ -51,9 +51,9 @@ export const HistoricalDataFilters: FunctionComponent<Props> = (props: Props) =>
         }
     }
 
-    const handleSelectOnChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-        handleSelectChange(event.target.value as string)
-    }
+    const handleSelectOnChange = (event: SelectChangeEvent<string>) => {
+        handleSelectChange(event.target.value);
+      }
 
     const toPrettyDateString = (timestamp: Date): string => {
         return timestamp.toLocaleString()

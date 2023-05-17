@@ -1,51 +1,51 @@
 import React, { FunctionComponent, useState, useEffect } from "react";
-import { Paper, Accordion, AccordionSummary, AccordionDetails,  Tooltip, IconButton, Box, FormControl, FormGroup, FormControlLabel, Switch } from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { Paper, Accordion, AccordionSummary, AccordionDetails, Tooltip, IconButton, Box, FormControl, FormGroup, FormControlLabel, Switch } from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { SQLService } from "../../../services/SQLService";
 import { ICustomError, IMetricMetadata, IReadReplicationLag, IReadReplicationLagRecommendation, IReadReplicationLagResponse } from "../../../models";
 import { CopyToClipboard } from "../../../components/CopyToClipboard";
-import CodeIcon from "@material-ui/icons/Code";
+import CodeIcon from "@mui/icons-material/Code";
 import { ShowQueryScreen } from "../ShowQueryScreen";
-import AddAlertIcon from "@material-ui/icons/AddAlert";
+import AddAlertIcon from "@mui/icons-material/AddAlert";
 import { MetricHeader } from "../../../components/MetricHeader";
 import { SqlAlertDialog } from "../../../components/SqlAlertDialog";
 import { showQueryEvent, expandMetricEvent, configureDataRecordingViewEvent } from "../../../tracking/TrackEventMethods";
 import { useAdminEmail } from "../../../../hooks";
 import { MenuText, MenuTitle } from "../DatabaseDashboardScreen";
-import { Alert, AlertTitle } from "@material-ui/lab";
+import { Alert, AlertTitle } from '@mui/material';
 import ProgressView from '../../../../common/components/ProgressView';
-import { makeStyles } from '@material-ui/core/styles';
-import SettingsIcon from '@material-ui/icons/Settings';
+import makeStyles from '@mui/styles/makeStyles';
+import SettingsIcon from '@mui/icons-material/Settings';
 import { SingleTriggerDialog } from "../../../components/SingleTriggerDialog";
 import { HistoricalReadReplicaLag } from './HistoricalReadReplicaLagScreen';
 
 interface ReadReplicationLagScreenProps {
-  databaseName: string;
-  readReplicaDbName?: string
+    databaseName: string;
+    readReplicaDbName?: string
 }
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      '& > *': {
-        margin: theme.spacing(1),
-        width: theme.spacing(21),
-        height: theme.spacing(13),
-      },
+        display: 'flex',
+        flexWrap: 'wrap',
+        '& > *': {
+            margin: theme.spacing(1),
+            width: theme.spacing(21),
+            height: theme.spacing(13),
+        },
     },
     box: {
-      textAlign:'center',
-      border:'none',
-      padding: '15% 0',
-      borderBottomStyle:'solid',
-      borderBottomWidth:'10px'
+        textAlign: 'center',
+        border: 'none',
+        padding: '15% 0',
+        borderBottomStyle: 'solid',
+        borderBottomWidth: '10px'
     },
     boxGreenColor: {
-      borderBottomColor:'green',
+        borderBottomColor: 'green',
     },
     boxRedColor: {
-      borderBottomColor:'red',
+        borderBottomColor: 'red',
     },
     summaryContent: {
         justifyContent: "space-between",
@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         marginBottom: "-10px"
     },
-  }));
+}));
 
 export const ReadReplicationLagScreen: FunctionComponent<ReadReplicationLagScreenProps> = (props) => {
     const classes = useStyles();
@@ -72,7 +72,7 @@ export const ReadReplicationLagScreen: FunctionComponent<ReadReplicationLagScree
 
     const fetchData = async () => {
         try {
-            if(props.readReplicaDbName){
+            if (props.readReplicaDbName) {
                 const response: IReadReplicationLagResponse | ICustomError = await SQLService.getReadReplicationLag(props.databaseName, props.readReplicaDbName)
                 if ("code" in response && "message" in response && "details" in response) {
                     setErrorMessage(`${response.message}: ${response.details}`);
@@ -100,22 +100,22 @@ export const ReadReplicationLagScreen: FunctionComponent<ReadReplicationLagScree
     useEffect(() => {
         (async () => {
             fetchData()
-          })();
-          return () => {}; 
+        })();
+        return () => { };
     }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         if (autoRefreshEnabled) {
             const intervalId = setInterval(() => {
                 fetchData()
-            }, 1000 * 10) 
+            }, 1000 * 10)
             return () => clearInterval(intervalId)
         }
     }, [autoRefreshEnabled])
 
     const closeAlertDialog = () => setAlertDialogOpen(false);
     const basicPropsForMixPanel = { dbName: props.databaseName, userEmail: email, metricTitle: MenuTitle.PERFORMANCE, metricText: `${MenuText.DATABASE_MONITORING}_READ_REPLICATION_LAG` };
-    
+
     const handleChange = () => {
         setExpanded((prev) => !prev);
         metadata && expandMetricEvent(basicPropsForMixPanel);
@@ -123,10 +123,10 @@ export const ReadReplicationLagScreen: FunctionComponent<ReadReplicationLagScree
     const handleShowQuery = () => {
         setShowQuery(!showQuery);
         metadata &&
-        showQueryEvent({
-            ...basicPropsForMixPanel,
-            query: metadata.underlyingQueries[0],
-        });
+            showQueryEvent({
+                ...basicPropsForMixPanel,
+                query: metadata.underlyingQueries[0],
+            });
     };
     const showAlertDialog = () => {
         setAlertDialogOpen(true);
@@ -134,12 +134,12 @@ export const ReadReplicationLagScreen: FunctionComponent<ReadReplicationLagScree
     const handleAutoRefreshViewToggle = () => {
         setAutoRefresh(!autoRefreshEnabled)
     }
-    const getLagValue = (replicationLagInMillis: number): {value:number, type: string} => {
-        if(replicationLagInMillis < 1000) return { value: replicationLagInMillis , type: 'milliseconds'}
-            else if(replicationLagInMillis/1000 < 60) return { value: replicationLagInMillis/1000, type: 'seconds'}
-            else {
-                return { value: replicationLagInMillis/(60*1000), type: 'minutes' }
-            }
+    const getLagValue = (replicationLagInMillis: number): { value: number, type: string } => {
+        if (replicationLagInMillis < 1000) return { value: replicationLagInMillis, type: 'milliseconds' }
+        else if (replicationLagInMillis / 1000 < 60) return { value: replicationLagInMillis / 1000, type: 'seconds' }
+        else {
+            return { value: replicationLagInMillis / (60 * 1000), type: 'minutes' }
+        }
     }
     const handleJobConfigureDialogOpen = () => {
         setJobConfigureDialogOpen(true);
@@ -147,32 +147,35 @@ export const ReadReplicationLagScreen: FunctionComponent<ReadReplicationLagScree
     };
     return (
         <Accordion expanded={expanded}>
-            <AccordionSummary expandIcon={<ExpandMoreIcon />} IconButtonProps={{ onClick: handleChange }}>
+            <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                onClick={handleChange}
+            >
                 <div className={classes.summaryContent}><MetricHeader title="Read Replica Lag" metadata={metadata} /></div>
                 <div style={{ float: "right" }}>
                     <FormControl component="fieldset">
                         <FormGroup aria-label="auto-refresh" row>
                             <FormControlLabel
-                            onChange={handleAutoRefreshViewToggle} // toggle historical
-                            control={<Switch color="secondary" />}
-                            label="Auto Refresh"
-                            labelPlacement="bottom"
+                                onChange={handleAutoRefreshViewToggle} // toggle historical
+                                control={<Switch color="secondary" />}
+                                label="Auto Refresh"
+                                labelPlacement="bottom"
                             />
                         </FormGroup>
                     </FormControl>
                     {metadata && metadata.supportsAlert && (
                         <Tooltip title="Manage Alerts">
-                            <IconButton onClick={() => showAlertDialog()}>
-                            <AddAlertIcon fontSize="default" />
+                            <IconButton onClick={() => showAlertDialog()} size="large">
+                                <AddAlertIcon />
                             </IconButton>
                         </Tooltip>
                     )}
                     {metadata && metadata.supportsHistorical && (
-                    <Tooltip title="Configure Data Recording">
-                        <IconButton onClick={handleJobConfigureDialogOpen}>
-                        <SettingsIcon fontSize="default" />
-                        </IconButton>
-                    </Tooltip>
+                        <Tooltip title="Configure Data Recording">
+                            <IconButton onClick={handleJobConfigureDialogOpen} size="large">
+                                <SettingsIcon />
+                            </IconButton>
+                        </Tooltip>
                     )}
                 </div>
             </AccordionSummary>
@@ -191,34 +194,34 @@ export const ReadReplicationLagScreen: FunctionComponent<ReadReplicationLagScree
                             <FormControl component="fieldset">
                                 <FormGroup aria-label="historicalEnabled" row>
                                     <FormControlLabel
-                                    onChange={() => setHistoricalScreenFlag(!historicalScreenFlag)}
-                                    control={<Switch color="primary" />}
-                                    label="View Historical Data"
-                                    labelPlacement="bottom"
+                                        onChange={() => setHistoricalScreenFlag(!historicalScreenFlag)}
+                                        control={<Switch color="primary" />}
+                                        label="View Historical Data"
+                                        labelPlacement="bottom"
                                     />
                                 </FormGroup>
-                            </FormControl> 
+                            </FormControl>
                         }
                         {showQuery && metadata && metadata.underlyingQueries && <CopyToClipboard text={metadata.underlyingQueries[0]} />}
                         {!historicalScreenFlag && <Tooltip title={showQuery ? "Hide the source" : "Show the source"}>
-                            <IconButton aria-label="delete" onClick={() => handleShowQuery()}> <CodeIcon /> </IconButton>
+                            <IconButton aria-label="delete" onClick={() => handleShowQuery()} size="large"> <CodeIcon /> </IconButton>
                         </Tooltip>}
                     </div>
-                    {!loading && errorMessage && ( <div style={{ marginLeft: "5px", padding: "10px", color: "red", fontFamily: "monospace" }}>
+                    {!loading && errorMessage && (<div style={{ marginLeft: "5px", padding: "10px", color: "red", fontFamily: "monospace" }}>
                         <details open>
                             <summary>Error</summary>
                             <p>{errorMessage}</p>
                         </details>
-                    </div> )}
+                    </div>)}
 
                     {showQuery && metadata && metadata.underlyingQueries && <ShowQueryScreen query={metadata.underlyingQueries[0]} />}
-                    {(!historicalScreenFlag && !loading && !showQuery && !errorMessage && readReplicationLag!=undefined && readReplicationLag!=null) ? (
+                    {(!historicalScreenFlag && !loading && !showQuery && !errorMessage && readReplicationLag != undefined && readReplicationLag != null) ? (
                         <Box paddingTop={8} paddingRight={8} paddingBottom={4} paddingLeft={4}>
                             <div className={classes.root}>
-                                <Paper elevation={3}> 
-                                    <Box 
-                                        className={`${classes.box} ${recommendation && recommendation.isActionRequired ? classes.boxRedColor: classes.boxGreenColor}`}>
-                                        <span style={{fontSize:'40px'}}>{getLagValue(readReplicationLag.replicationLagInMillis).value}</span>
+                                <Paper elevation={3}>
+                                    <Box
+                                        className={`${classes.box} ${recommendation && recommendation.isActionRequired ? classes.boxRedColor : classes.boxGreenColor}`}>
+                                        <span style={{ fontSize: '40px' }}>{getLagValue(readReplicationLag.replicationLagInMillis).value}</span>
                                         <span>{getLagValue(readReplicationLag.replicationLagInMillis).type}</span>
                                     </Box>
                                 </Paper>
@@ -228,7 +231,7 @@ export const ReadReplicationLagScreen: FunctionComponent<ReadReplicationLagScree
                         <div>
                             {!historicalScreenFlag && !showQuery && !errorMessage && <>
                                 <span>Fetching Data ....</span>
-                                <ProgressView/>
+                                <ProgressView />
                             </>}
                         </div>
                     )}
@@ -238,17 +241,17 @@ export const ReadReplicationLagScreen: FunctionComponent<ReadReplicationLagScree
                             {recommendation.text}
                         </Alert>)
                     }
-                    {historicalScreenFlag && <HistoricalReadReplicaLag databaseName={props.databaseName}/> }
-            </Paper>
-        </AccordionDetails>
-        <SingleTriggerDialog
-            open={jobConfigureDialogOpen}
-            handleClose={() => setJobConfigureDialogOpen(false)}
-            databaseName={props.databaseName}
-            metricId={"performance_readReplicationLag"}
-            metricName={"Read Replica Lag"}
-            minimumRepeatInterval={metadata?.minimumRepeatInterval}
-        />
+                    {historicalScreenFlag && <HistoricalReadReplicaLag databaseName={props.databaseName} />}
+                </Paper>
+            </AccordionDetails>
+            <SingleTriggerDialog
+                open={jobConfigureDialogOpen}
+                handleClose={() => setJobConfigureDialogOpen(false)}
+                databaseName={props.databaseName}
+                metricId={"performance_readReplicationLag"}
+                metricName={"Read Replica Lag"}
+                minimumRepeatInterval={metadata?.minimumRepeatInterval}
+            />
         </Accordion>
     );
 };

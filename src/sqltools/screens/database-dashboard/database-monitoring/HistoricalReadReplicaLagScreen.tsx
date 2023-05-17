@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState, useEffect } from "react";
-import { Box, Typography } from "@material-ui/core"
+import { Box, Typography } from "@mui/material"
 import { HistoricalDataResult, IReadReplicationLag,IMetricHistoricalDataFilter, NextPageToken, IReadReplicationLagOutput, IReadReplicationLagResult } from "../../../models";
 import { AlignedData } from 'uplot';
 import { SQLService } from '../../../services/SQLService';

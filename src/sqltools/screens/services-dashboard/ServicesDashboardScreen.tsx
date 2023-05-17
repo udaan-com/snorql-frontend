@@ -3,8 +3,8 @@ import React, { FunctionComponent } from "react";
 import { Route, Switch, RouteComponentProps } from "react-router-dom";
 import SideDrawer from "../../components/SideDrawer";
 import { Menus } from "../../models";
-import SettingsIcon from '@material-ui/icons/Settings';
-import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
+import SettingsIcon from '@mui/icons-material/Settings';
+import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
 import { RelatimeSlowQueryScreen } from '../common-screens/RealtimeSlowQueryScreen';
 import { useParams } from "react-router";
 import { SlowQueryAlertScreen } from '../common-screens/SlowQueryAlertScreen';
@@ -12,8 +12,8 @@ import { SlowQueryAlertScreen } from '../common-screens/SlowQueryAlertScreen';
 /* Example imports for nested routes
 import { UserScreen } from '../database-dashboard/UserScreen';
 import { ExampleScreen } from '../database-dashboard/ExampleScreen';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
 **/
 
 export const ServicesDashboardScreen: FunctionComponent<RouteComponentProps> = (props) => {

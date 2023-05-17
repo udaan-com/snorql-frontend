@@ -1,7 +1,7 @@
 import React from 'react';
-import { Typography } from '@material-ui/core';
-import { Box } from '@material-ui/core';
-import { Button } from '@material-ui/core';
+import { Typography } from '@mui/material';
+import { Box } from '@mui/material';
+import { Button } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 
 interface Props {

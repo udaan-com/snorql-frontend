@@ -1,9 +1,9 @@
 import React , { FunctionComponent, useState } from "react";
-import { makeStyles } from '@material-ui/core/styles';
-import { TextField, Button, InputAdornment, CircularProgress } from '@material-ui/core';
+import makeStyles from '@mui/styles/makeStyles';
+import { TextField, Button, InputAdornment, CircularProgress } from '@mui/material';
 import { IMetricTrigger, Database } from "../models";
 import { ErrorMessageCard } from "./ErrorMessageCard";
-import DeleteIcon from '@material-ui/icons/Delete';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { SQLService } from "../services/SQLService";
 import {TriggersService} from "../services/TriggersService";
 

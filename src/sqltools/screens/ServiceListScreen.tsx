@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useState, useEffect } from "react";
-import { Box, MenuItem, TextField, Typography } from "@material-ui/core";
+import { Box, MenuItem, TextField, Typography } from "@mui/material";
 import { Fetcher } from "../../common/components/Fetcher";
 import { useHistory } from "react-router";
-import { Table, TableBody, TableCell, TableRow, TableContainer, TableHead } from "@material-ui/core";
-import Chip from '@material-ui/core/Chip';
+import { Table, TableBody, TableCell, TableRow, TableContainer, TableHead } from "@mui/material";
+import Chip from '@mui/material/Chip';
 import { FilterList } from "../components/FilterList";
 import { GetSQLAlert, IContainer } from "../models";
 import {MiscService} from "../services/MiscService";

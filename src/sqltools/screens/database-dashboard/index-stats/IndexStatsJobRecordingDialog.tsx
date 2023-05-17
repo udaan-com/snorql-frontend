@@ -1,7 +1,9 @@
-import { Button, CircularProgress, Dialog, DialogTitle, IconButton, Paper, Snackbar, Tooltip } from "@material-ui/core";
-import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import { Button, CircularProgress, Dialog, DialogTitle, IconButton, Paper, Snackbar, Tooltip } from "@mui/material";
+import { Theme } from "@mui/material/styles";
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
 import React, { FunctionComponent, useEffect } from "react";
-import CloseIcon from '@material-ui/icons/Close';
+import CloseIcon from '@mui/icons-material/Close';
 import { useState } from "react";
 import { useAdminEmail, useAdminName } from "../../../../hooks";
 import { ICustomError, IIndexStatsTrigger } from "../../../models";
@@ -11,7 +13,7 @@ import MUIDataTable, { MUIDataTableColumn, MUIDataTableOptions } from "mui-datat
 import { Fetcher } from "../../../../common/components/Fetcher";
 import { ErrorMessageCard } from "../../../components/ErrorMessageCard";
 import { IndexStatsTriggerForm } from "./IndexStatsTriggerForm";
-import Alert from "@material-ui/lab/Alert";
+import Alert from '@mui/material/Alert';
 import { addDataRecordingsEvent } from "../../../tracking/TrackEventMethods";
 import { MenuTitle } from "../DatabaseDashboardScreen";
 import {TriggersService} from "../../../services/TriggersService";
@@ -179,16 +181,19 @@ export const IndexStatsJobRecordingDialog: React.FunctionComponent<Props> = (pro
                     + Add Recorder
                 </Button>
                 <Tooltip title='Close dialog'>
-                    <IconButton onClick={handleClose} className={classes.closeButton}>
-                        <CloseIcon fontSize="default" />
+                    <IconButton onClick={handleClose} className={classes.closeButton} size="large">
+                        <CloseIcon />
                     </IconButton>
                 </Tooltip>
             </DialogTitle>
             <Dialog open={addDialogOpen} onClose={() => setAddDialogOpen(false)}>
                     <DialogTitle>Add Data Recording Configuration
                         <Tooltip title='Close dialog'>
-                            <IconButton onClick={() => setAddDialogOpen(false)} className={classes.closeButton}>
-                                <CloseIcon fontSize="default" />
+                            <IconButton
+                                onClick={() => setAddDialogOpen(false)}
+                                className={classes.closeButton}
+                                size="large">
+                                <CloseIcon />
                             </IconButton>
                         </Tooltip>
                     </DialogTitle>
@@ -232,7 +237,7 @@ export const IndexStatsJobRecordingDialog: React.FunctionComponent<Props> = (pro
                 </Fetcher>
             </Paper>
         </Dialog>
-    )
+    );
 }
 
 interface IndexStatsTableProps {

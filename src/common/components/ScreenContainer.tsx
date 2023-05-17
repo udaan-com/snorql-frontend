@@ -1,7 +1,7 @@
 import React from 'react';
-import {AppBar, Box, Button, Container, IconButton, Typography} from "@material-ui/core";
+import {AppBar, Box, Button, Container, IconButton, Typography} from "@mui/material";
 import Crumbs, {Crumb} from "./Crumbs";
-import {ArrowBack, Home, SvgIconComponent} from "@material-ui/icons";
+import {ArrowBack, Home, SvgIconComponent} from "@mui/icons-material";
 import {useHistory} from "react-router";
 import {FBox} from "./FBox";
 
@@ -86,11 +86,11 @@ const Btns = ({hideBack}: {hideBack?: boolean}) => {
     return (
         <Box mr={2}>
             {!hideBack && (
-                <IconButton onClick={() => history.goBack()} color={"default"}>
+                <IconButton onClick={() => history.goBack()} color={"default"} size="large">
                     <ArrowBack />
                 </IconButton>
             )}
-            <IconButton onClick={() => history.push("/")} color={"default"}>
+            <IconButton onClick={() => history.push("/")} color={"default"} size="large">
                 <Home />
             </IconButton>
         </Box>

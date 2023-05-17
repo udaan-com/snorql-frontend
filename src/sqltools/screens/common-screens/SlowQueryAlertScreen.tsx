@@ -1,11 +1,13 @@
 import React, { FunctionComponent, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Box, Button, Typography, Paper, TextField, Grid } from "@material-ui/core"
+import { Box, Button, Typography, Paper, TextField, Grid } from "@mui/material"
 import { AlertModalDialog } from '../../components/AlertModalDialog';
 import { AlertDetailsCard } from "../../components/AlertDetailsCard";
 import { alertType, GetSQLAlert } from "../../models";
 import { Fetcher } from "../../../common/components/Fetcher";
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { Theme } from '@mui/material/styles';
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
 import {MiscService} from "../../services/MiscService";
 
 interface SlowQueryAlertScreenProps {

@@ -1,10 +1,11 @@
 import React, { FunctionComponent, useState } from "react";
-import { Box, Typography, Paper, Theme, createStyles } from "@material-ui/core"
+import { Box, Typography, Paper, Theme } from "@mui/material";
+import createStyles from '@mui/styles/createStyles';
 import { Fetcher } from "../../../common/components/Fetcher";
 import { alertType, LongRunningSQLQueries } from "../../models";
 import { useLocation } from "react-router";
-import { Table, TableBody, TableCell, TableRow, TableContainer, TableHead } from "@material-ui/core";
-import { makeStyles } from '@material-ui/core/styles';
+import { Table, TableBody, TableCell, TableRow, TableContainer, TableHead } from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
 import { ClickToExpandDialog } from "../../components/ClickToExpandDialog";
 import {MiscService} from "../../services/MiscService";
 
@@ -53,7 +54,7 @@ export const RelatimeSlowQueryScreen: FunctionComponent<RelatimeSlowQueryScreenP
         }));
 
     const trimNewLines = (text: string): string => {
-        return text.replace(/(\r\n|\n|\r)/gm, "")
+        return text.replace(/(\r\n|\n|\r)/gm, "");
     }
     const classes = useStyles();
 

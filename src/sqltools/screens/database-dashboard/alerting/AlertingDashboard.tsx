@@ -8,18 +8,12 @@ import { ErrorMessageCard } from "../../../components/ErrorMessageCard";
 import { SnackbarComponent } from "../../../components/SnackbarComponent";
 import { SQLService } from "../../../services/SQLService";
 import { getAlertingColumns } from "./allAlertingColumns";
-import {
-  Box,
-  Button,
-  createStyles,
-  IconButton,
-  makeStyles,
-  Theme,
-  Tooltip,
-} from "@material-ui/core";
+import { Box, Button, IconButton, Theme, Tooltip } from "@mui/material";
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
 import { SqlAlertDialog } from "../../../components/SqlAlertDialog";
-import EditIcon from "@material-ui/icons/Edit";
-import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 import {AlertService} from "../../../services/AlertService";
 
 interface AlertingDashboardProps {

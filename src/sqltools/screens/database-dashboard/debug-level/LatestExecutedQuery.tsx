@@ -1,13 +1,13 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
-import { Paper, Accordion, AccordionSummary, AccordionDetails, Typography, Tooltip, IconButton, Box } from "@material-ui/core"
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { Paper, Accordion, AccordionSummary, AccordionDetails, Typography, Tooltip, IconButton, Box } from "@mui/material"
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Fetcher } from '../../../../common/components/Fetcher';
 import { SQLService } from "../../../services/SQLService";
 import { ICustomError, IMetricMetadata, ISessionLatestExecutedQueryResponse } from "../../../models";
 import { CopyToClipboard } from "../../../components/CopyToClipboard";
-import CodeIcon from '@material-ui/icons/Code';
+import CodeIcon from '@mui/icons-material/Code';
 import { ShowQueryScreen } from "../ShowQueryScreen";
-import ReplayIcon from '@material-ui/icons/Replay';
+import ReplayIcon from '@mui/icons-material/Replay';
 import { useStyles } from "../../../components/StyleClass";
 import { MetricHeader } from "../../../components/MetricHeader";
 
@@ -74,8 +74,8 @@ export const LatestExecutedQueryScreen: FunctionComponent<LatestExecutedQueryPro
                 {props.sessionId && <Paper style={{ width: "-webkit-fill-available" }}>
                     <div style={{ float: 'right' }}>
                         <Tooltip title="Reload">
-                            <IconButton onClick={handleReload}>
-                                <ReplayIcon fontSize="default" />
+                            <IconButton onClick={handleReload} size="large">
+                                <ReplayIcon />
                             </IconButton>
                         </Tooltip>
                     </div>
@@ -91,7 +91,7 @@ export const LatestExecutedQueryScreen: FunctionComponent<LatestExecutedQueryPro
                         <div style={{ float: 'right', padding: '10px' }}>
                             {showQuery && metadata && metadata.underlyingQueries && <CopyToClipboard text={metadata.underlyingQueries[0]} />}
                             <Tooltip title={showQuery ? 'Hide the source' : 'Show the source'}>
-                                <IconButton aria-label="delete" onClick={() => setShowQuery(!showQuery)}>
+                                <IconButton aria-label="delete" onClick={() => setShowQuery(!showQuery)} size="large">
                                     <CodeIcon />
                                 </IconButton>
                             </Tooltip>
@@ -113,7 +113,7 @@ export const LatestExecutedQueryScreen: FunctionComponent<LatestExecutedQueryPro
                 </Paper>}
             </AccordionDetails>
         </Accordion>
-    )
+    );
 };
 
 

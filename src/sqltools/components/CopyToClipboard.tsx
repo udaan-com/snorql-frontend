@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import FileCopyIcon from '@material-ui/icons/FileCopy';
-import IconButton from '@material-ui/core/IconButton';
-import { Tooltip } from '@material-ui/core';
+import FileCopyIcon from '@mui/icons-material/FileCopy';
+import IconButton from '@mui/material/IconButton';
+import { Tooltip } from '@mui/material';
 
 interface Props {
     text: string;
@@ -19,14 +19,12 @@ export const CopyToClipboard: React.FunctionComponent<Props> = (props: Props) =>
             setCopySuccess('Failed to copy!');
         }
     };
-    return (
-        <>
-        {copySuccess}
-          <Tooltip title="Copy to clipboard">
-            <IconButton onClick={() => copyToClipBoard(text)}>
-              <FileCopyIcon fontSize="small"/>
-            </IconButton>
-          </Tooltip>
-        </>
-    );
+    return <>
+    {copySuccess}
+      <Tooltip title="Copy to clipboard">
+        <IconButton onClick={() => copyToClipBoard(text)} size="large">
+          <FileCopyIcon fontSize="small"/>
+        </IconButton>
+      </Tooltip>
+    </>;
 };

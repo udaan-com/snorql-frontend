@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import { TextField, Button, makeStyles } from '@material-ui/core';
+import { TextField, Button } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import { SQLService } from '../services/SQLService';
 import { alertType, CreatePayloadSQLAlert } from '../models';
 import {AlertService} from "../services/AlertService";

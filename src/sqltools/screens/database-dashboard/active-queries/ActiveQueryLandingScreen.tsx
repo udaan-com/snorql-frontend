@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from "react";
-import { Box, Theme, createStyles } from "@material-ui/core"
-import { makeStyles } from '@material-ui/core/styles';
+import { Box, Theme } from "@mui/material";
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
 import { AllQueriesScreen } from "./AllQueriesScreen";
 import { LongRunningQueriesScreen } from "./LongRunningQueriesScreen";
 import { BlockingQueriesScreen } from "./BlockingQueriesScreen";

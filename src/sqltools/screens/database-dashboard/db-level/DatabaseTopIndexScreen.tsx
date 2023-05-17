@@ -11,8 +11,8 @@ import {
   FormGroup,
   FormControlLabel,
   Switch,
-} from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+} from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Fetcher } from "../../../../common/components/Fetcher";
 import { SQLService } from "../../../services/SQLService";
 import {
@@ -22,15 +22,15 @@ import {
   IMetricMetadata,
 } from "../../../models";
 import { CopyToClipboard } from "../../../components/CopyToClipboard";
-import CodeIcon from "@material-ui/icons/Code";
+import CodeIcon from "@mui/icons-material/Code";
 import { ShowQueryScreen } from "../ShowQueryScreen";
-import ReplayIcon from "@material-ui/icons/Replay";
+import ReplayIcon from "@mui/icons-material/Replay";
 import MUIDataTable from "mui-datatables";
 import { getTopIndexColumns } from "./DatabaseTopIndexModels";
 import { useStyles } from "../../../components/StyleClass";
 import { tableOptions } from "./DatabaseLevelScreen";
 import { MetricHeader } from "../../../components/MetricHeader";
-import SettingsIcon from "@material-ui/icons/Settings";
+import SettingsIcon from "@mui/icons-material/Settings";
 import { DatabaseHistoricalTopIndex } from "./DatabaseHistoricalTopIndex";
 import { SingleTriggerDialog } from "../../../components/SingleTriggerDialog";
 import {
@@ -41,7 +41,7 @@ import {
 } from "../../../tracking/TrackEventMethods";
 import { useAdminEmail } from "../../../../hooks";
 import { MenuText, MenuTitle } from "../DatabaseDashboardScreen";
-import {Helpers} from "../../../helpers";
+import { Helpers } from "../../../helpers";
 
 interface DatabaseTopIndexProps {
   databaseName: string;
@@ -114,9 +114,7 @@ export const DatabaseTopIndexScreen: FunctionComponent<
     <Accordion expanded={expanded}>
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
-        IconButtonProps={{
-          onClick: handleChange,
-        }}
+        onClick={handleChange}
       >
         <div className={classes.summaryContent}>
           <MetricHeader title="Database Top Indexes" metadata={metadata} />
@@ -135,8 +133,8 @@ export const DatabaseTopIndexScreen: FunctionComponent<
                 </FormGroup>
               </FormControl>
               <Tooltip title="Configure Data Recording">
-                <IconButton onClick={handleJobConfigureDialogOpen}>
-                  <SettingsIcon fontSize="default" />
+                <IconButton onClick={handleJobConfigureDialogOpen} size="large">
+                  <SettingsIcon />
                 </IconButton>
               </Tooltip>
             </div>
@@ -158,16 +156,13 @@ export const DatabaseTopIndexScreen: FunctionComponent<
               <Tooltip
                 title={showQuery ? "Hide the source" : "Show the source"}
               >
-                <IconButton
-                  aria-label="delete"
-                  onClick={() => handleShowQuery()}
-                >
+                <IconButton aria-label="delete" onClick={() => handleShowQuery()} size="large">
                   <CodeIcon />
                 </IconButton>
               </Tooltip>
               <Tooltip title="Reload">
-                <IconButton onClick={handleReload}>
-                  <ReplayIcon fontSize="default" />
+                <IconButton onClick={handleReload} size="large">
+                  <ReplayIcon />
                 </IconButton>
               </Tooltip>
             </div>

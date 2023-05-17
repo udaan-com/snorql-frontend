@@ -1,4 +1,4 @@
-import { Box, Table, TableBody, TableCell, TableRow, Typography } from "@material-ui/core";
+import { Box, Table, TableBody, TableCell, TableRow, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { FunctionComponent } from "react";
 import { HistoricalDataResult, ICustomError, IMetricHistoricalDataFilter, IMetricHistoricalDataSchema, ITableSizeOutput, ITableSizeResult, NextPageToken, TableSizeResponse } from "../../../models";
@@ -138,10 +138,12 @@ export const HistoricalTableSizeScreen: FunctionComponent<LongRunningQueriesProp
                                     <TableBody>
                                         {Object.entries(tableSize[0]).map((x, y) => {
 
-                                            return <TableRow key={y}> 
-                                                <TableCell>{x[0].split(/(?=[A-Z])/).join(' ').toUpperCase()}</TableCell>
-                                                <TableCell>{x[1]}</TableCell>
-                                            </TableRow>
+                                            return (
+                                                <TableRow key={y}> 
+                                                    <TableCell>{x[0].split(/(?=[A-Z])/).join(' ').toUpperCase()}</TableCell>
+                                                    <TableCell>{x[1]}</TableCell>
+                                                </TableRow>
+                                            );
                                         }
                                         )
                                         }
@@ -156,6 +158,6 @@ export const HistoricalTableSizeScreen: FunctionComponent<LongRunningQueriesProp
             </div>
             {tableSize.length === 0 && <NoDataExists text="No Historical Data found"/>}
             </div>
-    )
+    );
 
 }

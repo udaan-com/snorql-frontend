@@ -17,3 +17,21 @@ render(<App />, root);
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+
+// import { ThemeProvider, createMuiTheme, makeStyles } from '@material-ui/core/styles';
+
+// const theme = createMuiTheme();
+
+// const useStyles = makeStyles((theme) => {
+//   root: {
+//     // some CSS that accesses the theme
+//   }
+// });
+
+// function App() {
+//   const classes = useStyles(); // ❌ If you have this, consider moving it
+//   // inside of a component wrapped with <ThemeProvider />
+//   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+// }
+

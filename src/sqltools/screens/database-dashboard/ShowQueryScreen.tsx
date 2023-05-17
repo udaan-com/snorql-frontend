@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from "react";
-import { Box, Typography, Theme, createStyles } from "@material-ui/core"
+import { Box, Typography, Theme } from "@mui/material";
 
-import { makeStyles } from '@material-ui/core/styles';
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
 
 interface ShowQueryScreenProps {
     query: string;

@@ -1,16 +1,18 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
-import { Box, Typography, Paper, Button, Tooltip, IconButton, Theme, createStyles, Modal } from "@material-ui/core"
+import { Box, Typography, Paper, Button, Tooltip, IconButton, Theme, Modal } from "@mui/material";
+
+import createStyles from '@mui/styles/createStyles';
 
 import { Fetcher } from "../../../common/components/Fetcher";
-import { DataGrid } from '@material-ui/data-grid';
+import { DataGrid} from '@mui/x-data-grid';
 import { Database, GroupMembers, GroupMembersResponse, ICustomError, IUserRoleMetricResponse, SQLAdminResponse, UserRole } from "../../models";
 import { SQLService } from "../../services/SQLService";
 import { useHistory } from "react-router-dom";
-import CodeIcon from '@material-ui/icons/Code';
+import CodeIcon from '@mui/icons-material/Code';
 import { ShowQueryScreen } from "./ShowQueryScreen";
 import { CopyToClipboard } from "../../components/CopyToClipboard";
-import ArrowBack from '@material-ui/icons/ArrowBack';
-import { makeStyles } from '@material-ui/core/styles';
+import ArrowBack from '@mui/icons-material/ArrowBack';
+import makeStyles from '@mui/styles/makeStyles';
 import MUIDataTable, { MUIDataTableOptions } from "mui-datatables";
 import { getGroupMembersColumns } from "./UserRoleScreenColumns";
 import { showQueryEvent, userRoleViewServerAdminEvent } from '../../tracking/TrackEventMethods';
@@ -178,7 +180,6 @@ export const UserRoleScreen: FunctionComponent<UserScreenProps> = (props) => {
     const classes = useStyles();
     const modalClasses= useModalStyle();
     return (
-
         <Box className={[classes.content, classes.toolbar].join(' ')} mt={10} alignItems={'center'} justifyContent={'center'} paddingTop={5}>
             <Paper>
                 {isNotOnboarded &&
@@ -191,7 +192,7 @@ export const UserRoleScreen: FunctionComponent<UserScreenProps> = (props) => {
                     <div style={{ float: 'right', padding: '10px' }}>
                         {showQuery && <CopyToClipboard text={underlyingQuery} />}
                         <Tooltip title={showQuery ? 'Hide the source' : 'Show the source'}>
-                            <IconButton onClick={() => handleOnShowQuery()}>
+                            <IconButton onClick={() => handleOnShowQuery()} size="large">
                                 <CodeIcon />
                             </IconButton>
                         </Tooltip>
@@ -206,7 +207,7 @@ export const UserRoleScreen: FunctionComponent<UserScreenProps> = (props) => {
                                     autoPageSize={true}
                                     rows={userRoles}
                                     columns={columns}
-                                    showCellRightBorder
+                                    // showCellRightBorder
                                 />
                             </div>
                         </Box>

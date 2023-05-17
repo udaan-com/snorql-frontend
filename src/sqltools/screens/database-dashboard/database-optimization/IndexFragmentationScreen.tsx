@@ -7,7 +7,6 @@ import {
   IconButton,
   Switch,
   Tooltip,
-  createStyles,
   Theme,
   AccordionDetails,
   Paper,
@@ -17,11 +16,12 @@ import {
   Box,
   CircularProgress,
   Grid,
-} from "@material-ui/core";
+} from "@mui/material";
+import createStyles from '@mui/styles/createStyles';
 import React, { useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import makeStyles from '@mui/styles/makeStyles';
 import { FunctionComponent } from "react";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { MetricHeader } from "../../../components/MetricHeader";
 import {
   ICustomError,
@@ -32,22 +32,22 @@ import {
   IndexPhysicalStats,
   INDEX_PHYSICAL_STATS_MODES,
 } from "../../../models";
-import ReplayIcon from "@material-ui/icons/Replay";
+import ReplayIcon from "@mui/icons-material/Replay";
 import MUIDataTable, { MUIDataTableOptions } from "mui-datatables";
-import Autocomplete from "@material-ui/lab/Autocomplete";
+import Autocomplete from '@mui/material/Autocomplete';
 import { Fetcher } from "../../../../common/components/Fetcher";
 import { SQLService } from "../../../services/SQLService";
 import { CopyToClipboard } from "../../../components/CopyToClipboard";
-import CodeIcon from "@material-ui/icons/Code";
+import CodeIcon from "@mui/icons-material/Code";
 import { ErrorMessageCard } from "../../../components/ErrorMessageCard";
 import { NoDataExists } from "../../../components/NoDataExists";
 import { ShowQueryScreen } from "../ShowQueryScreen";
 import { indexFragmentationColumns } from "./allDatabaseOptimizationColumns";
-import { Alert, AlertTitle } from "@material-ui/lab";
+import { Alert, AlertTitle } from '@mui/material';
 import { expandMetricEvent, showQueryEvent } from "../../../tracking/TrackEventMethods";
 import { useAdminEmail } from "../../../../hooks";
 import { MenuText, MenuTitle } from "../DatabaseDashboardScreen";
-import {Helpers} from "../../../helpers";
+import { Helpers } from "../../../helpers";
 
 interface IndexFragmentationScreen {
   databaseName: string;
@@ -188,13 +188,13 @@ export const IndexFragmentationScreen: FunctionComponent<
     });
   };
 
-  const basicPropsForMixPanel = { dbName: props.databaseName, userEmail: email, metricTitle: MenuTitle.PERFORMANCE, metricText: `${MenuText.DATABASE_OPTIMIZATION}_INDEX_FRAGMENTATION`}
+  const basicPropsForMixPanel = { dbName: props.databaseName, userEmail: email, metricTitle: MenuTitle.PERFORMANCE, metricText: `${MenuText.DATABASE_OPTIMIZATION}_INDEX_FRAGMENTATION` }
   const handleOnShowQuery = () => {
-      setShowQuery(!showQuery);
-      metadata && showQueryEvent({
-          ...basicPropsForMixPanel,
-          query: metadata.underlyingQueries[0]
-      })
+    setShowQuery(!showQuery);
+    metadata && showQueryEvent({
+      ...basicPropsForMixPanel,
+      query: metadata.underlyingQueries[0]
+    })
   }
 
   const options: MUIDataTableOptions = {
@@ -213,16 +213,14 @@ export const IndexFragmentationScreen: FunctionComponent<
     <Accordion expanded={expanded}>
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
-        IconButtonProps={{
-          onClick: handleChange,
-        }}
+        onClick={handleChange}
       >
         <div className={classes.summaryContent}>
           <MetricHeader title="Index Fragmentation" metadata={metadata} />
         </div>
         {metadata && <div style={{ float: "right" }}>
           <Tooltip title={showQuery ? "Hide the source" : "Show the source"}>
-            <IconButton onClick={() => handleOnShowQuery()}>
+            <IconButton onClick={() => handleOnShowQuery()} size="large">
               <CodeIcon />
             </IconButton>
           </Tooltip>
@@ -291,7 +289,7 @@ export const IndexFragmentationScreen: FunctionComponent<
             }}
           >
             {showQuery && metadata && metadata.underlyingQueries && <div style={{ float: "right", padding: "10px" }}>
-                <CopyToClipboard text={metadata.underlyingQueries[0]} />
+              <CopyToClipboard text={metadata.underlyingQueries[0]} />
             </div>}
             {showQuery && metadata && metadata.underlyingQueries && <div
               style={{
@@ -300,7 +298,7 @@ export const IndexFragmentationScreen: FunctionComponent<
                 padding: "10px",
               }}
             >
-                <ShowQueryScreen query={metadata.underlyingQueries[0]} />
+              <ShowQueryScreen query={metadata.underlyingQueries[0]} />
             </div>}
             {!errorMessage && indexActionQuery && (
               <div
@@ -313,9 +311,7 @@ export const IndexFragmentationScreen: FunctionComponent<
                 <Accordion expanded={idxFragQueryExpanded}>
                   <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
-                    IconButtonProps={{
-                      onClick: handleActionQueryChange,
-                    }}
+                    onClick={handleChange}
                   >
                     <div className={classes.summaryContent}>
                       <MetricHeader title="Solution Query" />

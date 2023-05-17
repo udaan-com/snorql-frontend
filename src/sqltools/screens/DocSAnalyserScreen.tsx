@@ -1,7 +1,7 @@
 import React, {FunctionComponent} from "react";
-import {Accordion, AccordionDetails, AccordionSummary, Box, Button, Typography} from "@material-ui/core";
+import {Accordion, AccordionDetails, AccordionSummary, Box, Button, Typography} from "@mui/material";
 import {useHistory} from "react-router-dom";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 export const DocSAnalyserScreen: FunctionComponent = () => {
   const history = useHistory();

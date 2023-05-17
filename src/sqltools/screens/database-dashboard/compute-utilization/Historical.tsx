@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from "react";
-import { Box, FormControl, InputLabel, Select, MenuItem } from "@material-ui/core"
+import { Box, FormControl, InputLabel, Select, MenuItem, SelectChangeEvent } from "@mui/material"
 import { RenderChart } from "./RenderChart";
 import { AggregationType } from "./ComputeUtilizationScreen";
 import { Database } from "../../../models";
@@ -23,7 +23,7 @@ export const Historical: FunctionComponent<HistoricalProps> = (props) => {
                                 labelId="historical-aggregation-type-label"
                                 id="historical-aggregation-type"
                                 value={aggregationType}
-                                onChange={(event: React.ChangeEvent<{ value: unknown }>) => setAggregationType(event.target.value as AggregationType)}
+                                onChange={(event: SelectChangeEvent<"Avg" | "Max">) => setAggregationType(event.target.value as AggregationType)}
                                 label="Aggregation type"
                             >
                                 <MenuItem value={'Avg'}>Avg</MenuItem>

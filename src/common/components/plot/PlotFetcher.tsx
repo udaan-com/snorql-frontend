@@ -1,7 +1,7 @@
 import React from 'react';
 import {Fetcher, FetcherProps} from "../Fetcher";
 import {UPlot, UPlotProps} from "./Plot";
-import {Box, Paper, Typography} from "@material-ui/core";
+import {Box, Paper, Typography} from "@mui/material";
 import {getLayoutWidth} from "../../utils";
 
 interface PlotFetcherProps<R> extends FetcherProps<R>, UPlotProps {

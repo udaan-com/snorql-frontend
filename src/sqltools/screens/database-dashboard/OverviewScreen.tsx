@@ -1,20 +1,11 @@
 import React, { FunctionComponent, useState } from "react";
 import { Link } from "react-router-dom";
 import { Fetcher } from "../../../common/components/Fetcher";
-import {
-  Box,
-  Typography,
-  Paper,
-  Table,
-  TableBody,
-  TableRow,
-  TableCell,
-  Theme,
-  createStyles,
-} from "@material-ui/core";
+import { Box, Typography, Paper, Table, TableBody, TableRow, TableCell, Theme } from "@mui/material";
+import createStyles from '@mui/styles/createStyles';
 import { Database, DatabaseType } from "../../models";
 import { SQLService } from "../../services/SQLService";
-import { makeStyles } from "@material-ui/core/styles";
+import makeStyles from '@mui/styles/makeStyles';
 import { formatDbName, getTierAndCapacity } from "../DatabaseListScreen";
 
 interface OverviewScreenProps {

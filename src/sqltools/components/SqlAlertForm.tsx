@@ -1,12 +1,6 @@
-import {
-  Button,
-  CircularProgress,
-  FormControl,
-  InputAdornment,
-  makeStyles,
-  TextField,
-} from "@material-ui/core";
-import { Autocomplete } from "@material-ui/lab";
+import { Button, CircularProgress, FormControl, InputAdornment, TextField } from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
+import { Autocomplete } from '@mui/material';
 import React, { useEffect, useState } from "react";
 import {
   ActiveQueriesAlert,

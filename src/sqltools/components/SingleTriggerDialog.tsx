@@ -1,7 +1,9 @@
-import { CircularProgress, Dialog, DialogTitle, IconButton, Paper, Tooltip } from "@material-ui/core";
-import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import { CircularProgress, Dialog, DialogTitle, IconButton, Paper, Tooltip } from "@mui/material";
+import { Theme } from "@mui/material/styles";
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
 import React, { useEffect } from "react";
-import CloseIcon from '@material-ui/icons/Close';
+import CloseIcon from '@mui/icons-material/Close';
 import { useState } from "react";
 import { Database, ICustomError, IMetricTrigger } from "../models";
 import { SQLService } from "../services/SQLService";
@@ -288,8 +290,8 @@ export const SingleTriggerDialog: React.FunctionComponent<Props> = (props: Props
         <Dialog open={open} onClose={handleClose}>
             <DialogTitle>Data Recording Configuration
                 <Tooltip title='Close dialog'>
-                    <IconButton onClick={handleClose} className={classes.closeButton}>
-                        <CloseIcon fontSize="default" />
+                    <IconButton onClick={handleClose} className={classes.closeButton} size="large">
+                        <CloseIcon/>
                     </IconButton>
                 </Tooltip>
             </DialogTitle>
@@ -327,5 +329,5 @@ export const SingleTriggerDialog: React.FunctionComponent<Props> = (props: Props
                 </Fetcher>
             </Paper>
         </Dialog>
-    )
+    );
 }

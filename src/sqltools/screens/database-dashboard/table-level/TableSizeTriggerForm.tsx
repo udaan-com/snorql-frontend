@@ -1,7 +1,7 @@
 import React , { FunctionComponent, useState } from "react";
-import { makeStyles } from '@material-ui/core/styles';
-import { TextField, Button, InputAdornment, CircularProgress, FormControl } from '@material-ui/core';
-import Autocomplete from "@material-ui/lab/Autocomplete";
+import makeStyles from '@mui/styles/makeStyles';
+import { TextField, Button, InputAdornment, CircularProgress, FormControl } from '@mui/material';
+import Autocomplete from '@mui/material/Autocomplete';
 import { SQLService } from "../../../services/SQLService";
 
 interface Props {

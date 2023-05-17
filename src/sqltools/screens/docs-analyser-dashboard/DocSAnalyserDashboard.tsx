@@ -3,9 +3,9 @@ import {Route, RouteComponentProps, Switch} from "react-router-dom";
 import SideDrawer from "../../components/SideDrawer";
 import {ErrorMessageCard} from "../../components/ErrorMessageCard";
 import {Menus} from "../../models";
-import VisibilityIcon from "@material-ui/icons/Visibility";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import {GithubQueryAnalyser} from "./github/GithubQueryAnalyser";
-import {Box} from "@material-ui/core";
+import {Box} from "@mui/material";
 
 export const DocSAnalyserDashboard: FunctionComponent<RouteComponentProps> = (props) => {
   const baseurl = props.match.url;

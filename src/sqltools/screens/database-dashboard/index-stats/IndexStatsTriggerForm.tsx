@@ -1,7 +1,9 @@
 import React , { FunctionComponent, useEffect, useState } from "react";
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { TextField, Button, InputAdornment, CircularProgress, FormControl } from '@material-ui/core';
-import Autocomplete from "@material-ui/lab/Autocomplete";
+import { Theme } from '@mui/material/styles';
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
+import { TextField, Button, InputAdornment, CircularProgress, FormControl } from '@mui/material';
+import Autocomplete from '@mui/material/Autocomplete';
 import { ITableIndex } from "./IndexStatsColumn";
 import { SQLService } from "../../../services/SQLService";
 
