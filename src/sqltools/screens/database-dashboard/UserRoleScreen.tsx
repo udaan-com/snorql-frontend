@@ -4,7 +4,7 @@ import { Box, Typography, Paper, Button, Tooltip, IconButton, Theme, Modal } fro
 import createStyles from '@mui/styles/createStyles';
 
 import { Fetcher } from "../../../common/components/Fetcher";
-import { DataGrid} from '@mui/x-data-grid';
+import {DataGrid, GridRenderCellParams} from '@mui/x-data-grid';
 import { Database, GroupMembers, GroupMembersResponse, ICustomError, IUserRoleMetricResponse, SQLAdminResponse, UserRole } from "../../models";
 import { SQLService } from "../../services/SQLService";
 import { useHistory } from "react-router-dom";
@@ -41,9 +41,13 @@ export const UserRoleScreen: FunctionComponent<UserScreenProps> = (props) => {
 
     const getGroupMember = (param: string) => {
         MiscService.getGroupMembers(param).then((res) =>
-            setGroupMembers({ "groupMembers": formatGroupMembers(res[0].groupMembers), "groupName": res[0].groupName }));
-        setShowGroupMembers(true)
-        userRoleViewServerAdminEvent({dbName: props.databaseName, userEmail: email})
+            setGroupMembers({ "groupMembers": formatGroupMembers(res[0].groupMembers), "groupName": res[0].groupName })
+        ).then(() => {
+            setShowGroupMembers(true)
+            userRoleViewServerAdminEvent({dbName: props.databaseName, userEmail: email})
+        }).catch((e) => {
+            // props.setErrorMessage(`[ERROR] Failed to see group members ${e}. Please try again.`);
+        });
 
     }
     const handleClose = () => {setShowGroupMembers(false); setGroupMembers({groupName:"",groupMembers:[]}); }
@@ -88,27 +92,25 @@ export const UserRoleScreen: FunctionComponent<UserScreenProps> = (props) => {
     }, [])
 
     const formatGroupMembers = (response: any[]): GroupMembers[] => {
-        response.map((eachItem, index) => {
+        return response.map((eachItem, index) => {
             eachItem['id'] = index + 1
             eachItem["group"] = eachItem["group"].toString()
             eachItem["servicePrincipal"] = eachItem["servicePrincipal"].toString()
+            return eachItem
         })
-        return response;
     }
 
     const columns = [
-        {
-            field: 'name', headerName: 'Name', width: 250, renderCell: (param: any) => (
-                
-                <div onClick={() => {console.log(param);getGroupMember(param.value)}}>
-                    { param.data.type == 'X' ?(
-                    <p style={{ textDecoration:'underline', cursor:'pointer'}} >{param.value}</p>
-                    ):(
-                        <p>{param.value}</p>
-                    )    
-                }
+        { field: 'name', headerName: 'Name', width: 250, renderCell: (param: GridRenderCellParams<any>) => {
+            return (
+                    <div onClick={() => {getGroupMember(param.value)}}>
+                        { param.row.type === 'X'
+                            ? <p style={{ textDecoration:'underline', cursor:'pointer'}} >{param.value}</p>
+                            : <p>{param.value}</p>
+                        }
                     </div>
             )
+        }
         },
         { field: 'role', headerName: 'Role', width: 450 },
         { field: 'roletype', headerName: 'Type', width: 450 },
@@ -157,13 +159,13 @@ export const UserRoleScreen: FunctionComponent<UserScreenProps> = (props) => {
         }
     }
     const formatUserRoleResponse = (response: any[]): UserRole[] => {
-        response.map((eachItem, index) => {
-            if(eachItem["type"] == "S") eachItem["roletype"] = "SQL User"
-            else if(eachItem["type"] == "E") eachItem["roletype"] = "External User/ Srvice Principal"
-            else if(eachItem["type"] == "X") eachItem["roletype"] = "External Group"
+        return response.map((eachItem, index) => {
+            if(eachItem["type"] === "S") eachItem["roletype"] = "SQL User"
+            else if(eachItem["type"] === "E") eachItem["roletype"] = "External User/ Srvice Principal"
+            else if(eachItem["type"] === "X") eachItem["roletype"] = "External Group"
             eachItem['id'] = index + 1
+            return eachItem
         })
-        return response;
     }
 
     const handleOnShowQuery = () => {
