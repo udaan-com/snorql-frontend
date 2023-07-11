@@ -135,8 +135,7 @@ export const GeoReplicaLagScreen: FunctionComponent<GeoReplicaLagScreenProps> = 
     return (
         <Accordion expanded={expanded}>
             <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                onClick={handleChange}
+                expandIcon={<ExpandMoreIcon onClick={handleChange} />}
             >
                 <div className={classes.summaryContent}><MetricHeader title="Geo Replica Lag" metadata={metadata} /></div>
                 <div style={{ float: "right" }}>

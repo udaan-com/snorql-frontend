@@ -85,13 +85,13 @@ export const LongRunningQueriesScreen: FunctionComponent<LongRunningQueriesProps
     const [autoRefreshEnabled, setAutoRefresh] = useState<boolean>(false);
     const email = useAdminEmail();
 
-    useEffect(()=>{
+    useEffect(() => {
         // console.log("Auto Refresh: ", autoRefreshEnabled);
         if (autoRefreshEnabled) {
             // console.log("Auto Refresh is enabled !!!")
             const intervalId = setInterval(() => {
                 handleReload()
-            }, 1000 * 10) 
+            }, 1000 * 10)
             return () => clearInterval(intervalId)
         }
     }, [autoRefreshEnabled])
@@ -99,7 +99,7 @@ export const LongRunningQueriesScreen: FunctionComponent<LongRunningQueriesProps
     const handleOnApiResponse = (r: ILongRunningQueryMetricResponse | ICustomError) => {
         if ("code" in r && "message" in r && "details" in r) {
             setErrorMessage(`${r.message}: ${r.details}`);
-        } else if("error" in r) {
+        } else if ("error" in r) {
             alert(`[ERROR]: ${r['error']}`)
         } else {
             const result = r.metricOutput.result.queryList;
@@ -109,22 +109,22 @@ export const LongRunningQueriesScreen: FunctionComponent<LongRunningQueriesProps
             setCols(columns);
         }
     }
-    const basicPropsForMixPanel = { dbName: props.databaseName, userEmail: email, metricTitle: MenuTitle.PERFORMANCE, metricText: `${MenuText.ACTIVE_QUERIES}_LONG_RUNNING`}
+    const basicPropsForMixPanel = { dbName: props.databaseName, userEmail: email, metricTitle: MenuTitle.PERFORMANCE, metricText: `${MenuText.ACTIVE_QUERIES}_LONG_RUNNING` }
     const handleReload = () => {
         SQLService.getDbLongRunningQueries(props.databaseName, parseInt(elapsedTime))
-        .then(r => {
-            handleOnApiResponse(r)
-            setElapsedTime("5")
-            setExpanded(true);
-            metadata && reloadMetricEvent(basicPropsForMixPanel)
-        })
+            .then(r => {
+                handleOnApiResponse(r)
+                setElapsedTime("5")
+                setExpanded(true);
+                metadata && reloadMetricEvent(basicPropsForMixPanel)
+            })
     }
     const handleSearch = () => {
         SQLService.getDbLongRunningQueries(props.databaseName, parseInt(elapsedTime))
-        .then(r => {
-            handleOnApiResponse(r)
-            setExpanded(true);
-        })
+            .then(r => {
+                handleOnApiResponse(r)
+                setExpanded(true);
+            })
     }
     const handleAutoRefreshViewToggle = () => {
         setAutoRefresh(!autoRefreshEnabled)
@@ -169,54 +169,53 @@ export const LongRunningQueriesScreen: FunctionComponent<LongRunningQueriesProps
     const x = (
         <Accordion expanded={expanded} >
 
-<AccordionSummary
-  expandIcon={<ExpandMoreIcon />}
-  onClick={handleChange}
->
+            <AccordionSummary
+                expandIcon={<ExpandMoreIcon onClick={handleChange} />}
+            >
                 <div className={classes.summaryContent}>
                     <MetricHeader title="Long Running Queries" metadata={metadata} />
                     <div style={{ float: 'right' }}>
                         <FormControl component="fieldset">
                             <FormGroup aria-label="auto-refresh" row>
                                 <FormControlLabel
-                                onChange={handleAutoRefreshViewToggle} // toggle historical
-                                control={<Switch color="secondary" />}
-                                label="Auto Refresh"
-                                labelPlacement="bottom"
+                                    onChange={handleAutoRefreshViewToggle} // toggle historical
+                                    control={<Switch color="secondary" />}
+                                    label="Auto Refresh"
+                                    labelPlacement="bottom"
                                 />
                             </FormGroup>
                         </FormControl>
                         {metadata && metadata.supportsHistorical &&
-                        <FormControl component="fieldset">
-                            <FormGroup aria-label="historicalEnabled" row>
-                                <FormControlLabel
-                                onChange={handleClickHistoricalViewToggle}
-                                value={historicalScreenFlag}
-                                control={<Switch color="primary" />}
-                                label="View Historical Data"
-                                labelPlacement="bottom"
-                                />
-                            </FormGroup>
-                        </FormControl> }
-                         <Switch  value="historicalScreenFlag" inputProps={{ 'title': 'Historical Data' }} />
+                            <FormControl component="fieldset">
+                                <FormGroup aria-label="historicalEnabled" row>
+                                    <FormControlLabel
+                                        onChange={handleClickHistoricalViewToggle}
+                                        value={historicalScreenFlag}
+                                        control={<Switch color="primary" />}
+                                        label="View Historical Data"
+                                        labelPlacement="bottom"
+                                    />
+                                </FormGroup>
+                            </FormControl>}
+                        <Switch value="historicalScreenFlag" inputProps={{ 'title': 'Historical Data' }} />
                         {metadata && metadata.supportsAlert &&
-                        <Tooltip title="Add Alert">
-                            <IconButton onClick={() => showAlertDialog()} size="large">
-                                <AddAlertIcon />
-                            </IconButton>
-                        </Tooltip> }
+                            <Tooltip title="Add Alert">
+                                <IconButton onClick={() => showAlertDialog()} size="large">
+                                    <AddAlertIcon />
+                                </IconButton>
+                            </Tooltip>}
                         {metadata && metadata.supportsHistorical &&
-                        <Tooltip title="Configure Data Recording">
-                            <IconButton onClick={handleJobConfigureDialogOpen} size="large">
-                                <SettingsIcon />
-                            </IconButton>
-                        </Tooltip> }
+                            <Tooltip title="Configure Data Recording">
+                                <IconButton onClick={handleJobConfigureDialogOpen} size="large">
+                                    <SettingsIcon />
+                                </IconButton>
+                            </Tooltip>}
                         {!historicalScreenFlag &&
-                        <Tooltip title="Reload">
-                            <IconButton onClick={() => handleReload()} size="large">
-                                <ReplayIcon />
-                            </IconButton>
-                        </Tooltip>
+                            <Tooltip title="Reload">
+                                <IconButton onClick={() => handleReload()} size="large">
+                                    <ReplayIcon />
+                                </IconButton>
+                            </Tooltip>
                         }
                     </div>
                 </div>
@@ -232,56 +231,56 @@ export const LongRunningQueriesScreen: FunctionComponent<LongRunningQueriesProps
                     minimumRepeatInterval={metadata?.minimumRepeatInterval} />
                 {metadata?.supportsAlert &&
                     <SqlAlertDialog
-                    open={alertDialogOpen}
-                    handleClose={() => closeAlertDialog()}
-                    databaseName={props.databaseName}
-                    supportedAlertTypes={metadata?.supportedAlerts} />}
+                        open={alertDialogOpen}
+                        handleClose={() => closeAlertDialog()}
+                        databaseName={props.databaseName}
+                        supportedAlertTypes={metadata?.supportedAlerts} />}
                 {!historicalScreenFlag &&
-                <Paper style={{ width: "100%"}}>
-                    <div style={{marginLeft:'5px', padding: '10px'}}>
-                        <Typography style={{ padding: '5px'}} variant={"subtitle1"}>Query longer than(in seconds)</Typography>
-                        <TextField
+                    <Paper style={{ width: "100%" }}>
+                        <div style={{ marginLeft: '5px', padding: '10px' }}>
+                            <Typography style={{ padding: '5px' }} variant={"subtitle1"}>Query longer than(in seconds)</Typography>
+                            <TextField
                                 label="Enter value"
                                 onChange={e => { setElapsedTime(e.target.value) }}
                                 variant="outlined"
-                                style={{width:'250px'}}
+                                style={{ width: '250px' }}
                                 value={elapsedTime}
                                 type="number"
-                        />
-                        <Button variant="contained" color="primary" onClick={handleSearch} style={{marginLeft: 8, height: '56px', width: 'auto'}}>
-                            Search
-                        </Button>
-                    </div>
-
-                    <Fetcher
-                        fetchData={() => SQLService.getDbLongRunningQueries(props.databaseName, parseInt(elapsedTime))}
-                        onFetch={(r) => { handleOnApiResponse(r) }} >
-                        <div style={{ float: 'right', padding: '10px' }}>
-                            {showQuery && metadata && metadata.underlyingQueries && <CopyToClipboard text={metadata.underlyingQueries[0]} />}
-                            <Tooltip title={showQuery ? 'Hide the source' : 'Show the source'}>
-                                <IconButton aria-label="delete" onClick={() => handleShowQuery} size="large">
-                                    <CodeIcon />
-                                </IconButton>
-                            </Tooltip>
+                            />
+                            <Button variant="contained" color="primary" onClick={handleSearch} style={{ marginLeft: 8, height: '56px', width: 'auto' }}>
+                                Search
+                            </Button>
                         </div>
-                        {showQuery && metadata && metadata.underlyingQueries && <ShowQueryScreen query={metadata.underlyingQueries[0]} />}
-                        <div>
-                            {!showQuery && errorMessage && <ErrorMessageCard text={errorMessage}/>}
-                            {!showQuery && !errorMessage && longRunningQueries && longRunningQueries.length > 0 &&
-                                <LongRunningQueriesTable rows={longRunningQueries} columns={cols} />
-                            }
-                        </div>
-                        {!showQuery && !errorMessage && longRunningQueries.length === 0 && <NoDataExists text="No LongRunning Queries found"/>}
-                    </Fetcher>
+
+                        <Fetcher
+                            fetchData={() => SQLService.getDbLongRunningQueries(props.databaseName, parseInt(elapsedTime))}
+                            onFetch={(r) => { handleOnApiResponse(r) }} >
+                            <div style={{ float: 'right', padding: '10px' }}>
+                                {showQuery && metadata && metadata.underlyingQueries && <CopyToClipboard text={metadata.underlyingQueries[0]} />}
+                                <Tooltip title={showQuery ? 'Hide the source' : 'Show the source'}>
+                                    <IconButton aria-label="delete" onClick={() => handleShowQuery} size="large">
+                                        <CodeIcon />
+                                    </IconButton>
+                                </Tooltip>
+                            </div>
+                            {showQuery && metadata && metadata.underlyingQueries && <ShowQueryScreen query={metadata.underlyingQueries[0]} />}
+                            <div>
+                                {!showQuery && errorMessage && <ErrorMessageCard text={errorMessage} />}
+                                {!showQuery && !errorMessage && longRunningQueries && longRunningQueries.length > 0 &&
+                                    <LongRunningQueriesTable rows={longRunningQueries} columns={cols} />
+                                }
+                            </div>
+                            {!showQuery && !errorMessage && longRunningQueries.length === 0 && <NoDataExists text="No LongRunning Queries found" />}
+                        </Fetcher>
 
 
-                </Paper> }
+                    </Paper>}
                 {historicalScreenFlag &&
-                <Paper style={{maxWidth: 1400, width: "-webkit-fill-available"}}>
-                    <div style={{marginLeft:'5px', padding: '10px'}}>
-                        <LongRunningQueriesHistoricalScreen databaseName={props.databaseName} baseurl={props.baseurl}></LongRunningQueriesHistoricalScreen>
-                    </div>
-                </Paper>
+                    <Paper style={{ maxWidth: 1400, width: "-webkit-fill-available" }}>
+                        <div style={{ marginLeft: '5px', padding: '10px' }}>
+                            <LongRunningQueriesHistoricalScreen databaseName={props.databaseName} baseurl={props.baseurl}></LongRunningQueriesHistoricalScreen>
+                        </div>
+                    </Paper>
                 }
             </AccordionDetails>
         </Accordion>
@@ -302,18 +301,18 @@ const options: MUIDataTableOptions = {
     print: false,
     download: true,
     setTableProps: () => {
-        return {size: 'small'}
+        return { size: 'small' }
     }
-  };
+};
 
 
 export const LongRunningQueriesTable: FunctionComponent<LongRunningQueriesTableProps> = (props) => {
     const { rows, columns } = props
     return (
-        <MUIDataTable 
-            title="" 
-            data={rows} 
-            columns={columns} 
+        <MUIDataTable
+            title=""
+            data={rows}
+            columns={columns}
             options={options}
         />
     );

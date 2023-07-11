@@ -168,8 +168,7 @@ export const BlockingQueriesScreen: FunctionComponent<BlockingQueriesProps> = (
   return (
     <Accordion expanded={expanded} >
       <AccordionSummary
-        expandIcon={<ExpandMoreIcon />}
-        onClick={handleChange}
+       expandIcon={<ExpandMoreIcon onClick={handleChange} />} 
       >
 
         <div className={classes.summaryContent}>

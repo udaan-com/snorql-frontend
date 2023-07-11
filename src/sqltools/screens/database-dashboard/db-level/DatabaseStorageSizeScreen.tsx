@@ -42,7 +42,7 @@ import {
 } from "../../../tracking/TrackEventMethods";
 import { useAdminEmail } from "../../../../hooks";
 import { MenuText, MenuTitle } from "../DatabaseDashboardScreen";
-import {Helpers} from "../../../helpers";
+import { Helpers } from "../../../helpers";
 
 interface DatabaseStorageSizeScreenProps {
   databaseName: string;
@@ -123,9 +123,8 @@ export const DatabaseStorageSizeScreen: FunctionComponent<
   return (
     <Accordion expanded={expanded}>
       <AccordionSummary
-  expandIcon={<ExpandMoreIcon />}
-  onClick={handleChange}
->
+        expandIcon={<ExpandMoreIcon onClick={handleChange} />}
+      >
         <div className={classes.summaryContent}>
           <MetricHeader title="Database Storage Size" metadata={metadata} />
         </div>

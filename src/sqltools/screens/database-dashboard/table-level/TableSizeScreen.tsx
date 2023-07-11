@@ -44,7 +44,7 @@ import {
 } from "../../../tracking/TrackEventMethods";
 import { useAdminEmail } from "../../../../hooks";
 import { MenuText, MenuTitle } from "../DatabaseDashboardScreen";
-import {Helpers} from "../../../helpers";
+import { Helpers } from "../../../helpers";
 
 interface TableSizeScreenProps {
   databaseName: string;
@@ -133,10 +133,9 @@ export const TableSizeScreen: FunctionComponent<TableSizeScreenProps> = (
   };
   return (
     <Accordion expanded={expanded}>
-    <AccordionSummary
-  expandIcon={<ExpandMoreIcon />}
-  onClick={handleChange}
->
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon onClick={handleChange} />}
+      >
         <div className={classes.summaryContent}>
           <MetricHeader title="Table Size" metadata={metadata} />
         </div>

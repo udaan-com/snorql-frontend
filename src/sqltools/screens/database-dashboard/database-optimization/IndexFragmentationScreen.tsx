@@ -210,8 +210,7 @@ export const IndexFragmentationScreen: FunctionComponent<IndexFragmentationScree
   return (
     <Accordion expanded={expanded}>
       <AccordionSummary
-        expandIcon={<ExpandMoreIcon />}
-        onClick={handleChange}
+        expandIcon={<ExpandMoreIcon onClick={handleChange} />}
       >
         <div className={classes.summaryContent}>
           <MetricHeader title="Index Fragmentation" metadata={metadata} />
@@ -236,7 +235,7 @@ export const IndexFragmentationScreen: FunctionComponent<IndexFragmentationScree
                 style={{ width: 300 }}
                 value={indexStatModeObject}
                 isOptionEqualToValue={(option, value) =>
-                    option.modeName === value.modeName
+                  option.modeName === value.modeName
                 }
                 renderInput={(params) => (
                   <TextField

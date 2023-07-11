@@ -37,7 +37,7 @@ import { MenuTitle, MenuText } from "../DatabaseDashboardScreen";
 import { IndexRedundancyIndexesTable } from "./IndexRedundancyIndexesTable";
 import { indexRedundancyColumns } from "./allDatabaseOptimizationColumns";
 import _ from "lodash";
-import {Helpers} from "../../../helpers";
+import { Helpers } from "../../../helpers";
 
 interface IndexRedundancyProps {
   databaseName: string;
@@ -132,12 +132,12 @@ export const IndexRedundancyAnalysis: FunctionComponent<
 
   const isTableUnused = (indexList: IndexRedundancyMetric[]): boolean => _.sumBy(indexList, 'indexUsage') <= 10
 
-  const getTotalIndexSize = (indexList: IndexRedundancyMetric[]): number =>  _.sumBy(indexList, 'indexSizeInKb')
+  const getTotalIndexSize = (indexList: IndexRedundancyMetric[]): number => _.sumBy(indexList, 'indexSizeInKb')
 
   useEffect(() => {
     let selIndexes: IndexRedundancyMetric[] = [];
     const tempTableNames: IndexRedundancyTableMetadata[] = []
-    tableNames.forEach((tableMeta) => { 
+    tableNames.forEach((tableMeta) => {
       const tableIndexList = tableIndexes.get(tableMeta.tableName)
       const selectedIdxList = selectedRows.get(tableMeta.tableName)
       const tableMetadata: IndexRedundancyTableMetadata = {
@@ -189,27 +189,27 @@ export const IndexRedundancyAnalysis: FunctionComponent<
     let selRows = selectedRows;
     selRows
       ? selRows.set(
-          tableName,
-          currentSelectedRows.map((currentValue): IndexRedundancyMetric => {
-            const idx = {
-              tableObjectId: currentValue.tableObjectId,
-              tableName: currentValue.tableName,
-              indexId: currentValue.indexId,
-              indexName: currentValue.indexName,
-              indexType: currentValue.indexType,
-              indexUsage: currentValue.indexUsage,
-              indexUpdates: currentValue.indexUpdates,
-              indexColumnNrs: currentValue.indexColumnNrs,
-              indexColumnNames: currentValue.indexColumnNames,
-              includeColumnNrs: currentValue.includeColumnNrs,
-              includeColumnNames: currentValue.includeColumnNames,
-              indexSizeInKb: currentValue.indexSizeInKb,
-              isUnique: currentValue.isUnique,
-              reason: currentValue.reason,
-            };
-            return idx;
-          })
-        )
+        tableName,
+        currentSelectedRows.map((currentValue): IndexRedundancyMetric => {
+          const idx = {
+            tableObjectId: currentValue.tableObjectId,
+            tableName: currentValue.tableName,
+            indexId: currentValue.indexId,
+            indexName: currentValue.indexName,
+            indexType: currentValue.indexType,
+            indexUsage: currentValue.indexUsage,
+            indexUpdates: currentValue.indexUpdates,
+            indexColumnNrs: currentValue.indexColumnNrs,
+            indexColumnNames: currentValue.indexColumnNames,
+            includeColumnNrs: currentValue.includeColumnNrs,
+            includeColumnNames: currentValue.includeColumnNames,
+            indexSizeInKb: currentValue.indexSizeInKb,
+            isUnique: currentValue.isUnique,
+            reason: currentValue.reason,
+          };
+          return idx;
+        })
+      )
       : [];
     setSelectedRows(selRows);
   };
@@ -364,10 +364,9 @@ DROP INDEX ${indexInfo.indexName} ON ${indexInfo.tableName};`;
 
   return (
     <Accordion expanded={expanded}>
-     <AccordionSummary
-  expandIcon={<ExpandMoreIcon />}
-  onClick={handleChange}
->
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon onClick={handleChange} />}
+      >
         <div className={classes.summaryContent}>
           <MetricHeader title="Index Redundancy" metadata={metadata} />
         </div>
@@ -440,8 +439,8 @@ DROP INDEX ${indexInfo.indexName} ON ${indexInfo.tableName};`;
                   <Accordion expanded={solQueryExpanded}>
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
-                        onClick ={handleActionQueryChange}
-                    > 
+                      onClick={handleActionQueryChange}
+                    >
                       <div className={classes.summaryContent}>
                         <MetricHeader title="Solution Query" />
                       </div>
