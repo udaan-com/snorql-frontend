@@ -113,8 +113,7 @@ export const DatabaseTopIndexScreen: FunctionComponent<
   return (
     <Accordion expanded={expanded}>
       <AccordionSummary
-        expandIcon={<ExpandMoreIcon />}
-        onClick={handleChange}
+        expandIcon={<ExpandMoreIcon onClick={handleChange} />}
       >
         <div className={classes.summaryContent}>
           <MetricHeader title="Database Top Indexes" metadata={metadata} />

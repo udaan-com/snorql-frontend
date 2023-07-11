@@ -83,8 +83,7 @@ export const LogSpaceUsageScreen: FunctionComponent<LogSpaceUsageScreenProps> = 
     return (
         <Accordion expanded={expanded}>
             <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                onClick={handleChange}
+                expandIcon={<ExpandMoreIcon onClick={handleChange} />}
             >
                 <div className={classes.summaryContent}><MetricHeader title="Log Space Usage" metadata={metadata} /></div>
                 <div style={{ float: "right" }}>

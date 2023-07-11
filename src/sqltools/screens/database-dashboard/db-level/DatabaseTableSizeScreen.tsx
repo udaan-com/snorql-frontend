@@ -85,8 +85,7 @@ export const DatabaseTableSizeScreen: FunctionComponent<DatabaseTableSizeScreenP
     return (
         <Accordion expanded={expanded} >
             <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                onClick={handleChange}
+                expandIcon={<ExpandMoreIcon onClick={handleChange} />}
             >
                 <div className={classes.summaryContent}>
                     <MetricHeader title="Database Table Storage Size" metadata={metadata} />

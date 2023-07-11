@@ -105,8 +105,7 @@ export const SessionActiveQueryScreen: FunctionComponent<SessionActiveQueryScree
     return (
         <Accordion expanded={expanded} >
             <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                onClick={handleChange}
+                expandIcon={<ExpandMoreIcon onClick={handleChange} />}
             >
                 <div className={classes.summaryContent}>
                     <MetricHeader title="Session Active Query" metadata={metadata} />
